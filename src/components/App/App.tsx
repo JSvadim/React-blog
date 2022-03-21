@@ -1,9 +1,15 @@
-import SignIn from "../../pages/Sign-in";
+import LogInPage from "../../pages/sign-in-log-in/LogInPage";
+import Header from "../header/Header";
 
-function App() {
+const App: React.FC = () => {
+
   return (
-    <SignIn/>
+    <>
+      <Header/>
+      <LogInPage/>
+    </>
   );
+
 }
 
 export default App;

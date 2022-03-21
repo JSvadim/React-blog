@@ -1,0 +1,94 @@
+.nav {
+    position: absolute;
+    bottom: 1px;
+    left: 0;
+    z-index: 2;
+    height: 0;
+    width: 100vw;
+    transform: translateY(100%);
+    transition: all 1s;
+    overflow: hidden;
+    .inner {
+        background-color: var(--white-col);
+        height:  calc(100vh - 57px);
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }    
+    .list {
+        text-align: center;
+    }
+    .link {
+        display: inline-block;
+        padding: 5px;
+        font-size: 16px;
+        line-height: 1.19em;
+        color: var(--black-col);
+        transition: color 0.5s;
+        &:hover,
+        &:focus-visible {
+            color: var(--light-violet-col);
+        }
+    }
+    .list-item {
+        margin: 0 0 8px 0;
+        &:last-child {
+            margin: 0;
+        }
+    }
+}
+.nav-opened {
+    height: calc(100vh - 57px);
+}
+
+@media(min-width: 768px) {
+    .nav {
+        position: relative;
+        height: auto;
+        width: auto;
+        transform: initial;
+        overflow: initial;
+        z-index: 4;
+        & .inner {
+            background-color: transparent;
+            height: auto;
+            width: auto;
+            display: initial;
+            justify-content: initial;
+            align-items: initial;
+        }
+        & .list {
+            text-align: initial;
+            display: flex;
+        }
+        & .link {
+            font-size: 18px;
+            color: var(--white-col);
+            &:hover,
+            &:focus-visible {
+                color: var(--light-green-col);
+            }
+        }
+        & .list-item {
+            margin: 0 15px 0 0;
+            &:last-child {
+                margin: 0 15px 0 0;
+            }
+            &:first-child .link {
+                padding: 5px 5px 5px 0;
+            }
+        }
+    }
+}
+
+@media(min-width: 1400px) {
+    .nav {
+        .link {
+            font-size: 22px;
+        }
+        & .list-item {
+            margin: 0 60px 0 0;
+        }
+    }
+}
