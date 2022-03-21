@@ -1,7 +1,9 @@
-import style from "./style.module.scss";
 import classNames from "classnames";
-import LogInForm from "../../components/forms/login/LogInForm";
+
+import style from "./style.module.scss";
 import { blogData } from "../../constants/blog-example";
+import LogInForm from "../../components/forms/LogInForm/index";
+
 
 const LogInPage: React.FC = () => {
     return (

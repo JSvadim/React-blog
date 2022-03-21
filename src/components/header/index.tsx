@@ -1,11 +1,8 @@
 import { useState } from "react";
 
-//styles
-import style from "./header.module.scss";
-
-//components
-import Navbar from "./navbar/Navbar";
-import BurgerMenu from "./burger-menu/Burger-menu";
+import style from "./style.module.scss";
+import Navbar from "./Navbar/index";
+import BurgerMenu from "./BurgerMenu/index";
 
 
 const Header: React.FC = () => {

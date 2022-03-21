@@ -1,5 +1,7 @@
-import style from "./style.module.scss";
 import classNames from "classnames";
+
+import style from "./style.module.scss";
+
 
 const LogInForm: React.FC = () => {
     return (

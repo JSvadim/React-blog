@@ -1,5 +1,5 @@
-import LogInPage from "../../pages/sign-in-log-in/LogInPage";
-import Header from "../header/Header";
+import LogInPage from "../../pages/LogInSignInPages/LogIn";
+import Header from "../Header/index";
 
 const App: React.FC = () => {
 
