@@ -23,27 +23,6 @@
         justify-content: space-between;
         align-items: center;
     }
-    .login-link__list {
-        display: flex;
-    }
-    .login-link__decor,
-    .login-link {
-        position: relative;
-        z-index: 4;
-        font-size: 14px;
-        color: var(--white-col);
-        text-decoration: underline;
-    }
-    .login-link {
-        display: inline-block;
-        padding: 10px 0;
-        transition: color 0.5s;
-        position: relative;
-        &:hover,
-        &:focus-visible {
-            color: var(--light-green-col);
-        }
-    }
 }
 
 @media (min-width: 768px) {
@@ -51,18 +30,10 @@
         & .inner {
             flex-direction: row-reverse;
         }
-        & .login-link__decor,
-        & .login-link {
-            font-size: 16px;
-        }
     }
 }
 @media (min-width: 1400px) {
     .header {
         height: 88px;
-        & .login-link__decor,
-        & .login-link {
-            font-size: 18px;
-        }
     }
 }
