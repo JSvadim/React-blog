@@ -35,6 +35,7 @@ html {
     &__title {
         color: var(--black-col-50);
         margin: 0 0 8px 10px;
+        display: block;
     }
     &__input {
         height: 46px;
