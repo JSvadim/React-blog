@@ -10,10 +10,12 @@ import Blog from "../../components/Blog/index";
 const LogInPage: React.FC = () => {
     return (
         <div className={classNames([style.container, 'container'])}>
-            <TwoPartsTitle
-                bigPart="LOG"
-                smallPart="in"
-            />
+            <div className={style["title-wrapper"]}>
+                <TwoPartsTitle
+                    bigPart="LOG"
+                    smallPart="in"
+                />
+            </div>
             <div className={style["form-wrapper"]}>
                 <LogInForm/>
             </div>
