@@ -1,11 +1,17 @@
+// third party
+import { BrowserRouter } from "react-router-dom";
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+// local imports
 import './styles/index.scss';
 import App from './components/App/index';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -1,7 +1,10 @@
+// third-party
+import classNames from "classnames";
+
+// local imports
 import style from "./style.module.scss";
 import { navItems } from "../../../constants/navbar";
 import { navI } from "../../../types/header";
-import classNames from "classnames";
 
 const Navbar: React.FC<navI> = (props) => {
 

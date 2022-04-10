@@ -1,9 +1,13 @@
-import React, { SyntheticEvent, useState } from "react";
-import { useForm, SubmitHandler } from "react-hook-form";
+// hooks
+import { useForm } from "react-hook-form";
 
+// third-party
+import React, { SyntheticEvent } from "react";
+import { SubmitHandler } from "react-hook-form";
 import classNames from "classnames";
 import { ErrorMessage } from '@hookform/error-message';
 
+// local imports
 import style from "./style.module.scss";
 import { LogInFormI } from "./type";
 

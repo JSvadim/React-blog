@@ -1,11 +1,22 @@
+// third-party
 import classNames from "classnames";
 
+// local imports
 import style from "./style.module.scss";
 
 
-const LogInForm: React.FC = () => {
+const SignInForm: React.FC = () => {
     return (
         <form className={style.form}>
+            <label className={classNames(["labeled-input", style.label])}>
+                <div className="labeled-input__title">Nickname:</div>
+                <input 
+                    className={classNames(["labeled-input__input", style.input])}
+                    type="text" 
+                    placeholder="your nick"
+                    required>
+                </input>
+            </label>
             <label className={classNames(["labeled-input", style.label])}>
                 <div className="labeled-input__title">Mail:</div>
                 <input 
@@ -24,19 +35,14 @@ const LogInForm: React.FC = () => {
                     required>
                 </input>
             </label>
-            <div>
-                <a className={classNames(["blue-link", style["blue-link"]])} 
-                    href="/"> Forgot password?
-                </a>
-            </div>
             <button 
                 className={classNames(["btn", "btn--black", style.btn])} 
-                type="submit"> Log in
+                type="submit"> Sign in
             </button>
             <div className={style["gray-link-wrapper"]}>
                 <a 
                     className={classNames(["gray-link", style["gray-link"]])}
-                    href="/"> Sign in if you don't have an account
+                    href="/"> Log in if you already have an account
                 </a>
             </div> 
         </form>
@@ -44,4 +50,4 @@ const LogInForm: React.FC = () => {
 }
 
 
-export default LogInForm
+export default SignInForm

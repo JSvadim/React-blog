@@ -1,5 +1,7 @@
+// third-party
 import classNames from "classnames";
 
+// local imports
 import style from "./style.module.scss";
 import { TwoPartsTitleI } from "./type";
 

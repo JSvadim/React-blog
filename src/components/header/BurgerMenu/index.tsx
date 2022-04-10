@@ -1,6 +1,9 @@
+// third-party
+import classNames from "classnames";
+
+// local imports
 import { burgerPropsI } from "../../../types/header";
 import style from "./style.module.scss";
-import classNames from "classnames";
 
 
 const BurgerMenu: React.FC<burgerPropsI> = (props) => {

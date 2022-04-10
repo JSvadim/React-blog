@@ -1,5 +1,7 @@
+// hooks
 import { useState } from "react";
 
+// local imports
 import style from "./style.module.scss";
 import Navbar from "./Navbar/index";
 import BurgerMenu from "./BurgerMenu/index";

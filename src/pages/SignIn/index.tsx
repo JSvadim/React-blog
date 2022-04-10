@@ -4,7 +4,7 @@ import classNames from "classnames";
 // local imports
 import style from "./style.module.scss";
 import { blogData } from "../../constants/blog-example";
-import LogInForm from "../../components/forms/LogInForm/index";
+import SignInForm from "../../components/forms/SignInForm/index";
 import TwoPartsTitle from "../../components/TwoPartsTitle/index";
 import Blog from "../../components/Blog/index";
 
@@ -14,12 +14,12 @@ const LogInPage: React.FC = () => {
         <div className={classNames([style.container, 'container'])}>
             <div className={style["title-wrapper"]}>
                 <TwoPartsTitle
-                    bigPart="LOG"
+                    bigPart="SIGN"
                     smallPart="in"
                 />
             </div>
             <div className={style["form-wrapper"]}>
-                <LogInForm/>
+                <SignInForm/>
             </div>
             <div className={style["example-posts"]}>
                 <Blog
