@@ -1,11 +1,11 @@
-//local imports
+// local imports
 import style from "./style.module.scss";
 
-const BlogPage: React.FC = () => {
+const BlogsPage: React.FC = () => {
     return (
         <div>BLOGS PAGE</div>
     )
 }
 
 
-export default BlogPage
+export default BlogsPage

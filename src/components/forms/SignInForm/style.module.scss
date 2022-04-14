@@ -2,12 +2,27 @@
     position: relative;
     z-index: 2;
 }
-.label {
+.input-wrapper {
     display: block;
     margin: 0 0 20px 0;
     &:nth-child(2) {
         margin: 0 0 15px 0;
     }
+    position: relative;
+}
+.input-error {
+    position: absolute;
+    bottom: 50px;
+    right: 0;
+    width: 100%;
+    padding: 5px;
+    font-size: 16px;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid black;
+    color: var(--error-col);
+    transform: scale(0);
+    animation: errorAppearance 0.5s forwards;
 }
 .input {
     width: 100%;
@@ -26,6 +41,13 @@
 }
 .gray-link-wrapper {
     text-align: center;
+}
+
+@keyframes errorAppearance {
+    0% {}
+    100% {
+        transform: scale(1);
+    }
 }
 
 @media(min-width: 768px) {

@@ -1,7 +1,7 @@
 .container {
     padding-top: 35px;
     position: relative;
-    min-height: 100vh;
+    min-height: 700px;
 }
 
 .example-posts {
@@ -24,7 +24,7 @@
     .title-wrapper {
         position: absolute;
         top: 28px;
-        right: calc(50% + 82px);
+        left: -10px;
     }
 }
 
@@ -53,6 +53,7 @@
 @media (min-width: 1400px) {
     .container {
         padding-top: 200px;
+        min-height: 750px;
     }
     .example-posts {
         article:first-child {

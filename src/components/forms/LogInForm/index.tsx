@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 // third-party
 import React, { SyntheticEvent } from "react";
 import { SubmitHandler } from "react-hook-form";
+import { Link } from "react-router-dom";
 import classNames from "classnames";
 import { ErrorMessage } from '@hookform/error-message';
 
@@ -34,7 +35,7 @@ const LogInForm: React.FC = () => {
                         {...register("mail", {
                             required: "This field is required. ",
                             pattern: {
-                                value: /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/g,
+                                value: /^([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_\-.]+).([a-zA-Z]{2,5})$/g,
                                 message: "Invalid email (haven't you forgotten @ or . symbols? "
                             }
                         })}>
@@ -89,10 +90,10 @@ const LogInForm: React.FC = () => {
                 type="submit"> Log in
             </button>
             <div className={style["gray-link-wrapper"]}>
-                <a 
+                <Link 
                     className={classNames(["gray-link", style["gray-link"]])}
-                    href="/"> Sign in if you don't have an account
-                </a>
+                    to="/sign-in"> Sign in if you don't have an account
+                </Link>
             </div> 
         </form>
     )

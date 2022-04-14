@@ -15,10 +15,12 @@
     transition: color 0.5s;
     position: relative;
     &:hover,
-    &:focus-visible {
+    &:focus-visible
+    &.active {
         color: var(--light-green-col);
     }
 }
+
 
 @media (min-width: 768px) {
     .login-link__decor,

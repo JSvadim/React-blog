@@ -2,14 +2,14 @@
 import classNames from "classnames";
 
 // local imports
-import style from "./style.module.scss";
+import style from "../LogIn/style.module.scss";
 import { blogData } from "../../constants/blog-example";
-import SignInForm from "../../components/forms/SignInForm/index";
+import SignInForm from "../../components/forms/SignInForm";
 import TwoPartsTitle from "../../components/TwoPartsTitle/index";
 import Blog from "../../components/Blog/index";
 
 
-const LogInPage: React.FC = () => {
+const SignInPage: React.FC = () => {
     return (
         <div className={classNames([style.container, 'container'])}>
             <div className={style["title-wrapper"]}>
@@ -37,4 +37,4 @@ const LogInPage: React.FC = () => {
 }
 
 
-export default LogInPage
+export default SignInPage

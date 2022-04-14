@@ -10,9 +10,12 @@ const PicturesList: React.FC<PicturesListI> = (props) => {
     return (
         <ul className={style.pics}>
             {props.pics.map((image, index) => {
+                console.log(image)
                     return (
                         <li className={style["pics-item"]} key={index}>
-                            <img className="liquid-pic" src={props.pics[index]}></img>
+                            <img className="liquid-pic" 
+                                src={props.pics[index]}
+                                alt={`blog picture number ${index + 1}`}></img>
                         </li>
                     )
             })}

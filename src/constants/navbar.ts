@@ -1,12 +1,15 @@
 
 export const navItems = [
     {
-        title: "Blogs"
+        title: "Blogs",
+        path: "/"
     },
     {
-        title: "Add blog"
+        title: "Add blog",
+        path: "/add-blog"
     },
     {
-        title: "My blogs"
+        title: "My blogs",
+        path: "/my-blogs"
     }
 ]

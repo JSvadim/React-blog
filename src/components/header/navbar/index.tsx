@@ -1,10 +1,12 @@
 // third-party
 import classNames from "classnames";
+import { NavLink } from "react-router-dom";
 
 // local imports
 import style from "./style.module.scss";
 import { navItems } from "../../../constants/navbar";
 import { navI } from "../../../types/header";
+import { setActiveLink } from "./helpers";
 
 const Navbar: React.FC<navI> = (props) => {
 
@@ -16,12 +18,12 @@ const Navbar: React.FC<navI> = (props) => {
         <div className={navClassName}>
             <nav className={style.inner}>
                 <ul className={style.list}>
-                    {navItems.map( (item: {title: string}, index: number) => {
+                    {navItems.map( (item: {title: string, path: string}, index: number) => {
                         return (
                             <li className={style["list-item"]} key={index}>
-                                <a className={style.link} href="/">
+                                <NavLink className={style.link} style={setActiveLink} to={item.path}>
                                     {item.title}
-                                </a>
+                                </NavLink>
                             </li>
                         )})
                     }

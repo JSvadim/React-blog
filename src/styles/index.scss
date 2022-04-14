@@ -4,6 +4,7 @@
 @import url("./vars.scss");
 //basics
 
+
 html {
     font-family: "Robot";
 }
@@ -30,10 +31,13 @@ html {
 }
 
 .labeled-input {
-    font-size: 18px;
-    line-height: 1em;
+    &__title,
+    &__input {
+        font-size: 18px;
+        line-height: 1em;
+    }
     &__title {
-        color: var(--black-col-50);
+        color: var(--black-col);
         margin: 0 0 8px 10px;
         display: block;
     }
@@ -47,11 +51,29 @@ html {
         transition: border 0.5s;
         &::placeholder {
             font-size: 16px;
-            color: var(--black-col);
+            color: var(--black-col-50);
         }
         &:hover,
         &:focus-visible {
             border: 1px solid var(--blue-col);
+        }
+    }
+    &__select {
+        cursor: pointer;
+        line-height: 1.15em;
+    }
+    &__select-wrapper {
+        position: relative;
+        &::before {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            width: 14px;
+            height: 8px;
+            transform: translate(0, -50%);
+            background: url('../assets/images/decor-things/select.svg');
         }
     }
 }
