@@ -10,7 +10,6 @@ const PicturesList: React.FC<PicturesListI> = (props) => {
     return (
         <ul className={style.pics}>
             {props.pics.map((image, index) => {
-                console.log(image)
                     return (
                         <li className={style["pics-item"]} key={index}>
                             <img className="liquid-pic" 
