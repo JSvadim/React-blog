@@ -1,5 +1,6 @@
 // hooks
 import { useForm } from "react-hook-form";
+import { useState } from "react";
 
 // third-party
 import React from "react";
@@ -18,24 +19,45 @@ import { serverURL } from "../../../constants/server-url";
 
 const SignInForm: React.FC = () => {
 
+    const [ formError, setFormError ] = useState("");
     const { register, watch, formState: {errors}, handleSubmit } = useForm<SignInDataI>({
         mode: "onBlur"
     });
-
     const onSubmit: SubmitHandler<SignInDataI> = (data):void => {
-        axios.post(`${serverURL}/user/`, data)
+        setFormError('');
+        axios.post(`${serverURL}/auth/signin`, data)
           .then(function (response) {
             console.log(response);
           })
           .catch(function (error) {
-            console.log(error);
-          });
+            if (error.response) {
+                console.log(error.response);
+                setFormError(error.response.data.message);
+            }else if (error.request) {
+                console.log(error.request);
+            } else {
+              console.log('Error', error.message);
+            }
+            console.log(error.config);
+        })
     }
+    const showInputError = (data: { message: string }) => {
+        return (
+            <div className={classNames("input-error", style["input-error"])}>
+                {data.message} 
+            </div>)
+    }
+
 
     return (
         <form 
             className={style.form} 
             onSubmit={handleSubmit(onSubmit)}>
+            {formError && 
+                <div className={classNames("input-error", style["form-error"])}>
+                    {formError} 
+                </div>
+            }
 
             <div className={style["input-wrapper"]}>
                 <label className={classNames(["labeled-input", style.label])}>
@@ -57,9 +79,7 @@ const SignInForm: React.FC = () => {
                 <ErrorMessage
                     errors={errors}
                     name="nickname"
-                    render={({ message }) => {
-                        return <div className={style["input-error"]}> {message} </div>
-                    }}
+                    render={showInputError}
                 />
             </div>
 
@@ -82,9 +102,7 @@ const SignInForm: React.FC = () => {
                 <ErrorMessage
                     errors={errors}
                     name="mail"
-                    render={({ message }) => {
-                        return <div className={style["input-error"]}> {message} </div>
-                    }}
+                    render={showInputError}
                 />
             </div>
 
@@ -112,9 +130,7 @@ const SignInForm: React.FC = () => {
                 <ErrorMessage
                     errors={errors}
                     name="password"
-                    render={({ message }) => {
-                        return <div className={style["input-error"]}> {message} </div>
-                    }}
+                    render={showInputError}
                 />
             </div>
 
@@ -138,9 +154,7 @@ const SignInForm: React.FC = () => {
                 {<ErrorMessage
                     errors={errors}
                     name="gender"
-                    render={({ message }) => {
-                        return <div className={style["input-error"]}> {message} </div>
-                    }}
+                    render={showInputError}
                 />}
             </div>
             {(watch("gender") === "other") && 
@@ -164,9 +178,7 @@ const SignInForm: React.FC = () => {
                     {<ErrorMessage
                         errors={errors}
                         name="otherGender"
-                        render={({ message }) => {
-                            return <div className={style["input-error"]}> {message} </div>
-                        }}
+                        render={showInputError}
                     />}
                 </div>
             }
