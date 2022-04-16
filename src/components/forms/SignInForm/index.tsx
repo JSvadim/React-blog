@@ -168,9 +168,9 @@ const SignInForm: React.FC = () => {
                             {...register("otherGender", {
                                 required: "This field is required. ",
                                 pattern: {
-                                    value: /^[a-zA-Zа-яА-Я]+$/g,
+                                    value: /^[a-zA-Zа-яА-Я ]+$/g,
                                     message: `Gender can contain only 
-                                        Russian and English letters.`
+                                        Russian, English letters and spaces.`
                                 }
                             })}>
                         </input>
