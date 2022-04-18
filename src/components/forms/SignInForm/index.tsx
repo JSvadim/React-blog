@@ -69,9 +69,13 @@ const SignInForm: React.FC = () => {
                         {...register("nickname", {
                             required: "This field is required. ",
                             pattern: {
-                                value: /^[a-zA-Zа-яА-Я\d\-_]+$/g,
+                                value: /^[a-zA-Zа-яА-Я\d\-_ ]+$/g,
                                 message: `Nickname can contain only Numbers,
-                                     Russian and English letters and - _ signs`
+                                     Russian and English letters, spaces and - _ signs`
+                            },
+                            maxLength: {
+                                value: 25,
+                                message: "Nickname can't be longer than 25 symbols"
                             }
                         })}>
                     </input>
@@ -95,6 +99,10 @@ const SignInForm: React.FC = () => {
                             pattern: {
                                 value: /^([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,5})$/g,
                                 message: "Invalid email (haven't you forgotten @ or . symbols? "
+                            },
+                            maxLength: {
+                                value: 320,
+                                message: "Email can't be longer than 320 symbols"
                             }
                         })}>
                     </input>
@@ -118,6 +126,10 @@ const SignInForm: React.FC = () => {
                             minLength: {
                                 value: 6,
                                 message: "password should be at least 6 symbols"
+                            },
+                            maxLength: {
+                                value: 20,
+                                message: "Password can't be longer than 20 symbols"
                             },
                             pattern: {
                                 value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]/g,
@@ -171,6 +183,10 @@ const SignInForm: React.FC = () => {
                                     value: /^[a-zA-Zа-яА-Я ]+$/g,
                                     message: `Gender can contain only 
                                         Russian, English letters and spaces.`
+                                },
+                                maxLength: {
+                                    value: 30,
+                                    message: "Maximal length is 30 symbols"
                                 }
                             })}>
                         </input>
