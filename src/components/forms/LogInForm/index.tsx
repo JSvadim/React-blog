@@ -1,29 +1,60 @@
 // hooks
 import { useForm } from "react-hook-form";
+import { useState } from "react";
 
 // third-party
 import React, { SyntheticEvent } from "react";
 import { SubmitHandler } from "react-hook-form";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
-import { ErrorMessage } from '@hookform/error-message';
+import { ErrorMessage } from "@hookform/error-message";
+import axios from "axios";
 
 // local imports
 import style from "./style.module.scss";
 import { LogInFormI } from "./type";
+import { serverURL } from "../../../constants/server-url";
 
 
 const LogInForm: React.FC = () => {
 
+    const [ formError, setFormError ] = useState("");
     const { register, formState: {errors}, handleSubmit } = useForm<LogInFormI>({
         mode: "onBlur"
     });
-    const onSubmit: SubmitHandler<LogInFormI> = (data):void => console.log(data);
+    const onSubmit: SubmitHandler<LogInFormI> = (data):void => {
+        axios.post(`${serverURL}/auth/login`, data)
+        .then(function (response) {
+            setFormError('');
+          console.log(response);
+        })
+        .catch(function (error) {
+          if (error.response) {
+              console.log(error.response);
+              setFormError(error.response.data.message);
+          }else if (error.request) {
+              console.log(error.request);
+          } else {
+            console.log('Error', error.message);
+          }
+          console.log(error.config);
+      })
+    };
+    const showInputError = (data: { message: string }) => {
+        return (
+            <div className={classNames("input-error", style["input-error"])}>
+                {data.message} 
+            </div>)
+    }
 
     return (
         <form 
             className={style.form} 
             onSubmit={handleSubmit(onSubmit)}>
+            {formError && 
+            <div className={classNames("input-error", style["form-error"])}>
+                {formError} 
+            </div>}
 
             <div className={style["input-wrapper"]}>
                 <label className={classNames(["labeled-input", style.label])}>
@@ -32,21 +63,15 @@ const LogInForm: React.FC = () => {
                         className={classNames(["labeled-input__input", style.input])}
                         type="email" 
                         placeholder="your email"
-                        {...register("mail", {
-                            required: "This field is required. ",
-                            pattern: {
-                                value: /^([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_\-.]+).([a-zA-Z]{2,5})$/g,
-                                message: "Invalid email (haven't you forgotten @ or . symbols? "
-                            }
+                        {...register("email", {
+                            required: "This field is required. "
                         })}>
                     </input>
                 </label>
                 <ErrorMessage
                     errors={errors}
-                    name="mail"
-                    render={({ message }) => {
-                        return <div className={style["input-error"]}> {message} </div>
-                    }}
+                    name="email"
+                    render={showInputError}
                 />
             </div>
 
@@ -58,25 +83,14 @@ const LogInForm: React.FC = () => {
                         type="password"
                         placeholder="your password"
                         {...register("password", {
-                            required: "this field is required",
-                            minLength: {
-                                value: 6,
-                                message: "password should be at least 6 symbols"
-                            },
-                            pattern: {
-                                value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]/g,
-                                message: `password should contain at least one uppercase
-                                    and one lowercase letter and at least one digit.`
-                            },
+                            required: "This field is required. "
                         })}>
                     </input>
                 </label>
                 <ErrorMessage
                     errors={errors}
                     name="password"
-                    render={({ message }) => {
-                        return <div className={style["input-error"]}> {message} </div>
-                    }}
+                    render={showInputError}
                 />
             </div>
 

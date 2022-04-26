@@ -1,4 +1,4 @@
 export interface LogInFormI {
-    mail: string;
+    email: string;
     password: string;
 }

@@ -10,19 +10,17 @@
     }
     position: relative;
 }
-.input-error {
+.input-error,
+.form-error {
     position: absolute;
-    bottom: 50px;
     right: 0;
     width: 100%;
-    padding: 5px;
-    font-size: 16px;
-    background-color: white;
-    border-radius: 5px;
-    border: 1px solid black;
-    color: var(--error-col);
-    transform: scale(0);
-    animation: errorAppearance 0.5s forwards;
+}
+.input-error {
+    bottom: 50px;
+}
+.form-error {
+    bottom: calc( 100% + 10px);
 }
 .input {
     width: 100%;
