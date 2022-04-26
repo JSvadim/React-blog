@@ -4,4 +4,5 @@ export interface SignInDataI {
     password: string;
     gender: string;
     otherGender?: string;
+    activationCode?: string;
 }

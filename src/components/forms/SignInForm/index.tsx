@@ -19,6 +19,7 @@ import { serverURL } from "../../../constants/server-url";
 
 const SignInForm: React.FC = () => {
 
+    const [ isActivationCodeSent, setIsActivationCodeSent ] = useState(false);
     const [ formError, setFormError ] = useState("");
     const { register, watch, formState: {errors}, handleSubmit } = useForm<SignInDataI>({
         mode: "onBlur"
@@ -27,7 +28,10 @@ const SignInForm: React.FC = () => {
         setFormError('');
         axios.post(`${serverURL}/auth/signin`, data)
           .then(function (response) {
-            console.log(response);
+            console.log(response.data);
+            if(response.data === "activation mail has been sent") {
+                return setIsActivationCodeSent(true);
+            }
           })
           .catch(function (error) {
             if (error.response) {
@@ -103,16 +107,38 @@ const SignInForm: React.FC = () => {
                             maxLength: {
                                 value: 320,
                                 message: "Email can't be longer than 320 symbols"
-                            }
+                            },
                         })}>
                     </input>
                 </label>
                 <ErrorMessage
                     errors={errors}
-                    name="mail"
+                    name="email"
                     render={showInputError}
                 />
             </div>
+
+            {
+                isActivationCodeSent && 
+                    <div className={style["input-wrapper"]}>
+                        <label className={classNames(["labeled-input", style.label])}>
+                            <span className="labeled-input__title">Type code, that has been sent to your email:</span>
+                            <input 
+                                className={classNames(["labeled-input__input", style.input])}
+                                type="text" 
+                                placeholder="Sent code..."
+                                {...register("activationCode", {
+                                    required: "This field is required. "
+                                })}>
+                            </input>
+                        </label>
+                    {<ErrorMessage
+                        errors={errors}
+                        name="activationCode"
+                        render={showInputError}
+                    />}
+                </div>
+            }
 
             <div className={style["input-wrapper"]}>
                 <label className={classNames(["labeled-input", style.label])}>
@@ -169,6 +195,7 @@ const SignInForm: React.FC = () => {
                     render={showInputError}
                 />}
             </div>
+
             {(watch("gender") === "other") && 
                 <div className={style["input-wrapper"]}>
                     <label className={classNames(["labeled-input", style.label])}>
