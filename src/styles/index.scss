@@ -28,6 +28,7 @@ html {
     margin: 0 auto;
     padding: 0 15px;
     width: 100%;
+    min-height: 100%;
 }
 
 .labeled-input {
@@ -144,85 +145,6 @@ html {
     object-fit: cover;
 }
 
-.user-dropdown {
-    position: relative;
-    border-radius: 10px;
-    transition: all 0.5s;
-    border: 1px solid transparent;
-    overflow: hidden;
-    &__toggle-btn {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        color: transparent;
-        font-size: 0;
-        &:hover {
-            cursor: pointer;
-        }
-    }
-    &__decor {
-        width: 6.18px;
-        height: 4px;
-        position: absolute;
-        top: 30px;
-        right: 10px;
-        transform: rotateZ(0deg);
-        transition: all 0.5s;
-    }
-    &__nav {
-        position: absolute;
-        right: 10px;
-        top: 60px;
-        pointer-events: none;
-        visibility: hidden;
-        opacity: 0;
-        height: calc(100% - 70px);
-        width: calc( 100% - 70px);
-        padding: 0 20px 0 0;
-        overflow-x: hidden;
-        overflow-y: auto;
-    }
-    &__menu {
-        &-item {
-            margin: 0 0 14px 0;
-        }
-        &-link {
-            font-size: 14px;
-            color: var(--black-col);
-        }
-        &-link:hover {
-            text-decoration: underline;
-        }
-    }
-
-    &--theme-white:hover {
-        border: 1px solid white;
-    }
-    &--theme-black:hover {
-        border: 1px solid var(--dark-col);
-    }
-
-    &--theme-white.user-dropdown--opened {
-            background-color: white;
-            border: 1px solid var(--dark-col);
-    }
-    &--theme-black.user-dropdown--opened{
-            background-color: var(--dark-col);
-            border: 1px solid white;
-    }
-
-    &--opened {
-        .user-dropdown__decor {
-            transform: rotateZ(180deg);
-        }
-        .user-dropdown__nav {
-            pointer-events: all;
-            visibility: visible;
-            opacity: 1;
-        }
-    }
-}
 
 .user {
     width: 100%;
@@ -296,26 +218,6 @@ html {
 @media(min-width: 1400px) {
     .container {
         width: 1320px;
-    }
-    .user-dropdown {
-        &__decor {
-            width: 7.35px;
-            height: 5px;
-            top: 32.5px;
-        }
-        &__nav {
-            top: 70px;
-            height: calc(100% - 80px);
-            width: calc( 100% - 80px);
-        }
-        &__menu {
-            &-item {
-                margin: 0 0 17px 0;
-            }
-            &-link {
-                font-size: 16px;
-            }
-        }
     }
     .user {
         &__pic {

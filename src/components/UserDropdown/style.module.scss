@@ -1,0 +1,109 @@
+
+.user-dropdown {
+    position: relative;
+    border-radius: 10px;
+    transition: all 0.5s;
+    border: 1px solid transparent;
+    overflow: hidden;
+    height: 60px;
+    width: 180px;
+    padding: 10px;
+}
+.toggle-btn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 60px;
+    width: 100%;
+    color: transparent;
+    font-size: 0;
+    &:hover {
+        cursor: pointer;
+    }
+}
+.decor {
+    width: 6.18px;
+    height: 4px;
+    position: absolute;
+    top: 30px;
+    right: 10px;
+    transform: rotateZ(0deg);
+    transition: all 0.5s;
+}
+.nav {
+    position: absolute;
+    right: 10px;
+    top: 60px;
+    pointer-events: none;
+    visibility: hidden;
+    opacity: 0;
+    height: calc(100% - 70px);
+    width: calc( 100% - 70px);
+    padding: 0 20px 0 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.menu {
+    .menu-item {
+        margin: 0 0 14px 0;
+    }
+    .menu-link {
+        font-size: 14px;
+        color: var(--black-col);
+    }
+    .menu-link:hover {
+        text-decoration: underline;
+    }
+}
+
+.user-dropdown--theme-white:hover {
+    border: 1px solid white;
+}
+.user-dropdown--theme-black:hover {
+    border: 1px solid var(--dark-col);
+}
+
+.user-dropdown--theme-white.user-dropdown--opened {
+        background-color: white;
+        border: 1px solid var(--dark-col);
+}
+.user-dropdown--theme-black.user-dropdown--opened{
+        background-color: var(--dark-col);
+        border: 1px solid white;
+}
+
+.user-dropdown--opened {
+    height: 250px;
+    .decor {
+        transform: rotateZ(180deg);
+    }
+    .nav {
+        pointer-events: all;
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+@media(min-width: 1400px) {
+    .user-dropdown {
+        width: 200px;
+    }
+    .decor {
+        width: 7.35px;
+        height: 5px;
+        top: 32.5px;
+    }
+    .nav {
+        top: 70px;
+        height: calc(100% - 80px);
+        width: calc( 100% - 80px);
+    }
+    .menu {
+        .menu-item {
+            margin: 0 0 17px 0;
+        }
+        .menu-link {
+            font-size: 16px;
+        }
+    }
+}
