@@ -1,0 +1,1 @@
+export const localStorageAccessToken = "BBE00_access_token"
