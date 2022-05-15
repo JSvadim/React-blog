@@ -1,5 +1,5 @@
 // local imports
-import { userI } from "../../types/auth/user";
+import { UserI } from "../../types/auth/user";
 
 interface sizingI {
     dropdown: string;
@@ -9,6 +9,6 @@ interface sizingI {
 
 export interface userDropdownI {
     theme: string;
-    user: userI;
-    sizing: sizingI;
+    user: UserI;
+    className?: string
 }

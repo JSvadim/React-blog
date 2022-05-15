@@ -5,12 +5,12 @@ import { useState } from "react";
 import defaultUserPic from "../../assets/images/decor-things/user-default-pic.png";
 import { userProps } from "./type";
 
-export const User: React.FC<userProps> = ({user, theme, inDropdown}) => {
+export const User: React.FC<userProps> = ({user, theme, sizingClass}) => {
 
     return (
         <div className={`
             user user--theme-${theme} 
-            ${inDropdown && "user--in-dropdown"}
+            ${sizingClass}
         `}>
             <div className="user__pic">
                 <img 

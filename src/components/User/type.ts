@@ -1,7 +1,7 @@
-import { userI } from "../../types/auth/user";
+import { UserI } from "../../types/auth/user";
 
 export interface userProps {
     theme: string;
-    user: userI;
-    inDropdown: boolean;
+    user: UserI;
+    sizingClass?: string;
 }
