@@ -1,21 +1,18 @@
 // local imports 
 import { AuthService } from "../services/auth-service";
-import { loginUserCreator } from "../redux/action-creators/user";
-import { logInDataI } from "../types/auth/log-in-data";
+import { loginUserCreator, loadingUserCreator, logoutUserCreator } from "../redux/action-creators/user";
 import { LogInSignInResponseI } from "../types/auth/response";
 import { localStorageAccessToken } from "../constants/local-storage";
 import { store } from "../redux/store";
-import { signInDataI } from "../types/auth/sign-in-data";
-
+import { LoginControllerI, SignInControllerI } from "../types/auth/controller";
+import { UserActions } from "../redux/types/user";
 
 export class AuthController {
     static async refresh () {
-        try {
+          try {
+            store.dispatch({type: UserActions.loading})
             const { user, token } = await AuthService.refresh();
-           /*  console.log('returned user');
-            console.log(user);
-            console.log('returned token');
-            console.log(token); */
+            
             localStorage.setItem(localStorageAccessToken, token);
             store.dispatch(loginUserCreator(user));
 
@@ -24,42 +21,69 @@ export class AuthController {
             console.log(e);
           }
     }
-    static async login (data: logInDataI) {
+    static async login (params: LoginControllerI) {
         try { 
-            const response: LogInSignInResponseI = await AuthService.logIn(data);
+            params.setFormError('');
+            params.setLoading(true);
+
+            const response: LogInSignInResponseI = await AuthService.logIn(params.data);
             const { user, token } = response;
 
             localStorage.setItem(localStorageAccessToken, token);
             store.dispatch(loginUserCreator(user));
             
+            params.setLoading(false);
             return null;
+
           } catch(e: any) {
+
             console.log(e);
+            params.setLoading(false);
+
             if(e.response.data.message) {
-               return e.response.data.message 
+              params.setFormError(e.response.data.message);
+              return 
             }
-            return "login error"
+            return params.setFormError("login error");
           }
     }
-    static async signin (data: signInDataI, setIsActivationCodeSent: React.Dispatch<React.SetStateAction<boolean>>) {
+    static async signin (params: SignInControllerI) {
         try { 
-            const response: LogInSignInResponseI | string = await AuthService.signIn(data);
-            if(typeof response === 'string') {
-                setIsActivationCodeSent(true);
-                return null;
-            }
-            const { user, token } = response;
+            params.setFormError('');
+            params.setLoading(true);
 
-            localStorage.setItem(localStorageAccessToken, token);
-            store.dispatch(loginUserCreator(user));
-            
-            return null;
-          } catch(e: any) {
-            console.log(e);
-            if(e.response.data.message) {
-               return e.response.data.message 
+            const response: LogInSignInResponseI | string = await AuthService.signIn(params.data);
+            if(typeof response === 'string') {
+                params.setIsActivationCodeSent(true);
+                return params.setLoading(false);
             }
-            return "login error"
+
+            const { user, token } = response;
+            localStorage.setItem(localStorageAccessToken, token);
+            
+            store.dispatch(loginUserCreator(user));
+            return params.setLoading(false);
+
+          } catch(e: any) {
+
+            params.setLoading(false);
+            console.log(e);
+
+            if(e.response.data.message) {
+                return params.setFormError(e.response.data.message );
+            }
+            return params.setFormError("login error");
           }
+    }
+    static async logout () {
+      try {
+
+        await AuthService.logOut();
+        localStorage.removeItem(localStorageAccessToken);
+
+      } catch(e) {
+        console.log("logout error:");
+        console.log(e);
+      }
     }
 }
