@@ -8,38 +8,32 @@ import { SubmitHandler } from "react-hook-form";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
 import { ErrorMessage } from "@hookform/error-message";
-import axios from "axios";
 
 // local imports
 import style from "./style.module.scss";
-import { LogInFormI } from "./type";
-import { serverURL } from "../../../constants/server-url";
-
+import { LogInDataI } from "../../../types/auth/log-in-data";
+import { AuthController } from "../../../controllers/auth-controller";
+import Loading from "../../Loading";
 
 const LogInForm: React.FC = () => {
 
     const [ formError, setFormError ] = useState("");
-    const { register, formState: {errors}, handleSubmit } = useForm<LogInFormI>({
+    const [ loading, setLoading ] = useState(false);
+    const { register, formState: {errors}, handleSubmit } = useForm<LogInDataI>({
         mode: "onBlur"
     });
-    const onSubmit: SubmitHandler<LogInFormI> = (data):void => {
-        axios.post(`${serverURL}/auth/login`, data)
-        .then(function (response) {
-            setFormError('');
-          console.log(response);
-        })
-        .catch(function (error) {
-          if (error.response) {
-              console.log(error.response);
-              setFormError(error.response.data.message);
-          }else if (error.request) {
-              console.log(error.request);
-          } else {
-            console.log('Error', error.message);
-          }
-          console.log(error.config);
-      })
+
+
+    const onSubmit: SubmitHandler<LogInDataI> = async (data): Promise<void> => {
+        const params = {
+            data, 
+            setFormError, 
+            setLoading
+        };
+        await AuthController.login(params);
     };
+
+
     const showInputError = (data: { message: string }) => {
         return (
             <div className={classNames("input-error", style["input-error"])}>
@@ -47,15 +41,17 @@ const LogInForm: React.FC = () => {
             </div>)
     }
 
+    
+
     return (
         <form 
             className={style.form} 
             onSubmit={handleSubmit(onSubmit)}>
+            {loading && <Loading/>}
             {formError && 
             <div className={classNames("input-error", style["form-error"])}>
                 {formError} 
             </div>}
-
             <div className={style["input-wrapper"]}>
                 <label className={classNames(["labeled-input", style.label])}>
                     <span className="labeled-input__title">Mail:</span>

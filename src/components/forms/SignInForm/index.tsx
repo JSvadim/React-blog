@@ -9,41 +9,31 @@ import { Link } from "react-router-dom";
 import classNames from "classnames";
 import { ErrorMessage } from '@hookform/error-message';
 import 'regenerator-runtime/runtime';
-import axios from 'axios';
 
 // local imports
 import style from "./style.module.scss";
-import { SignInDataI } from "./type";
-import { serverURL } from "../../../constants/server-url";
+import { SignInDataI } from "../../../types/auth/sign-in-data";
+import { AuthController } from "../../../controllers/auth-controller";
+import Loading from "../../Loading";
 
 
 const SignInForm: React.FC = () => {
 
     const [ isActivationCodeSent, setIsActivationCodeSent ] = useState(false);
     const [ formError, setFormError ] = useState("");
+    const [ loading, setLoading ] = useState(false);
     const { register, watch, formState: {errors}, handleSubmit } = useForm<SignInDataI>({
         mode: "onBlur"
     });
-    const onSubmit: SubmitHandler<SignInDataI> = (data):void => {
-        setFormError('');
-        axios.post(`${serverURL}/auth/signin`, data)
-          .then(function (response) {
-            console.log(response.data);
-            if(response.data === "activation mail has been sent") {
-                return setIsActivationCodeSent(true);
-            }
-          })
-          .catch(function (error) {
-            if (error.response) {
-                console.log(error.response);
-                setFormError(error.response.data.message);
-            }else if (error.request) {
-                console.log(error.request);
-            } else {
-              console.log('Error', error.message);
-            }
-            console.log(error.config);
-        })
+
+    const onSubmit: SubmitHandler<SignInDataI> = (data): void => {
+        const params = {
+            data,
+            setIsActivationCodeSent,
+            setFormError,
+            setLoading
+        }
+        AuthController.signin(params);
     }
     const showInputError = (data: { message: string }) => {
         return (
@@ -57,12 +47,12 @@ const SignInForm: React.FC = () => {
         <form 
             className={style.form} 
             onSubmit={handleSubmit(onSubmit)}>
+            {loading && <Loading/>}
             {formError && 
                 <div className={classNames("input-error", style["form-error"])}>
                     {formError} 
                 </div>
             }
-
             <div className={style["input-wrapper"]}>
                 <label className={classNames(["labeled-input", style.label])}>
                     <span className="labeled-input__title">Nickname:</span>
@@ -120,7 +110,7 @@ const SignInForm: React.FC = () => {
 
             {
                 isActivationCodeSent && 
-                    <div className={style["input-wrapper"]}>
+                <div className={style["input-wrapper"]}>
                         <label className={classNames(["labeled-input", style.label])}>
                             <span className="labeled-input__title">Type code, that has been sent to your email:</span>
                             <input 
