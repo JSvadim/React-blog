@@ -145,6 +145,9 @@ html {
     object-fit: cover;
 }
 
+.whithout-highlight {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
 
 .user {
     width: 100%;
@@ -184,10 +187,6 @@ html {
         & .user__nickname {
             color: black;
         }
-    }
-    &--in-dropdown {
-        pointer-events: none;
-        width: calc(100% - 20px);
     }
 }
 

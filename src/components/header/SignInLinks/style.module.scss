@@ -1,15 +1,17 @@
-.login-link__list {
-    display: flex;
+.nav {
     position: relative;
     z-index: 4;
 }
-.login-link__decor,
-.login-link {
+.list {
+    display: flex;
+}
+.decor,
+.link {
     font-size: 14px;
     color: var(--white-col);
     text-decoration: underline;
 }
-.login-link {
+.link {
     display: inline-block;
     padding: 10px 0;
     transition: color 0.5s;
@@ -23,14 +25,14 @@
 
 
 @media (min-width: 768px) {
-    .login-link__decor,
-    .login-link {
+    .decor,
+    .link {
         font-size: 16px;
     }
 }
 @media (min-width: 1400px) {
-    .login-link__decor,
-    .login-link {
+    .decor,
+    .link {
         font-size: 18px;
     }
 }

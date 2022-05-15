@@ -1,8 +1,10 @@
-export interface navI {
+import { UserI } from "./auth/user";
+
+export interface NavI {
     isNavOpened: boolean;
 }
 
-export interface burgerPropsI {
+export interface BurgerPropsI {
     isNavOpened: boolean;
     toggleMenu: Function;
 }

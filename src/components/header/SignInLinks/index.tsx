@@ -14,17 +14,17 @@ const SignInLinks: React.FC = () => {
     }
 
     return (
-        <nav>
-            <ul className={style["login-link__list"]}>
+        <nav className={style["nav"]}>
+            <ul className={style["list"]}>
                 <li>
-                    <NavLink className={style["login-link"]} 
+                    <NavLink className={style["link"]} 
                         style={setActive}
                         to="/log-in">Log in&nbsp;
                     </NavLink> 
-                    <span className={style["login-link__decor"]}>/</span>
+                    <span className={style["decor"]}>/</span>
                 </li>
                 <li>
-                    <NavLink className={style["login-link"]}
+                    <NavLink className={style["link"]}
                         style={setActive}
                         to="/sign-in">&nbsp;Sign in
                     </NavLink>

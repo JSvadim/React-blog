@@ -1,4 +1,4 @@
- export interface signInDataI {
+ export interface SignInDataI {
      nickname: string;
      email: string;
      password: string;

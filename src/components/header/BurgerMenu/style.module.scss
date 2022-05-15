@@ -1,5 +1,9 @@
 .burger {
-    padding: 15px;
+    height: 65px;
+    width: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
     z-index: 4;
     transform: translateX(15px);

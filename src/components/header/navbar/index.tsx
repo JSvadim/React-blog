@@ -5,10 +5,10 @@ import { NavLink } from "react-router-dom";
 // local imports
 import style from "./style.module.scss";
 import { navItems } from "../../../constants/navbar";
-import { navI } from "../../../types/header";
+import { NavI } from "../../../types/header";
 import { setActiveLink } from "./helpers";
 
-const Navbar: React.FC<navI> = (props) => {
+const Navbar: React.FC<NavI> = (props) => {
 
     const navClassName = props.isNavOpened ?
         classNames(style.nav, style['nav-opened']) :

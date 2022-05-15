@@ -2,11 +2,11 @@
 import classNames from "classnames";
 
 // local imports
-import { burgerPropsI } from "../../../types/header";
+import { BurgerPropsI } from "../../../types/header";
 import style from "./style.module.scss";
 
 
-const BurgerMenu: React.FC<burgerPropsI> = (props) => {
+const BurgerMenu: React.FC<BurgerPropsI> = (props) => {
 
     const burgerClassName = props.isNavOpened ?
         classNames(style.burger, style['burger-opened']) :

@@ -13,16 +13,16 @@ export enum UserActions {
 }
 
 interface UserLoadingActionI {
-    type: UserActions.loading
+    type: UserActions.loading;
 }
 
 interface UserLoginActionI {
-    type: UserActions.login,
-    payload: UserI
+    type: UserActions.login;
+    payload: UserI;
 }
 
 interface UserLogoutActionI {
-    type: UserActions.logout
+    type: UserActions.logout;
 }
 
 export type UserAction = UserLoadingActionI | UserLoginActionI | UserLogoutActionI;

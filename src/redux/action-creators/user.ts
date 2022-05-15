@@ -7,8 +7,8 @@ export const loginUserCreator = (payload: UserI) => ({
     payload: payload
 })
 export const logoutUserCreator = () => ({
-    type: UserActions.logout
+    type: UserActions.logout,
 })
 export const loadingUserCreator = () => ({
-    type: UserActions.loading
+    type: UserActions.loading,
 })
