@@ -5,28 +5,9 @@ import { useState } from "react"
 import { User } from "../User"
 import { userDropdownI } from "./type";
 import { getColors } from "./helpers";
-import { userDropdownItems } from "../../constants/user-dropdown";
 import style from "./style.module.scss";
+import { DropdownNav } from "./DropdownNav";
 
-const DropdownNav : React.FC = (props) => {
-
-    const menuItem = (item: { name: string, link: string }) => {
-        return (
-            <li className={style["menu-item"]} key={item.name}>
-                <a className={style["menu-link"]} href={item.link}>{item.name}</a>
-            </li>
-        )
-    }
-    const menuItems = userDropdownItems.map( item => menuItem(item) );
-
-    return (
-        <nav className={style["nav"]}>
-            <ul className={style.menu}>
-                {menuItems}
-            </ul>
-        </nav>
-    );
-}
 
 export const UserDropdown: React.FC<userDropdownI> = (props) => {
 
@@ -62,7 +43,9 @@ export const UserDropdown: React.FC<userDropdownI> = (props) => {
 
             <div className={style.body}>
                 <div className={style["body-inner"]}>
-                    <DropdownNav/>
+                    <DropdownNav 
+                        toggleDropdown={setIsOpened}
+                    />
                 </div>
             </div>
         </div>

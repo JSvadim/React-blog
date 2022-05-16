@@ -77,10 +77,9 @@ export class AuthController {
     }
     static async logout () {
       try {
-
         await AuthService.logOut();
         localStorage.removeItem(localStorageAccessToken);
-
+        store.dispatch({type: UserActions.logout});
       } catch(e) {
         console.log("logout error:");
         console.log(e);

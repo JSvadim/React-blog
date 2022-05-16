@@ -16,11 +16,6 @@ const Header: React.FC = (props) => {
     const { user } = useTypedSelector(state => state.user);
 
     const toggleMenu = (): void => toggleNav(!isNavigationOpened);
-    const dropdownClasses = {
-        dropdown: style["user-dropdown"],
-        button: style["user-dropdown-btn"],
-        opened: style["user-dropdown-opened"]
-    }
 
     return (
         <header className={style.header}>
