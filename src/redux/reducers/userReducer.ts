@@ -12,7 +12,7 @@ export const userReducer = (state = defaultState, action: UserAction): UserState
             return {user: null, loading: true}
         case UserActions.login: 
             return {user: action.payload, loading: false}
-        case UserActions.loading: 
+        case UserActions.logout: 
             return {user: null, loading: false}
 
         default: 
