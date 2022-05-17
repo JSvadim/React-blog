@@ -1,3 +1,5 @@
+@use "../../../styles/animations.scss";
+
 .nav {
     position: relative;
     z-index: 4;
@@ -11,18 +13,29 @@
     color: var(--white-col);
     text-decoration: underline;
 }
+.decor {
+    opacity: 0;
+    animation: appearance 0.5s ease 0.9s forwards;
+}
 .link {
     display: inline-block;
     padding: 10px 0;
     transition: color 0.5s;
     position: relative;
+    opacity: 0;
+    transform: translate(-100%, 0);
+    &.first {
+        animation: appearance 0.7s ease 0.3s forwards;
+    }
+    &.second {
+        animation: appearance 0.7s ease 0s forwards;
+    }
     &:hover,
     &:focus-visible
     &.active {
         color: var(--light-green-col);
     }
 }
-
 
 @media (min-width: 768px) {
     .decor,

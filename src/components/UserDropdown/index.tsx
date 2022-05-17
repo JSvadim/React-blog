@@ -12,16 +12,22 @@ import { DropdownNav } from "./DropdownNav";
 export const UserDropdown: React.FC<userDropdownI> = (props) => {
 
     const [ isOpened, setIsOpened ] = useState(false);
+    const [ isClickable, setIsClickable ] = useState(true);
 
     const { firstColor, secondColor } = getColors(props.theme);
     return (
-        <div className={`
-            whithout-highlight 
-            ${props.className}
-            ${style["user-dropdown"]}
-            ${style[`user-dropdown--theme-${props.theme}`]}
-            ${isOpened ? style["user-dropdown--opened"] : ""}
-        `}>
+        <div 
+            className={`
+                whithout-highlight 
+                ${props.className}
+                ${style["user-dropdown"]}
+                ${style[`user-dropdown--theme-${props.theme}`]}
+                ${isOpened ? style["user-dropdown--opened"] : ""}
+            `}
+            style={
+                isClickable ? {} : {pointerEvents: "none"}
+            }
+        >
             <User 
                 sizingClass={style.user}
                 user={props.user}
@@ -45,6 +51,7 @@ export const UserDropdown: React.FC<userDropdownI> = (props) => {
                 <div className={style["body-inner"]}>
                     <DropdownNav 
                         toggleDropdown={setIsOpened}
+                        toggleIsClickable={setIsClickable}
                     />
                 </div>
             </div>
