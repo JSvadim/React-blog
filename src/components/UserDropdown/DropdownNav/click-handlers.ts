@@ -1,13 +1,21 @@
 // local imports
-import { AuthController } from "../../../controllers/auth-controller";
+import { localStorageAccessToken } from "../../../constants/local-storage";
+import { store } from "../../../redux/store";
+import { UserActions } from "../../../redux/types/user";
+import { AuthService } from "../../../services/auth-service";
+import { DNLogoutClickI, DNSimpleClickI } from "./type";
 
-
-type ToggleType = React.Dispatch<React.SetStateAction<boolean>>;
-export const simpleClick = (toggleDropdown: ToggleType) => {
-    toggleDropdown(false);
+export const simpleClick = (params: DNSimpleClickI) => {
+    params.toggleDropdown(false);
 }
+export const logoutClick = (params: DNLogoutClickI) => {
 
-export const logoutClick = async (toggleDropdown: ToggleType) => {
-    await AuthController.logout();
-    toggleDropdown(false);
+    localStorage.removeItem(localStorageAccessToken);
+    params.toggleIsClickable(false);
+    params.toggleDropdown(false);
+
+    setTimeout(() => {
+        store.dispatch({type: UserActions.logout});
+        AuthService.logOut();
+    }, 600);
 }
