@@ -21,8 +21,11 @@ const Navbar: React.FC<NavI> = (props) => {
                     {navItems.map( (item: {title: string, path: string}, index: number) => {
                         return (
                             <li className={style["list-item"]} key={index}>
-                                <NavLink className={style.link} style={setActiveLink} to={item.path}>
-                                    {item.title}
+                                <NavLink className={style.link} 
+                                    onClick={() => {props.toggleNav(false)}}
+                                    style={setActiveLink} 
+                                    to={item.path}>
+                                        {item.title}
                                 </NavLink>
                             </li>
                         )})

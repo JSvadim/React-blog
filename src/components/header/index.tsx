@@ -30,7 +30,8 @@ const Header: React.FC = (props) => {
                         isNavOpened={isNavigationOpened}
                         toggleMenu={toggleMenu}/>
                     <Navbar
-                        isNavOpened={isNavigationOpened}/>
+                        isNavOpened={isNavigationOpened}
+                        toggleNav={toggleNav}/>
                 </div>
             </div>
         </header>
