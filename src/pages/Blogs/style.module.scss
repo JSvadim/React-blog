@@ -1,0 +1,130 @@
+.container {
+    padding-top: 134px;
+    position: relative;
+}
+
+.title {
+    position: absolute;
+    top: 25px;
+    left: 13px;
+    color: var(--black-col);
+    font-family: "Monster";
+    &-small {
+        font-size: 24px;
+        line-height: 1.21em;
+        display: block;
+    }
+    &-big {
+        font-size: 48px;
+        line-height: 1.22em;
+        display: block;
+        transform: translate(-2.5px, -5px);
+    }
+}
+
+.content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.blogs {
+    display: inline-block;
+    margin: 0 0 45px 0;
+}
+.blog {
+    margin: 0 0 34px 0;
+    &:last-child {
+        margin: 0;
+    }
+}
+.pagination {
+    display: inline-flex;
+    margin: 0 0 45px 0;
+    &__item {
+        margin: 0 5px 0 0;
+        border: 1px solid transparent;
+        transition: border 0.5s;
+        &--active {
+            border: 1px solid var(--black-col);
+        }
+        &:last-child {
+            margin: 0;
+        }
+    }
+    &__button {
+        font-size: 16px;
+        line-height: 1.19em;
+        padding: 0 5px;
+    }
+}
+
+@media(min-width: 768px) {
+    .container {
+        padding-top: 141px;
+    }
+    .title {
+        left: 0;
+        &-small {
+            font-size: 32px;
+        }
+        &-big {
+            font-size: 200px;
+            color: var(--black-col-10);
+            transform: translate(-15.5px, -39px);
+        }
+    }
+    .blogs {
+        margin: 0 0 63px 0;
+    }
+    .pagination {
+        margin: 0 0 63px 0;
+    }
+}
+
+@media(min-width: 1440px) {
+    .container {
+        padding-top: 256px;
+    }
+    .title {
+        left: -5px;
+        top: 62px;
+        &-big {
+            transform: translate(-33px, -78px);
+            font-size: 400px;
+        }
+    }
+    .content {
+        margin: 0 0 165px 0;
+    }
+    .blogs {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin: 0;
+    }
+    .blog {
+        margin: 0;
+        &:nth-child(1),
+        &:nth-child(2),
+        &:nth-child(3) {
+            margin: 0 0 44px 0;
+        }
+    }
+    .pagination {
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        bottom: 50%;
+        left: -37px;
+        margin: 0;
+        transform: translate(-100%, 50%);
+        &__item {
+            margin: 0 0 9px 0;
+            &:last-child {
+                margin: 0;
+            }
+        }
+    }
+}
