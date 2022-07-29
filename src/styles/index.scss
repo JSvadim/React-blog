@@ -41,6 +41,26 @@ html {
         color: var(--black-col);
         margin: 0 0 8px 10px;
         display: block;
+        &--underscored {
+            display: inline-block;
+            position: relative;
+            &::before {
+                content: '';
+                display: block;
+                height: 0.5px;
+                width: 100%;
+                position: absolute;
+                bottom: 2px;
+                left: 0;
+                background-color: var(--black-col);
+            }
+        }
+        &--mobile {
+            display: block;
+        }
+        &--desktop {
+            display: none;
+        }
     }
     &__input {
         height: 46px;
@@ -59,6 +79,13 @@ html {
             border: 1px solid var(--blue-col);
         }
     }
+    &__textarea {
+        height: 119px;
+        min-height: 119px;
+        max-height: 300px;
+        padding: 10px;
+        resize: vertical;
+    }
     &__select {
         cursor: pointer;
         line-height: 1.15em;
@@ -76,6 +103,41 @@ html {
             transform: translate(0, -50%);
             background: url('../assets/images/decor-things/select.svg');
         }
+    }
+    &__pics {
+        &-preview {
+            height: 139px;
+            padding: 10px 10px 0 10px;
+        }
+        &-preview-outer {
+            width: 100%;
+            height: 100%;
+            overflow-y: hidden;
+            overflow-x: auto;
+        }
+        &-preview-row {
+            width: auto;
+            display: flex;
+        }
+        &-placeholder {
+            display: inline-block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, 50%);
+            font-size: 18px;
+            color: var(--black-col-50);
+        }
+    }
+    &__file-input {
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 55px;
+        opacity: 0;
+        cursor: pointer;
     }
 }
 .input-error {
@@ -123,18 +185,26 @@ html {
 .btn {
     font-size: 18px;
     line-height: 1em;
-    width: 154px;
-    height: 43px;
     border-radius: 10px;
     transition: all 0.5s;
     &--black {
-        border: 2px solid var(--black-col);
+        border: 2px solid var(--dark-col);
         background-color: var(--dark-col);
         color: var(--white-col);
         &:hover,
         &:focus-visible {
             background-color: var(--white-col);
             color: var(--blue-col);
+        }
+    }
+    &--white {
+        border: 2px solid var(--dark-col);
+        background-color: var(--white-col);
+        color: var(--blue-col);
+        &:hover,
+        &:focus-visible {
+            background-color: var(--dark-col);
+            color: var(--white-col);
         }
     }
 }
@@ -207,10 +277,36 @@ html {
         font-size: 16px;
     }
     .labeled-input {
-        font-size: 20px;
-    }
-    .btn {
-        width: 177px;
+        &__title {
+            font-size: 20px;
+            line-height: 0.93em;
+            &--mobile {
+                display: none;
+            }
+            &--desktop {
+                display: block;
+            }
+        }
+        &__textarea {
+            height: 200px;
+            min-height: 200px;
+            max-height: 200px;
+        }
+        &__pics {
+            &-preview {
+                height: 212px;
+                padding: 10px 23.5px;
+            }
+            &-preview-outer {
+                overflow-x: hidden;
+            }
+            &-preview-row {
+                flex-wrap: wrap;
+            }
+        }
+        &__file-input {
+            height: 40px;
+        }
     }
 }
 
@@ -229,6 +325,13 @@ html {
             font-size: 20px;
             width: calc(100% - 64px);
             flex: 0 0 calc(100% - 64px);
+        }
+    }
+    .labeled-input {
+        &__pics {
+            &-preview {
+                padding: 10px 25px;
+            }
         }
     }
     #root {

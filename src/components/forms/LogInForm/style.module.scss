@@ -32,6 +32,8 @@
 }
 .btn {
     margin: 0 0 6px 0;
+    width: 153px;
+    height: 43px;
 }
 .gray-link {
     display: inline-block;
@@ -39,13 +41,6 @@
 }
 .gray-link-wrapper {
     text-align: center;
-}
-
-@keyframes errorAppearance {
-    0% {}
-    100% {
-        transform: scale(1);
-    }
 }
 
 @media(min-width: 768px) {
@@ -57,5 +52,10 @@
     }
     .gray-link {
         padding: 6px 10px 6px 0px;
+    }
+}
+@media(min-width: 1200px) {
+    .btn {
+        width: 176px;
     }
 }
