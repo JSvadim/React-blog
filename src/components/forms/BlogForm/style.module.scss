@@ -1,0 +1,103 @@
+@use "../../../styles/animations.scss";
+
+.form {
+    position: relative;
+    z-index: 2;
+    max-width: 335px;
+}
+.input-wrapper {
+    display: block;
+    margin: 0 0 20px 0;
+    position: relative;
+}
+.input-error,
+.form-error {
+    position: absolute;
+    right: 0;
+    width: 100%;
+}
+.input-error {
+    top: -10px;
+}
+.form-error {
+    bottom: calc( 100% + 10px);
+}
+.input {
+    width: 100%;
+}
+.buttons {
+    display: flex;
+    justify-content: space-between;
+}
+.button {
+    height: 43px;
+    width: 153px;
+    flex: 0 0 153px;
+}
+
+.add-images-decor {
+    position: absolute;
+    top: 0px;
+    left: 115px;
+}
+
+.preview-image {
+    flex: 0 0 94px;
+    width: 94px;
+    height: 99px;
+    margin-right: 16px;
+    &:last-child {
+        margin-right: 0;
+    }
+    &.removing {
+        animation: PreviewPictureRemoving 0.5s forwards;
+    }
+}
+
+@media(min-width: 1200px) {
+    .form {
+        display: flex;
+        justify-content: space-between;
+        height: 339px;
+    }
+    .row {
+        flex: 0 0 calc(50% - 25px); 
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        &--left {
+            padding: 19px 0 0 0;
+        }
+    }
+    .input-wrapper {
+        margin: 0;
+    }
+    .add-images-decor {
+        top: -7px;
+        left: 126px;
+        width: 21px;
+        height: 24px;
+    }
+    .preview-image {
+        flex: 0 0 89.33px;
+        width: 89.33px;
+        height: 88px;
+        margin-right: 16px;
+        margin-bottom: 14px;
+        &:nth-child(3),
+        &:nth-child(6) {
+            margin-right: 0px;
+        }
+        &:nth-child(4),
+        &:nth-child(5) {
+            margin-bottom: 0px;
+        }
+    }
+}
+@media(min-width: 1440px) {
+    .button {
+        width: 177px;
+        flex: 0 0 177px;
+    }
+}
