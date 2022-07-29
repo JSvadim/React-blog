@@ -5,3 +5,26 @@
         transform: translate(0,0);
     }
 }
+
+@keyframes errorAppearance {
+    0% {}
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+@keyframes PreviewPictureRemoving {
+    0% {
+        opacity: 1;
+    }
+    20% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+        width: 0px;
+        flex: 0 0 0px;
+        margin-right: 0;
+    }
+}
