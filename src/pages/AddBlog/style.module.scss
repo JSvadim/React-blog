@@ -1,0 +1,58 @@
+.container {
+    padding-top: 25px;
+    padding-bottom: 70px;
+}
+
+.title {
+    font-family: "Monster";
+    font-size: 96px;
+    line-height: 0.95em;
+    text-transform: uppercase;
+    color: var(--black-col-10);
+    margin: 0 0 20px 0;
+    max-width: 356px;
+}
+
+@media(min-width: 768px) {
+    .container {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 80px;
+    }
+    .title {
+        font-size: 120px;
+        flex: 1 1 auto;
+        max-width: initial;
+    }
+    .blog-form {
+        flex: 0 0 335px;
+    }
+}
+ 
+@media(min-width: 1200px) {
+    .container {
+        display: flex;
+        align-items: center;
+        height: calc(100vh - 66px);
+        min-height: 600px;
+        padding: 0;
+
+    }
+    .title {
+        display: inline-block;
+        width: 356px;
+        line-height: 1.25em;
+        flex: initial;
+    }
+    .blog-form {
+        flex: 0 0 750px;
+        max-width: initial;
+    }
+    
+}
+
+@media(min-width: 1400px) {
+    .blog-form {
+        flex: 0 0 800px;
+    }
+}
