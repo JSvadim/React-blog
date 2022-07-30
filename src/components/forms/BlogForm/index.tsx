@@ -14,7 +14,7 @@ import style from "./style.module.scss";
 import Loading from "../../Loading";
 import { PreviewPicture } from "./PreviewPicture";
 import addImagesDecor from "../../../assets/images/decor-things/add-images-decor.svg";
-import { BlogI } from "../../../types/blog/blog";
+import { BlogFormDataI } from "../../../types/blog/blog";
 import BlogController from "../../../controllers/blog-controller";
 import FilesManager from "./FilesManager";
 
@@ -24,11 +24,11 @@ export const BlogForm: React.FC<BlogFormI> = (props) => {
     const [ formError, setFormError ] = useState("");
     const [ files, setFiles ] = useState<File[] | null>(null);
     const [ loading, setLoading ] = useState(false);
-    const { register, control, formState: {errors}, handleSubmit } = useForm<BlogI>({
+    const { register, control, formState: {errors}, handleSubmit } = useForm<BlogFormDataI>({
         mode: "onBlur"
     });
     
-    const onSubmit: SubmitHandler<BlogI> = async (data): Promise<void> => {
+    const onSubmit: SubmitHandler<BlogFormDataI> = async (data): Promise<void> => {
         data.pictures = files;
         const params = {
             data,
