@@ -65,6 +65,7 @@ html {
     &__input {
         height: 46px;
         padding: 0 10px;
+        position: relative;
         border-radius: 10px;
         border: 1px solid var(--dark-col);
         color: var(--black-col);
@@ -124,7 +125,7 @@ html {
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, 50%);
+            transform: translate(-50%, -50%);
             font-size: 18px;
             color: var(--black-col-50);
         }

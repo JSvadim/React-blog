@@ -139,7 +139,7 @@ export const BlogForm: React.FC<BlogFormI> = (props) => {
                                     inputValue: e.target.files,
                                     setFiles
                                 })}
-                                type="file" accept="image/*"> 
+                                type="file" accept=".png, .jpg, .jpeg, .bmp, .gif"> 
                             </input>
                         )}
                     />
