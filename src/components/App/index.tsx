@@ -15,6 +15,7 @@ import BlogPage from '../../pages/Blog';
 import NotFoundPage from '../../pages/NotFound';
 import { AuthController } from '../../controllers/auth-controller';
 import { localStorageAccessToken } from '../../constants/local-storage';
+import { useTypedSelector } from "../../hooks/useTypedSelector";
 
 
 const App: React.FC = () => {
@@ -27,15 +28,24 @@ const App: React.FC = () => {
       checkAuth();
     }
   } , [])
+  const { blog } = useTypedSelector(state => state.blog);
+  const { user } = useTypedSelector(state => state.user);
+
 
   return (
     <>
       <Header/>
         <Routes>
           <Route path="/" element={ <BlogsPage/> }/>
-          <Route path="/blog" element={ <BlogPage/> }/>
-          <Route path="/my-blogs" element={ <MyBlogsPage/> }/>
-          <Route path="/add-blog" element={ <AddBlogPage/> }/>
+          <Route path="/blog" element={ 
+            blog !== null ? <BlogPage blog={blog}/> : <BlogsPage/> 
+          }/>
+          <Route path="/my-blogs" element={ 
+            user !== null ? <MyBlogsPage/> : <SignInPage/> 
+          }/>
+          <Route path="/add-blog" element={ 
+            user !== null ? <AddBlogPage/> : <SignInPage/> 
+          }/>
           <Route path="/log-in" element={ <LogInPage/> }/>
           <Route path="/sign-in" element={ <SignInPage/> }/>
           <Route path="*" element={ <NotFoundPage/> }/>

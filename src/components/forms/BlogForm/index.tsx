@@ -1,9 +1,10 @@
 // hooks
+import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 
 // third-party 
-import React, { SyntheticEvent } from "react";
+import React from "react";
 import { SubmitHandler, Controller } from "react-hook-form";
 import classNames from "classnames";
 import { ErrorMessage } from "@hookform/error-message";
@@ -14,10 +15,11 @@ import style from "./style.module.scss";
 import Loading from "../../Loading";
 import { PreviewPicture } from "./PreviewPicture";
 import addImagesDecor from "../../../assets/images/decor-things/add-images-decor.svg";
-import { BlogFormDataI } from "../../../types/blog/blog";
+import { BlogFormDataI, BlogI } from "../../../types/blog/blog";
 import BlogController from "../../../controllers/blog-controller";
 import FilesManager from "./FilesManager";
-
+import { store } from "../../../redux/store";
+import { addBlogCreator } from "../../../redux/action-creators/blog";
 
 export const BlogForm: React.FC<BlogFormI> = (props) => {
     
@@ -27,6 +29,7 @@ export const BlogForm: React.FC<BlogFormI> = (props) => {
     const { register, control, formState: {errors}, handleSubmit } = useForm<BlogFormDataI>({
         mode: "onBlur"
     });
+    const navigate = useNavigate();
     
     const onSubmit: SubmitHandler<BlogFormDataI> = async (data): Promise<void> => {
         data.pictures = files;
@@ -34,10 +37,17 @@ export const BlogForm: React.FC<BlogFormI> = (props) => {
             data,
             setFormError, 
             setLoading,
-            files
         };
-        await BlogController.addBlog(params);
+        const addedBlog = await BlogController.addBlog(params);
+        if(addedBlog) {
+            store.dispatch(addBlogCreator(addedBlog));
+            navigateToBlogPage()
+        }
     };
+
+    const navigateToBlogPage = () => {
+        navigate("/blog");
+    }
 
     const showInputError = (data: { message: string }) => {
         return (
@@ -120,12 +130,12 @@ export const BlogForm: React.FC<BlogFormI> = (props) => {
                     <span className="labeled-input__title labeled-input__title--mobile">
                         Add images:<br /> 
                         {"("}No more than five{")."}<br />
-                        Each picture less than 2mb.
+                        Each picture less than 5mb.
                     </span>
                     <span className="labeled-input__title labeled-input__title--desktop">
                         Add images:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         {"("}No more than five{")."}<br />
-                        Each picture less than 2mb.
+                        Each picture less than 5mb.
                     </span>
                     <img className={style["add-images-decor"]} src={addImagesDecor} alt="add images decoration" />
                     <Controller
@@ -139,7 +149,7 @@ export const BlogForm: React.FC<BlogFormI> = (props) => {
                                     inputValue: e.target.files,
                                     setFiles
                                 })}
-                                type="file" accept=".png, .jpg, .jpeg, .bmp, .gif"> 
+                                type="file" accept=".png, .jpg, .jpeg, .gif"> 
                             </input>
                         )}
                     />
