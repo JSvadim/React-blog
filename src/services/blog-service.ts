@@ -3,11 +3,11 @@ import { AxiosResponse } from "axios";
 
 // local imports
 import { $api } from "../http/index";
-import { BlogFormDataI } from "../types/blog/blog";
+import { BlogFormDataI, BlogI } from "../types/blog/blog";
 
 export class BlogService {
 
-    static async addBlog(blogData: BlogFormDataI): Promise<AxiosResponse<BlogFormDataI>> {
+    static async addBlog(blogData: BlogFormDataI): Promise<AxiosResponse<BlogI>> {
         const formData = new FormData();
         formData.append("title", blogData.title);
         formData.append("text", blogData.text);
@@ -18,11 +18,8 @@ export class BlogService {
                 formData.append('pictures', pic)
             }
         }
-        console.log("formData");
-        console.log(formData);
         
         const addedBlog = await $api.post("/blog/add", formData);
-
         return addedBlog;
     }
 

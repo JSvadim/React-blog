@@ -2,9 +2,8 @@
 import axios from "axios";
 
 //local imports 
-import { serverURL } from "../constants/server-url";
 import { localStorageAccessToken } from "../constants/local-storage";
-
+import { serverURL } from "../constants/server-url";
 
 export const $api = axios.create({
     baseURL: serverURL,

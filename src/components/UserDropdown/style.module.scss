@@ -31,7 +31,7 @@
     top: 30px;
     right: 10px;
     z-index: 4;
-    transform: rotateZ(0deg);
+    transform: rotateZ(180deg);
     transition: all 0.5s;
 }
 .user {
@@ -74,7 +74,7 @@
 
 .user-dropdown--opened {
     .decor {
-        transform: rotateZ(180deg);
+        transform: rotateZ(0deg);
     }
     .body {
         pointer-events: all;
