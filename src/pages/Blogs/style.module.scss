@@ -7,8 +7,8 @@
     position: absolute;
     top: 25px;
     left: 13px;
-    color: var(--black-col);
-    font-family: "Monster";
+    color: var(--col-text-black);
+    font-family: var(--font-pretty);
     &-small {
         font-size: 24px;
         line-height: 1.21em;
@@ -47,7 +47,7 @@
         border: 1px solid transparent;
         transition: border 0.5s;
         &--active {
-            border: 1px solid var(--black-col);
+            border: 1px solid var(--col-black);
         }
         &:last-child {
             margin: 0;
@@ -71,7 +71,7 @@
         }
         &-big {
             font-size: 200px;
-            color: var(--black-col-10);
+            color: var(--col-text-black-10);
             transform: translate(-15.5px, -39px);
         }
     }

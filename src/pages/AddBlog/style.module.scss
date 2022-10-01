@@ -4,11 +4,11 @@
 }
 
 .title {
-    font-family: "Monster";
+    font-family: var(--font-pretty);
     font-size: 96px;
     line-height: 0.95em;
     text-transform: uppercase;
-    color: var(--black-col-10);
+    color: var(--col-text-black-10);
     margin: 0 0 20px 0;
     max-width: 356px;
 }

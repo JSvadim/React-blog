@@ -3,7 +3,7 @@
     .title {
         font-size: 20px;
         &-decor {
-            font-family: "Monster";
+            font-family: var(--font-pretty);
             font-size: 72px;
             letter-spacing: 0.065em;
             position: absolute;
@@ -24,13 +24,13 @@
         position: relative;
         padding: 15px;
         border-radius: 10px;
-        background-color: var(--dark-col);
+        background-color: var(--col-black-light);
     }
     .content {
         height: 100%;
     }
     .text {
-        color: var(--white-col);
+        color: var(--col-text-white);
         font-size: 14px;
         line-height: 1.22em;
         letter-spacing: 0.065em;
@@ -65,14 +65,14 @@
         left: 15px;
         padding: 4px;
         border-radius: 10px;
-        background-color: var(--white-col);
+        background-color: var(--col-white);
         transition: all 0.5s;
-        color: var(--dark-col);
+        color: var(--col-text-black-light);
         cursor: pointer;
         &:hover,
         &:focus-visible {
             transform: scale(1.2);
-            color: var(--blue-col);
+            color: var(--col-text-blue-dark);
             padding: 4px 15px 4px 4px;
         }
     }
@@ -86,7 +86,7 @@
     }
     &:hover {
         .title-decor {
-            color: var(--blue-col)
+            color: var(--col-text-blue-dark)
         }
     }
 }

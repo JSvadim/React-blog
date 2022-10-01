@@ -9,7 +9,7 @@
     transition: all 1s;
     overflow: hidden;
     .inner {
-        background-color: var(--white-col);
+        background-color: var(--col-white);
         height:  calc(100vh - 57px);
         width: 100vw;
         display: flex;
@@ -24,11 +24,11 @@
         padding: 5px;
         font-size: 16px;
         line-height: 1.19em;
-        color: var(--black-col);
+        color: var(--col-text-black);
         transition: color 0.5s;
         &:hover,
         &:focus-visible {
-            color: var(--light-violet-col);
+            color: var(--col-text-violet-light);
         }
     }
     .list-item {
@@ -64,10 +64,10 @@
         }
         & .link {
             font-size: 18px;
-            color: var(--white-col);
+            color: var(--col-text-white);
             &:hover,
             &:focus-visible {
-                color: var(--light-green-col);
+                color: var(--col-text-green);
             }
         }
         & .list-item {

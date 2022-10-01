@@ -1,16 +1,35 @@
 :root {
-    --dark-col: #2C2C2C;
-    --blue-col: #2027CE;
-    --white-col: #FFFF;
-    --black-col: black;
-    --error-col: red;
-    --light-green-col: #8BD192;
-    --light-violet-col: #7B61FF;
+    --col-white: #FFFFFF;
+    --col-white-50: #F2F2F2;
+    --col-black: #000000;
+    --col-black-light: #2C2C2C;
+    --col-black-10: #CECECE;
+    --col-black-50: #727272;
+    --col-black-75: #413939;
+    --col-blue-dark: #2027CE;
+    --col-gray: #D9D9D9;
+    --col-violet: #9747FF;
+    --col-violet-light: #7B61FF;
+    --col-red: #FC0F0F;
+    --col-green: #8BD192;
 
-    --black-col-10: rgba(0, 0, 0, 0.1);
-    --black-col-50: rgba(0, 0, 0, 0.5);
+    --col-text-white: #FFFFFF;
+    --col-text-white-50: #F2F2F2;
+    --col-text-black: #000000;
+    --col-text-black-light: #2C2C2C;
+    --col-text-black-10: #CECECE;
+    --col-text-black-50: #727272;
+    --col-text-black-75: #413939;
+    --col-text-blue-dark: #2027CE;
+    --col-text-gray: #D9D9D9;
+    --col-text-violet: #9747FF;
+    --col-text-violet-light: #7B61FF;
+    --col-text-red: #FC0F0F;
+    --col-text-green: #8BD192;
+
 
     //fonts
-    --montserrat: "Monster";
+    --font-pretty: "Monster";
+    --font-basic: "Robot";
 
 }

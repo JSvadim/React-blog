@@ -60,15 +60,15 @@
     border: 1px solid white;
 }
 .user-dropdown--theme-black:hover .body{
-    border: 1px solid var(--dark-col);
+    border: 1px solid var(--col-black-light);
 }
 
 .user-dropdown--theme-white.user-dropdown--opened .body{
     background-color: white;
-    border: 1px solid var(--dark-col);
+    border: 1px solid var(--col-black-light);
 }
 .user-dropdown--theme-black.user-dropdown--opened .body{
-    background-color: var(--dark-col);
+    background-color: var(--col-black-light);
     border: 1px solid white;
 }
 

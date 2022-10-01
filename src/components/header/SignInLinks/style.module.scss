@@ -10,7 +10,7 @@
 .decor,
 .link {
     font-size: 14px;
-    color: var(--white-col);
+    color: var(--col-text-white);
     text-decoration: underline;
 }
 .decor {
@@ -33,7 +33,7 @@
     &:hover,
     &:focus-visible
     &.active {
-        color: var(--light-green-col);
+        color: var(--col-text-green);
     }
 }
 

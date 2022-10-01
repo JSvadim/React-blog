@@ -6,7 +6,7 @@
 
 
 html {
-    font-family: "Robot";
+    font-family: var(--font-basic);
 }
 #root {
     padding: 65px 0 0 0;
@@ -38,7 +38,7 @@ html {
         line-height: 1em;
     }
     &__title {
-        color: var(--black-col);
+        color: var(--col-text-black);
         margin: 0 0 8px 10px;
         display: block;
         &--underscored {
@@ -52,7 +52,7 @@ html {
                 position: absolute;
                 bottom: 2px;
                 left: 0;
-                background-color: var(--black-col);
+                background-color: var(--col-black);
             }
         }
         &--mobile {
@@ -67,17 +67,17 @@ html {
         padding: 0 10px;
         position: relative;
         border-radius: 10px;
-        border: 1px solid var(--dark-col);
-        color: var(--black-col);
+        border: 1px solid var(--col-black-light);
+        color: var(--col-text-black);
         appearance: none;
         transition: border 0.5s;
         &::placeholder {
             font-size: 16px;
-            color: var(--black-col-50);
+            color: var(--col-text-black-50);
         }
         &:hover,
         &:focus-visible {
-            border: 1px solid var(--blue-col);
+            border: 1px solid var(--col-blue-dark);
         }
     }
     &__textarea {
@@ -127,7 +127,7 @@ html {
             left: 50%;
             transform: translate(-50%, -50%);
             font-size: 18px;
-            color: var(--black-col-50);
+            color: var(--col-text-black-50);
         }
     }
     &__file-input {
@@ -147,7 +147,7 @@ html {
     background-color: white;
     border-radius: 5px;
     border: 1px solid black;
-    color: var(--error-col);
+    color: var(--col-text-red);
     transform: scale(0);
     animation: errorAppearance 0.5s forwards;
     @keyframes errorAppearance {
@@ -161,17 +161,17 @@ html {
 .blue-link {
     font-size: 14px;
     line-height: 1em;
-    color: var(--blue-col);
+    color: var(--col-text-blue-dark);
     transition: all 0.5s;
     &:hover,
     &:focus-visible {
         text-decoration: underline;
-        color: var(--black-col-50);
+        color: var(--col-text-black-50);
     }
 }
 
 .gray-link {
-    color: var(--black-col-50);
+    color: var(--col-text-black-50);
     font-size: 14px;
     line-height: 1em;
     text-decoration: underline;
@@ -179,7 +179,7 @@ html {
     &:hover,
     &:focus-visible {
         text-decoration: underline;
-        color: var(--blue-col);
+        color: var(--col-text-blue-dark);
     }
 }
 
@@ -189,23 +189,23 @@ html {
     border-radius: 10px;
     transition: all 0.5s;
     &--black {
-        border: 2px solid var(--dark-col);
-        background-color: var(--dark-col);
-        color: var(--white-col);
+        border: 2px solid var(--col-black-light);
+        background-color: var(--col-black-light);
+        color: var(--col-text-white);
         &:hover,
         &:focus-visible {
-            background-color: var(--white-col);
-            color: var(--blue-col);
+            background-color: var(--col-white);
+            color: var(--col-text-blue-dark);
         }
     }
     &--white {
-        border: 2px solid var(--dark-col);
-        background-color: var(--white-col);
-        color: var(--blue-col);
+        border: 2px solid var(--col-black-light);
+        background-color: var(--col-white);
+        color: var(--col-text-blue-dark);
         &:hover,
         &:focus-visible {
-            background-color: var(--dark-col);
-            color: var(--white-col);
+            background-color: var(--col-black-light);
+            color: var(--col-text-white);
         }
     }
 }
