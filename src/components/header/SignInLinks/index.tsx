@@ -4,29 +4,23 @@ import classNames from "classnames";
 
 // local imports
 import style from "./style.module.scss";
+import { setActiveLinkStyle } from "../helpers";
 
 
 const SignInLinks: React.FC = () => {
-
-    const setActive = (params: {isActive: boolean}) => {
-        return {
-            color: params.isActive ? 'var(--light-green-col)' : ''
-        }
-    }
-
     return (
         <nav className={style["nav"]}>
             <ul className={style["list"]}>
                 <li>
                     <NavLink className={classNames([style["link"], style["first"]])} 
-                        style={setActive}
+                        style={setActiveLinkStyle}
                         to="/log-in">Log in&nbsp;
                     </NavLink> 
                     <span className={style["decor"]}>/</span>
                 </li>
                 <li>
                     <NavLink className={classNames([style["link"], style["second"]])}
-                        style={setActive}
+                        style={setActiveLinkStyle}
                         to="/sign-in">&nbsp;Sign in
                     </NavLink>
                 </li>

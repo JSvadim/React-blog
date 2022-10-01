@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom";
 import style from "./style.module.scss";
 import { navItems } from "../../../constants/navbar";
 import { NavI } from "../../../types/header";
-import { setActiveLink } from "./helpers";
+import { setActiveLinkStyle } from "../helpers";
 
 const Navbar: React.FC<NavI> = (props) => {
 
@@ -23,7 +23,7 @@ const Navbar: React.FC<NavI> = (props) => {
                             <li className={style["list-item"]} key={index}>
                                 <NavLink className={style.link} 
                                     onClick={() => {props.toggleNav(false)}}
-                                    style={setActiveLink} 
+                                    style={setActiveLinkStyle} 
                                     to={item.path}>
                                         {item.title}
                                 </NavLink>
