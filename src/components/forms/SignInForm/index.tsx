@@ -15,6 +15,7 @@ import style from "./style.module.scss";
 import { SignInDataI } from "../../../types/auth/sign-in-data";
 import { AuthController } from "../../../controllers/auth-controller";
 import Loading from "../../Loading";
+import ButtonBasic from "../../ButtonBasic";
 
 
 const SignInForm: React.FC = () => {
@@ -215,10 +216,13 @@ const SignInForm: React.FC = () => {
                     />}
                 </div>
             }
-            <button 
-                className={classNames(["btn", "btn--black", style.btn])} 
-                type="submit"> Sign in
-            </button>
+            <ButtonBasic
+                theme="black"
+                positioning={style.btn}
+                type="submit"
+                text="Sign in"
+                onClick={() => {}}
+            />
             <div className={style["gray-link-wrapper"]}>
                 <Link 
                     className={classNames(["gray-link", style["gray-link"]])}

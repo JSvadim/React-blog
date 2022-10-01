@@ -29,11 +29,6 @@
     display: flex;
     justify-content: space-between;
 }
-.button {
-    height: 43px;
-    width: 153px;
-    flex: 0 0 153px;
-}
 
 .add-images-decor {
     position: absolute;
@@ -93,11 +88,5 @@
         &:nth-child(5) {
             margin-bottom: 0px;
         }
-    }
-}
-@media(min-width: 1440px) {
-    .button {
-        width: 177px;
-        flex: 0 0 177px;
     }
 }

@@ -14,6 +14,7 @@ import style from "./style.module.scss";
 import { LogInDataI } from "../../../types/auth/log-in-data";
 import { AuthController } from "../../../controllers/auth-controller";
 import Loading from "../../Loading";
+import ButtonBasic from "../../ButtonBasic";
 
 const LogInForm: React.FC = () => {
 
@@ -40,8 +41,6 @@ const LogInForm: React.FC = () => {
                 {data.message} 
             </div>)
     }
-
-    
 
     return (
         <form 
@@ -95,10 +94,13 @@ const LogInForm: React.FC = () => {
                     href="/"> Forgot password?
                 </a>
             </div>
-            <button 
-                className={classNames(["btn", "btn--black", style.btn])} 
-                type="submit"> Log in
-            </button>
+            <ButtonBasic
+                theme="black"
+                positioning={style.btn}
+                type="submit"
+                text="Log in"
+                onClick={() => {}}
+            />
             <div className={style["gray-link-wrapper"]}>
                 <Link 
                     className={classNames(["gray-link", style["gray-link"]])}

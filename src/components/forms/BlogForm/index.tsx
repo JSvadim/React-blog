@@ -20,6 +20,7 @@ import BlogController from "../../../controllers/blog-controller";
 import FilesManager from "./FilesManager";
 import { store } from "../../../redux/store";
 import { addBlogCreator } from "../../../redux/action-creators/blog";
+import ButtonBasic from "../../ButtonBasic";
 
 export const BlogForm: React.FC<BlogFormI> = (props) => {
     
@@ -181,14 +182,18 @@ export const BlogForm: React.FC<BlogFormI> = (props) => {
                 />
                 </div>
                 <div className={style.buttons}>
-                    <button
-                        className={classNames(["btn btn--black", style.button])}>
-                        watch preview
-                    </button>
-                    <button
-                        className={classNames(["btn btn--white", style.button])}>
-                        add blog
-                    </button>
+                    <ButtonBasic
+                        theme="black"
+                        type="button"
+                        text="watch preview"
+                        onClick={() => {}}
+                    />
+                    <ButtonBasic
+                        theme="white"
+                        type="submit"
+                        text="add blog"
+                        onClick={() => {}}
+                    />
                 </div>
             </div>
 

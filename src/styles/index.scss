@@ -169,7 +169,6 @@ html {
         color: var(--col-text-black-50);
     }
 }
-
 .gray-link {
     color: var(--col-text-black-50);
     font-size: 14px;
@@ -180,33 +179,6 @@ html {
     &:focus-visible {
         text-decoration: underline;
         color: var(--col-text-blue-dark);
-    }
-}
-
-.btn {
-    font-size: 18px;
-    line-height: 1em;
-    border-radius: 10px;
-    transition: all 0.5s;
-    &--black {
-        border: 2px solid var(--col-black-light);
-        background-color: var(--col-black-light);
-        color: var(--col-text-white);
-        &:hover,
-        &:focus-visible {
-            background-color: var(--col-white);
-            color: var(--col-text-blue-dark);
-        }
-    }
-    &--white {
-        border: 2px solid var(--col-black-light);
-        background-color: var(--col-white);
-        color: var(--col-text-blue-dark);
-        &:hover,
-        &:focus-visible {
-            background-color: var(--col-black-light);
-            color: var(--col-text-white);
-        }
     }
 }
 
