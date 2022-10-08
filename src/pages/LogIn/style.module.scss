@@ -1,4 +1,4 @@
-.container {
+.wrapper {
     padding-top: 35px;
     position: relative;
     min-height: 700px;
@@ -13,7 +13,7 @@
 }
 
 @media (min-width: 768px) {
-    .container {
+    .wrapper {
         position: relative;
         padding-top: 180px;
     }
@@ -51,7 +51,7 @@
 }
 
 @media (min-width: 1400px) {
-    .container {
+    .wrapper {
         padding-top: 200px;
         min-height: 750px;
     }

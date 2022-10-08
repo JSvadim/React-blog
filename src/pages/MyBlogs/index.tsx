@@ -1,9 +1,12 @@
 // local imports
+import Container from "../../components/Container";
 import style from "./style.module.scss";
 
 const MyBlogsPage: React.FC = () => {
     return (
-        <div>MY BLOGS PAGE</div>
+        <Container>
+            <div>MY BLOGS PAGE</div>
+        </Container>
     )
 }
 

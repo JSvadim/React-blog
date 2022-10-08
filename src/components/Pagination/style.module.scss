@@ -1,0 +1,33 @@
+
+.list {
+    display: inline-flex;
+}
+.item {
+    margin: 0 5px 0 0;
+    border: 1px solid transparent;
+    transition: border 0.5s;
+    &--active {
+        border: 1px solid var(--col-black);
+    }
+    &:last-child {
+        margin: 0;
+    }
+}
+.button {
+    font-size: 16px;
+    line-height: 1.19em;
+    padding: 0 5px;
+}
+
+@media(min-width: 1400px) {
+    .list {
+        flex-direction: column;
+        align-items: center;
+    }
+    .item {
+        margin: 0 0 9px 0;
+        &:last-child {
+            margin: 0;
+        }
+    }
+}

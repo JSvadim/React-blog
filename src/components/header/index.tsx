@@ -8,6 +8,7 @@ import Navbar from "./Navbar/index";
 import BurgerMenu from "./BurgerMenu/index";
 import SignInLinks from "./SignInLinks/index";
 import { UserDropdown } from "../UserDropdown";
+import Container from "../Container";
 
 
 const Header: React.FC = (props) => {
@@ -19,7 +20,7 @@ const Header: React.FC = (props) => {
 
     return (
         <header className={style.header}>
-            <div className="container">
+            <Container>
                 <div className={style.inner}>
                     {user === null ? <SignInLinks/> : 
                         <UserDropdown 
@@ -33,7 +34,7 @@ const Header: React.FC = (props) => {
                         isNavOpened={isNavigationOpened}
                         toggleNav={toggleNav}/>
                 </div>
-            </div>
+            </Container>
         </header>
     )
 }

@@ -21,6 +21,8 @@ import FilesManager from "./FilesManager";
 import { store } from "../../../redux/store";
 import { addBlogCreator } from "../../../redux/action-creators/blog";
 import ButtonBasic from "../../ButtonBasic";
+import { showInputError } from "../helpers";
+import InputError from "../../InputError";
 
 export const BlogForm: React.FC<BlogFormI> = (props) => {
     
@@ -50,13 +52,6 @@ export const BlogForm: React.FC<BlogFormI> = (props) => {
         navigate("/blog");
     }
 
-    const showInputError = (data: { message: string }) => {
-        return (
-            <div className={classNames("input-error", style["input-error"])}>
-                {data.message} 
-            </div>)
-    }
-
     const removeFileFromInput = (fileName: string) => {
         FilesManager.removeAttachedFile({
             fileName,
@@ -67,17 +62,11 @@ export const BlogForm: React.FC<BlogFormI> = (props) => {
 
     return (
         <form
-            className={`
-                ${style.form} 
-                ${props.className}
-            `}
+            className={`${style.form} ${props.className}`}
             encType="multipart/form-data"
             onSubmit={handleSubmit(onSubmit)}>
             {loading && <Loading/>}
-            {formError && 
-            <div className={classNames("input-error", style["form-error"])}>
-                {formError} 
-            </div>}
+            {formError && <InputError message={formError} positioning={style["form-error"]}/>}
 
             <div className={classNames([style.row, style["row--left"]])}>
                 <div className={classNames(style["input-wrapper"], style["input-wrapper__title"])}>
@@ -99,7 +88,7 @@ export const BlogForm: React.FC<BlogFormI> = (props) => {
                 <ErrorMessage
                     errors={errors}
                     name="title"
-                    render={showInputError}
+                    render={data => showInputError(data.message, style["input-error"])}
                 />
                 </div>
                 <div className={style["input-wrapper"]}>
@@ -121,7 +110,7 @@ export const BlogForm: React.FC<BlogFormI> = (props) => {
                 <ErrorMessage
                     errors={errors}
                     name="text"
-                    render={showInputError}
+                    render={data => showInputError(data.message, style["input-error"])}
                 />
                 </div>
             </div>
@@ -178,7 +167,7 @@ export const BlogForm: React.FC<BlogFormI> = (props) => {
                 <ErrorMessage
                     errors={errors}
                     name="pictures"
-                    render={showInputError}
+                    render={data => showInputError(data.message, style["input-error"])}
                 />
                 </div>
                 <div className={style.buttons}>

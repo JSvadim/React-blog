@@ -1,9 +1,12 @@
 // local imports
+import Container from "../../components/Container";
 import style from "./style.module.scss";
 
 const NotFoundPage: React.FC = () => {
     return (
-        <div>PAGE NOT FOUND</div>
+        <Container>
+            <div>PAGE NOT FOUND</div>
+        </Container>
     )
 }
 

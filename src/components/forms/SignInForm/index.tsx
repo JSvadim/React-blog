@@ -16,6 +16,8 @@ import { SignInDataI } from "../../../types/auth/sign-in-data";
 import { AuthController } from "../../../controllers/auth-controller";
 import Loading from "../../Loading";
 import ButtonBasic from "../../ButtonBasic";
+import InputError from "../../InputError";
+import { showInputError } from "../helpers";
 
 
 const SignInForm: React.FC = () => {
@@ -36,24 +38,15 @@ const SignInForm: React.FC = () => {
         }
         AuthController.signin(params);
     }
-    const showInputError = (data: { message: string }) => {
-        return (
-            <div className={classNames("input-error", style["input-error"])}>
-                {data.message} 
-            </div>)
-    }
-
 
     return (
         <form 
             className={style.form} 
             onSubmit={handleSubmit(onSubmit)}>
             {loading && <Loading/>}
-            {formError && 
-                <div className={classNames("input-error", style["form-error"])}>
-                    {formError} 
-                </div>
-            }
+            {formError && <InputError message={formError} positioning={style["form-error"]}/>}
+            
+            
             <div className={style["input-wrapper"]}>
                 <label className={classNames(["labeled-input", style.label])}>
                     <span className="labeled-input__title">Nickname:</span>
@@ -78,7 +71,7 @@ const SignInForm: React.FC = () => {
                 <ErrorMessage
                     errors={errors}
                     name="nickname"
-                    render={showInputError}
+                    render={data => showInputError(data.message, style["input-error"])}
                 />
             </div>
 
@@ -105,31 +98,9 @@ const SignInForm: React.FC = () => {
                 <ErrorMessage
                     errors={errors}
                     name="email"
-                    render={showInputError}
+                    render={data => showInputError(data.message, style["input-error"])}
                 />
             </div>
-
-            {
-                isActivationCodeSent && 
-                <div className={style["input-wrapper"]}>
-                        <label className={classNames(["labeled-input", style.label])}>
-                            <span className="labeled-input__title">Type code, that has been sent to your email:</span>
-                            <input 
-                                className={classNames(["labeled-input__input", style.input])}
-                                type="text" 
-                                placeholder="Sent code..."
-                                {...register("activationCode", {
-                                    required: "This field is required. "
-                                })}>
-                            </input>
-                        </label>
-                    {<ErrorMessage
-                        errors={errors}
-                        name="activationCode"
-                        render={showInputError}
-                    />}
-                </div>
-            }
 
             <div className={style["input-wrapper"]}>
                 <label className={classNames(["labeled-input", style.label])}>
@@ -159,7 +130,7 @@ const SignInForm: React.FC = () => {
                 <ErrorMessage
                     errors={errors}
                     name="password"
-                    render={showInputError}
+                    render={data => showInputError(data.message, style["input-error"])}
                 />
             </div>
 
@@ -183,10 +154,10 @@ const SignInForm: React.FC = () => {
                 {<ErrorMessage
                     errors={errors}
                     name="gender"
-                    render={showInputError}
+                    render={data => showInputError(data.message, style["input-error"])}
                 />}
             </div>
-
+            
             {(watch("gender") === "other") && 
                 <div className={style["input-wrapper"]}>
                     <label className={classNames(["labeled-input", style.label])}>
@@ -212,15 +183,36 @@ const SignInForm: React.FC = () => {
                     {<ErrorMessage
                         errors={errors}
                         name="otherGender"
-                        render={showInputError}
+                        render={data => showInputError(data.message, style["input-error"])}
                     />}
                 </div>
             }
+
+            { isActivationCodeSent && 
+            <div className={style["input-wrapper"]}>
+                    <label className={classNames(["labeled-input", style.label])}>
+                        <span className="labeled-input__title">Type code, that has been sent to your email:</span>
+                        <input 
+                            className={classNames(["labeled-input__input", style.input])}
+                            type="text" 
+                            placeholder="Sent code to your email..."
+                            {...register("activationCode", {
+                                required: "This field is required. "
+                            })}>
+                        </input>
+                    </label>
+                {<ErrorMessage
+                    errors={errors}
+                    name="activationCode"
+                    render={data => showInputError(data.message, style["input-error"])}
+                />}
+            </div> }
+
             <ButtonBasic
                 theme="black"
                 positioning={style.btn}
                 type="submit"
-                text="Sign in"
+                text={isActivationCodeSent ? "confirm code" : "Sign in"}
                 onClick={() => {}}
             />
             <div className={style["gray-link-wrapper"]}>

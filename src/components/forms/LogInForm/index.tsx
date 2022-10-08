@@ -15,6 +15,8 @@ import { LogInDataI } from "../../../types/auth/log-in-data";
 import { AuthController } from "../../../controllers/auth-controller";
 import Loading from "../../Loading";
 import ButtonBasic from "../../ButtonBasic";
+import InputError from "../../InputError";
+import { showInputError } from "../helpers";
 
 const LogInForm: React.FC = () => {
 
@@ -34,23 +36,13 @@ const LogInForm: React.FC = () => {
         await AuthController.login(params);
     };
 
-
-    const showInputError = (data: { message: string }) => {
-        return (
-            <div className={classNames("input-error", style["input-error"])}>
-                {data.message} 
-            </div>)
-    }
-
     return (
         <form 
             className={style.form} 
             onSubmit={handleSubmit(onSubmit)}>
             {loading && <Loading/>}
-            {formError && 
-            <div className={classNames("input-error", style["form-error"])}>
-                {formError} 
-            </div>}
+            {formError && <InputError message={formError} positioning={style["form-error"]}/>}
+
             <div className={style["input-wrapper"]}>
                 <label className={classNames(["labeled-input", style.label])}>
                     <span className="labeled-input__title">Mail:</span>
@@ -59,14 +51,22 @@ const LogInForm: React.FC = () => {
                         type="email" 
                         placeholder="your email"
                         {...register("email", {
-                            required: "This field is required. "
+                            required: "This field is required. ",
+                            pattern: {
+                                value: /^([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,5})$/g,
+                                message: "Invalid email (haven't you forgotten @ or . symbols? "
+                            },
+                            maxLength: {
+                                value: 320,
+                                message: "Email can't be longer than 320 symbols"
+                            },
                         })}>
                     </input>
                 </label>
                 <ErrorMessage
                     errors={errors}
                     name="email"
-                    render={showInputError}
+                    render={data => showInputError(data.message, style["input-error"])}
                 />
             </div>
 
@@ -78,14 +78,27 @@ const LogInForm: React.FC = () => {
                         type="password"
                         placeholder="your password"
                         {...register("password", {
-                            required: "This field is required. "
+                            required: "This field is required.",
+                            minLength: {
+                                value: 6,
+                                message: "password should be at least 6 symbols"
+                            },
+                            maxLength: {
+                                value: 20,
+                                message: "Password can't be longer than 20 symbols"
+                            },
+                            pattern: {
+                                value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]/g,
+                                message: `password should contain at least one uppercase
+                                    and one lowercase letter and at least one digit.`
+                            },
                         })}>
                     </input>
                 </label>
                 <ErrorMessage
                     errors={errors}
                     name="password"
-                    render={showInputError}
+                    render={data => showInputError(data.message, style["input-error"])}
                 />
             </div>
 

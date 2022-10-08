@@ -1,17 +1,21 @@
-// local imports
+// third party
 import classNames from "classnames";
+
+// local imports
 import style from "./style.module.scss";
 import { blogData } from "../../constants/blog-example";
 import Blog from "../../components/Blog";
+import Container from "../../components/Container";
+import Pagination from "../../components/Pagination";
 
 const BlogsPage: React.FC = () => {
     return (
-        <div className={classNames([style.container, "container"])}>
-            <h1 className={style.title}>
-                <span className={style["title-small"]}>BEST blog</span>
-                <span className={style["title-big"]}>EVER</span>
-            </h1>
-            <div className={style.content}>
+        <Container>
+            <div className={style.wrapper}>
+                <h1 className={style.title}>
+                    <span className={style["title-small"]}>BEST blog</span>
+                    <span className={style["title-big"]}>EVER</span>
+                </h1>
                 <ul className={style.blogs}>
                     <li className={style.blog}>
                         <Blog
@@ -52,46 +56,30 @@ const BlogsPage: React.FC = () => {
                             text={blogData.text}
                             isFake={true}/>
                     </li>
-                </ul>
-                <ul className={style["pagination"]}>
-                    <li className={style["pagination__item"]}>
-                        <button className={style["pagination__button"]}>
-                            1
-                        </button>
+                    <li className={style.blog}>
+                        <Blog
+                            title={blogData.title}
+                            text={blogData.text}
+                            pics={blogData.pics}
+                            isFake={true}/>
                     </li>
-                    <li className={classNames([style["pagination__item"], style["pagination__item--active"]])}>
-                        <button className={style["pagination__button"]}>
-                            2
-                        </button>
+                    <li className={style.blog}>
+                        <Blog
+                            title={blogData.title}
+                            text={blogData.text}
+                            pics={blogData.pics}
+                            isFake={true}/>
                     </li>
-                    <li className={style["pagination__item"]}>
-                        <button className={style["pagination__button"]}>
-                            3
-                        </button>
-                    </li>
-                    <li className={style["pagination__item"]}>
-                        <button className={style["pagination__button"]}>
-                            4
-                        </button>
-                    </li>
-                    <li className={style["pagination__item"]}>
-                        <button className={style["pagination__button"]}>
-                            5
-                        </button>
-                    </li>
-                    <li className={style["pagination__item"]}>
-                        <button className={classNames([style["pagination__button"], style["pagination__button--all"]])}>
-                            ...
-                        </button>
-                    </li>
-                    <li className={style["pagination__item"]}>
-                        <button className={style["pagination__button"]}>
-                            16
-                        </button>
+                    <li className={style.blog}>
+                        <Blog
+                            title={blogData.title}
+                            text={blogData.text}
+                            isFake={true}/>
                     </li>
                 </ul>
+                <Pagination className={style.pagination}/>
             </div>
-        </div>
+        </Container>
     )
 }
 

@@ -1,6 +1,11 @@
-.container {
+.wrapper {
     padding-top: 25px;
     padding-bottom: 70px;
+}
+
+.blog-form,
+.title {
+    max-width: 356px;
 }
 
 .title {
@@ -10,11 +15,10 @@
     text-transform: uppercase;
     color: var(--col-text-black-10);
     margin: 0 0 20px 0;
-    max-width: 356px;
 }
 
 @media(min-width: 768px) {
-    .container {
+    .wrapper {
         display: flex;
         justify-content: space-between;
         padding-top: 80px;
@@ -30,7 +34,7 @@
 }
  
 @media(min-width: 1200px) {
-    .container {
+    .wrapper {
         display: flex;
         align-items: center;
         height: calc(100vh - 66px);
