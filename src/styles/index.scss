@@ -8,6 +8,11 @@
 html {
     font-family: var(--font-basic);
 }
+
+body.burger-lock {
+    overflow-y: hidden;
+}
+
 #root {
     padding: 65px 0 0 0;
     overflow-y: hidden;
@@ -207,6 +212,11 @@ html {
         & .user__nickname {
             color: black;
         }
+    }
+}
+@media(min-width: 768px) {
+    body.burger-lock {
+        overflow-y: auto;
     }
 }
 

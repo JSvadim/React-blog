@@ -44,13 +44,9 @@ export const BlogForm: React.FC<BlogFormI> = (props) => {
         const addedBlog = await BlogController.addBlog(params);
         if(addedBlog) {
             store.dispatch(addBlogCreator(addedBlog));
-            navigateToBlogPage()
+            navigate("/blog");
         }
     };
-
-    const navigateToBlogPage = () => {
-        navigate("/blog");
-    }
 
     const removeFileFromInput = (fileName: string) => {
         FilesManager.removeAttachedFile({

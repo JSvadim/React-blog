@@ -40,14 +40,18 @@ const App: React.FC = () => {
           <Route path="/blog" element={ 
             blog !== null ? <BlogPage blog={blog}/> : <BlogsPage/> 
           }/>
-          <Route path="/my-blogs" element={ 
-            user !== null ? <MyBlogsPage/> : <SignInPage/> 
+          <Route path="/my-blogs" element={
+            user !== null ? <MyBlogsPage/> : <LogInPage/> 
           }/>
-          <Route path="/add-blog" element={ 
-            user !== null ? <AddBlogPage/> : <SignInPage/> 
+          <Route path="/add-blog" element={
+            user !== null ? <AddBlogPage/> : <LogInPage/> 
           }/>
-          <Route path="/log-in" element={ <LogInPage/> }/>
-          <Route path="/sign-in" element={ <SignInPage/> }/>
+          <Route path="/log-in" element={
+            user !== null ? <BlogsPage/> : <LogInPage/> 
+          }/>
+          <Route path="/sign-in" element={
+            user !== null ? <BlogsPage/> : <SignInPage/>
+          }/>
           <Route path="*" element={ <NotFoundPage/> }/>
         </Routes>
     </>
