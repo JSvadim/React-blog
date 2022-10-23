@@ -35,31 +35,6 @@ body.burger-lock {
         font-size: 18px;
         line-height: 1em;
     }
-    &__title {
-        color: var(--col-text-black);
-        margin: 0 0 8px 10px;
-        display: block;
-        &--underscored {
-            display: inline-block;
-            position: relative;
-            &::before {
-                content: '';
-                display: block;
-                height: 0.5px;
-                width: 100%;
-                position: absolute;
-                bottom: 2px;
-                left: 0;
-                background-color: var(--col-black);
-            }
-        }
-        &--mobile {
-            display: block;
-        }
-        &--desktop {
-            display: none;
-        }
-    }
     &__input {
         height: 46px;
         padding: 0 10px;
@@ -226,16 +201,6 @@ body.burger-lock {
         font-size: 16px;
     }
     .labeled-input {
-        &__title {
-            font-size: 20px;
-            line-height: 0.93em;
-            &--mobile {
-                display: none;
-            }
-            &--desktop {
-                display: block;
-            }
-        }
         &__textarea {
             height: 200px;
             min-height: 200px;

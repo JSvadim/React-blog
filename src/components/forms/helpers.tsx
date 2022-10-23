@@ -1,11 +1,12 @@
 // local imports
-import InputError from "../InputError"
+import InputError from "../Inputs/InputError"
+import { InputErrorI } from "../Inputs/InputError/type"
 
-export const showInputError = (message: string, positioning: string) => {
+export const showInputError = (params: InputErrorI) => {
     return (
         <InputError 
-            message={message}
-            positioning={positioning}
+            message={params.message}
+            errorType={params.errorType ? params.errorType : "input"}
         />
-    )
+    ) 
 }

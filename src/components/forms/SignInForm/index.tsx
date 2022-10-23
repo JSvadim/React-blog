@@ -7,7 +7,6 @@ import React from "react";
 import { SubmitHandler } from "react-hook-form";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
-import { ErrorMessage } from '@hookform/error-message';
 import 'regenerator-runtime/runtime';
 
 // local imports
@@ -15,9 +14,11 @@ import style from "./style.module.scss";
 import { SignInDataI } from "../../../types/auth/sign-in-data";
 import { AuthController } from "../../../controllers/auth-controller";
 import Loading from "../../Loading";
-import ButtonBasic from "../../ButtonBasic";
-import InputError from "../../InputError";
-import { showInputError } from "../helpers";
+import ButtonBasic from "../../Buttons/ButtonBasic";
+import InputError from "../../Inputs/InputError";
+import { requiredFieldValidation, userEmailValidation, userNicknameValidation, userOtherGenderValidation, userPasswordValidation } from "../../../constants/input-validation";
+import InputWrapper from "../../Inputs/InputWrapper";
+import InputTitle from "../../Inputs/InputTitle";
 
 
 const SignInForm: React.FC = () => {
@@ -44,105 +45,55 @@ const SignInForm: React.FC = () => {
             className={style.form} 
             onSubmit={handleSubmit(onSubmit)}>
             {loading && <Loading/>}
-            {formError && <InputError message={formError} positioning={style["form-error"]}/>}
+            {formError && <InputError message={formError} errorType="form"/>}
             
-            
-            <div className={style["input-wrapper"]}>
-                <label className={classNames(["labeled-input", style.label])}>
-                    <span className="labeled-input__title">Nickname:</span>
+            <InputWrapper
+                sizesClass={style["input-wrapper"]}
+                registerName="nickname" 
+                errors={errors}>
+                    <InputTitle title="Nickname:"/>
                     <input 
                         className={classNames(["labeled-input__input", style.input])}
                         type="text" 
                         placeholder="your nick"
-                        {...register("nickname", {
-                            required: "This field is required. ",
-                            pattern: {
-                                value: /^[a-zA-Zа-яА-Я\d\-_ ]+$/g,
-                                message: `Nickname can contain only Numbers,
-                                     Russian and English letters, spaces and - _ signs`
-                            },
-                            maxLength: {
-                                value: 25,
-                                message: "Nickname can't be longer than 25 symbols"
-                            }
-                        })}>
+                        {...register("nickname", userNicknameValidation)}>
                     </input>
-                </label>
-                <ErrorMessage
-                    errors={errors}
-                    name="nickname"
-                    render={data => showInputError(data.message, style["input-error"])}
-                />
-            </div>
-
-            <div className={style["input-wrapper"]}>
-                <label className={classNames(["labeled-input", style.label])}>
-                    <span className="labeled-input__title">Email:</span>
+            </InputWrapper>
+            
+            <InputWrapper
+                sizesClass={style["input-wrapper"]}
+                registerName="email"
+                errors={errors}>
+                    <InputTitle title="Email:"/>
                     <input 
                         className={classNames(["labeled-input__input", style.input])}
                         type="email" 
                         placeholder="your email"
-                        {...register("email", {
-                            required: "This field is required. ",
-                            pattern: {
-                                value: /^([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,5})$/g,
-                                message: "Invalid email (haven't you forgotten @ or . symbols? "
-                            },
-                            maxLength: {
-                                value: 320,
-                                message: "Email can't be longer than 320 symbols"
-                            },
-                        })}>
+                        {...register("email", userEmailValidation)}>
                     </input>
-                </label>
-                <ErrorMessage
-                    errors={errors}
-                    name="email"
-                    render={data => showInputError(data.message, style["input-error"])}
-                />
-            </div>
+            </InputWrapper>
 
-            <div className={style["input-wrapper"]}>
-                <label className={classNames(["labeled-input", style.label])}>
-                    <span className="labeled-input__title">Password:</span>
+            <InputWrapper
+                sizesClass={style["input-wrapper"]}
+                registerName="password"
+                errors={errors}>
+                    <InputTitle title="Password:"/>
                     <input 
                         className={classNames(["labeled-input__input", style.input])}
-                        type="password"
+                        type="password" 
                         placeholder="your password"
-                        {...register("password", {
-                            required: "this field is required",
-                            minLength: {
-                                value: 6,
-                                message: "password should be at least 6 symbols"
-                            },
-                            maxLength: {
-                                value: 20,
-                                message: "Password can't be longer than 20 symbols"
-                            },
-                            pattern: {
-                                value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]/g,
-                                message: `password should contain at least one uppercase
-                                    and one lowercase letter and at least one digit.`
-                            },
-                        })}>
+                        {...register("password", userPasswordValidation)}>
                     </input>
-                </label>
-                <ErrorMessage
-                    errors={errors}
-                    name="password"
-                    render={data => showInputError(data.message, style["input-error"])}
-                />
-            </div>
+            </InputWrapper>
 
-            <div className={style["input-wrapper"]}>
-                <label className={classNames(["labeled-input", style.label])}>
-                    <span className="labeled-input__title">Gender:</span>
+            <InputWrapper
+                sizesClass={style["input-wrapper"]}
+                registerName="gender"
+                errors={errors}>
+                    <InputTitle title="Gender:"/>
                     <div className="labeled-input__select-wrapper">
                         <select 
-                            {...register("gender", {
-                                required: "this field is required",
-                            }
-                            )}
+                            {...register("gender", requiredFieldValidation)}
                             className={classNames(["labeled-input__input labeled-input__select", style.input])}>
                             <option value="">Choose gender</option>
                             <option value="male">male</option>
@@ -150,63 +101,37 @@ const SignInForm: React.FC = () => {
                             <option value="other">Type other gender</option>
                         </select>
                     </div>
-                </label>
-                {<ErrorMessage
-                    errors={errors}
-                    name="gender"
-                    render={data => showInputError(data.message, style["input-error"])}
-                />}
-            </div>
-            
+            </InputWrapper>
+
             {(watch("gender") === "other") && 
-                <div className={style["input-wrapper"]}>
-                    <label className={classNames(["labeled-input", style.label])}>
-                        <span className="labeled-input__title">Type your gender:</span>
+                <InputWrapper
+                    sizesClass={style["input-wrapper"]}
+                    registerName="otherGender"
+                    errors={errors}>
+                        <InputTitle title="Type your gender:"/>
                         <input 
                             className={classNames(["labeled-input__input", style.input])}
                             type="text" 
                             placeholder="gender..."
-                            {...register("otherGender", {
-                                required: "This field is required. ",
-                                pattern: {
-                                    value: /^[a-zA-Zа-яА-Я ]+$/g,
-                                    message: `Gender can contain only 
-                                        Russian, English letters and spaces.`
-                                },
-                                maxLength: {
-                                    value: 30,
-                                    message: "Maximal length is 30 symbols"
-                                }
-                            })}>
+                            {...register("otherGender", userOtherGenderValidation)}>
                         </input>
-                    </label>
-                    {<ErrorMessage
-                        errors={errors}
-                        name="otherGender"
-                        render={data => showInputError(data.message, style["input-error"])}
-                    />}
-                </div>
+                </InputWrapper>
             }
-
+            
             { isActivationCodeSent && 
-            <div className={style["input-wrapper"]}>
-                    <label className={classNames(["labeled-input", style.label])}>
-                        <span className="labeled-input__title">Type code, that has been sent to your email:</span>
+                <InputWrapper
+                    sizesClass={style["input-wrapper"]}
+                    registerName="activationCode"
+                    errors={errors}>
+                        <InputTitle title="Type code, that has been sent to your email:"/>
                         <input 
                             className={classNames(["labeled-input__input", style.input])}
                             type="text" 
                             placeholder="Sent code to your email..."
-                            {...register("activationCode", {
-                                required: "This field is required. "
-                            })}>
+                            {...register("activationCode", requiredFieldValidation)}>
                         </input>
-                    </label>
-                {<ErrorMessage
-                    errors={errors}
-                    name="activationCode"
-                    render={data => showInputError(data.message, style["input-error"])}
-                />}
-            </div> }
+                </InputWrapper>
+            }
 
             <ButtonBasic
                 theme="black"

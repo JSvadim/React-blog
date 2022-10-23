@@ -5,22 +5,7 @@
 .input-wrapper {
     display: block;
     margin: 0 0 20px 0;
-    &:nth-child(2) {
-        margin: 0 0 15px 0;
-    }
     position: relative;
-}
-.input-error,
-.form-error {
-    position: absolute;
-    right: 0;
-    width: 100%;
-}
-.input-error {
-    bottom: 50px;
-}
-.form-error {
-    bottom: calc( 100% + 10px);
 }
 
 .input {

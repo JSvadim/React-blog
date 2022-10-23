@@ -10,9 +10,11 @@ const InputError: React.FC<InputErrorI> = (props) => {
         <p className={
                 classNames(
                     style["input-error"],
-                    props.positioning
-                )
-            }>
+                    props.errorType ? 
+                    style[`type-${props.errorType}-error`] :
+                    style["type-input-error"]
+                )}
+            >
             {props.message} 
         </p>)
 }

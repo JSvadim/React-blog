@@ -7,16 +7,17 @@ import React, { SyntheticEvent } from "react";
 import { SubmitHandler } from "react-hook-form";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
-import { ErrorMessage } from "@hookform/error-message";
 
 // local imports
 import style from "./style.module.scss";
 import { LogInDataI } from "../../../types/auth/log-in-data";
 import { AuthController } from "../../../controllers/auth-controller";
 import Loading from "../../Loading";
-import ButtonBasic from "../../ButtonBasic";
-import InputError from "../../InputError";
-import { showInputError } from "../helpers";
+import ButtonBasic from "../../Buttons/ButtonBasic";
+import InputError from "../../Inputs/InputError";
+import { userEmailValidation, userPasswordValidation } from "../../../constants/input-validation";
+import InputWrapper from "../../Inputs/InputWrapper";
+import InputTitle from "../../Inputs/InputTitle";
 
 const LogInForm: React.FC = () => {
 
@@ -41,72 +42,40 @@ const LogInForm: React.FC = () => {
             className={style.form} 
             onSubmit={handleSubmit(onSubmit)}>
             {loading && <Loading/>}
-            {formError && <InputError message={formError} positioning={style["form-error"]}/>}
+            {formError && <InputError message={formError} errorType="form"/>}
 
-            <div className={style["input-wrapper"]}>
-                <label className={classNames(["labeled-input", style.label])}>
-                    <span className="labeled-input__title">Mail:</span>
+            <InputWrapper
+                sizesClass={style["input-wrapper"]}
+                registerName="email"
+                errors={errors}>
+                    <InputTitle title="Email:"/>
                     <input 
                         className={classNames(["labeled-input__input", style.input])}
                         type="email" 
                         placeholder="your email"
-                        {...register("email", {
-                            required: "This field is required. ",
-                            pattern: {
-                                value: /^([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,5})$/g,
-                                message: "Invalid email (haven't you forgotten @ or . symbols? "
-                            },
-                            maxLength: {
-                                value: 320,
-                                message: "Email can't be longer than 320 symbols"
-                            },
-                        })}>
+                        {...register("email", userEmailValidation)}>
                     </input>
-                </label>
-                <ErrorMessage
-                    errors={errors}
-                    name="email"
-                    render={data => showInputError(data.message, style["input-error"])}
-                />
-            </div>
+            </InputWrapper>
 
-            <div className={style["input-wrapper"]}>
-                <label className={classNames(["labeled-input", style.label])}>
-                    <span className="labeled-input__title">Password:</span>
+            <InputWrapper
+                sizesClass={style["input-wrapper"]}
+                registerName="password"
+                errors={errors}>
+                    <InputTitle title="Password:"/>
                     <input 
                         className={classNames(["labeled-input__input", style.input])}
-                        type="password"
+                        type="password" 
                         placeholder="your password"
-                        {...register("password", {
-                            required: "This field is required.",
-                            minLength: {
-                                value: 6,
-                                message: "password should be at least 6 symbols"
-                            },
-                            maxLength: {
-                                value: 20,
-                                message: "Password can't be longer than 20 symbols"
-                            },
-                            pattern: {
-                                value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]/g,
-                                message: `password should contain at least one uppercase
-                                    and one lowercase letter and at least one digit.`
-                            },
-                        })}>
+                        {...register("password", userPasswordValidation)}>
                     </input>
-                </label>
-                <ErrorMessage
-                    errors={errors}
-                    name="password"
-                    render={data => showInputError(data.message, style["input-error"])}
-                />
-            </div>
-
+            </InputWrapper>
+            
             <div>
                 <a className={classNames(["blue-link", style["blue-link"]])} 
                     href="/"> Forgot password?
                 </a>
             </div>
+
             <ButtonBasic
                 theme="black"
                 positioning={style.btn}
@@ -114,6 +83,7 @@ const LogInForm: React.FC = () => {
                 text="Log in"
                 onClick={() => {}}
             />
+            
             <div className={style["gray-link-wrapper"]}>
                 <Link 
                     className={classNames(["gray-link", style["gray-link"]])}
