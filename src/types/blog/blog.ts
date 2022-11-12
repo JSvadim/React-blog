@@ -1,7 +1,11 @@
 export interface BlogFormDataI {
     title: string;
     text: string;
-    pictures?: File[] | null;
+    "first-pic": File | null;
+    "second-pic": File | null;
+    "third-pic": File | null;
+    "fourth-pic": File | null;
+    "fifth-pic": File | null;
 }
 export interface BlogI {
     title: string;

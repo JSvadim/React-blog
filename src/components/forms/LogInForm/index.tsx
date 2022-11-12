@@ -47,7 +47,8 @@ const LogInForm: React.FC = () => {
             <InputWrapper
                 sizesClass={style["input-wrapper"]}
                 registerName="email"
-                errors={errors}>
+                errors={errors}
+                labelType="simple">
                     <InputTitle title="Email:"/>
                     <input 
                         className={classNames(["labeled-input__input", style.input])}
@@ -60,7 +61,8 @@ const LogInForm: React.FC = () => {
             <InputWrapper
                 sizesClass={style["input-wrapper"]}
                 registerName="password"
-                errors={errors}>
+                errors={errors}
+                labelType="simple">
                     <InputTitle title="Password:"/>
                     <input 
                         className={classNames(["labeled-input__input", style.input])}

@@ -1,6 +1,6 @@
 export interface NavI {
     isNavOpened: boolean;
-    toggleNav: React.Dispatch<React.SetStateAction<boolean>>;
+    toggleMenu: Function;
 }
 
 export interface BurgerPropsI {

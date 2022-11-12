@@ -1,4 +1,4 @@
-export type InputErrorType = "input" | "form";
+export type InputErrorType = "input" | "form" | "textarea";
 
 export interface InputErrorI {
     message: string,

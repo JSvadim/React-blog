@@ -33,7 +33,7 @@ const Header: React.FC = (props) => {
                         toggleMenu={toggleMenu}/>
                     <Navbar
                         isNavOpened={isNavigationOpened}
-                        toggleNav={toggleNav}/>
+                        toggleMenu={toggleMenu}/>
                 </div>
             </Container>
         </header>

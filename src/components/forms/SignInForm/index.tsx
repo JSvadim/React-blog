@@ -50,7 +50,8 @@ const SignInForm: React.FC = () => {
             <InputWrapper
                 sizesClass={style["input-wrapper"]}
                 registerName="nickname" 
-                errors={errors}>
+                errors={errors}
+                labelType="simple">
                     <InputTitle title="Nickname:"/>
                     <input 
                         className={classNames(["labeled-input__input", style.input])}
@@ -63,7 +64,8 @@ const SignInForm: React.FC = () => {
             <InputWrapper
                 sizesClass={style["input-wrapper"]}
                 registerName="email"
-                errors={errors}>
+                errors={errors}
+                labelType="simple">
                     <InputTitle title="Email:"/>
                     <input 
                         className={classNames(["labeled-input__input", style.input])}
@@ -76,7 +78,8 @@ const SignInForm: React.FC = () => {
             <InputWrapper
                 sizesClass={style["input-wrapper"]}
                 registerName="password"
-                errors={errors}>
+                errors={errors}
+                labelType="simple">
                     <InputTitle title="Password:"/>
                     <input 
                         className={classNames(["labeled-input__input", style.input])}
@@ -89,7 +92,8 @@ const SignInForm: React.FC = () => {
             <InputWrapper
                 sizesClass={style["input-wrapper"]}
                 registerName="gender"
-                errors={errors}>
+                errors={errors}
+                labelType="simple">
                     <InputTitle title="Gender:"/>
                     <div className="labeled-input__select-wrapper">
                         <select 
@@ -107,7 +111,8 @@ const SignInForm: React.FC = () => {
                 <InputWrapper
                     sizesClass={style["input-wrapper"]}
                     registerName="otherGender"
-                    errors={errors}>
+                    errors={errors}
+                    labelType="simple">
                         <InputTitle title="Type your gender:"/>
                         <input 
                             className={classNames(["labeled-input__input", style.input])}
@@ -122,7 +127,8 @@ const SignInForm: React.FC = () => {
                 <InputWrapper
                     sizesClass={style["input-wrapper"]}
                     registerName="activationCode"
-                    errors={errors}>
+                    errors={errors}
+                    labelType="simple">
                         <InputTitle title="Type code, that has been sent to your email:"/>
                         <input 
                             className={classNames(["labeled-input__input", style.input])}

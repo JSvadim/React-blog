@@ -22,7 +22,7 @@ const Navbar: React.FC<NavI> = (props) => {
                         return (
                             <li className={style["list-item"]} key={index}>
                                 <NavLink className={style.link} 
-                                    onClick={() => {props.toggleNav(false)}}
+                                    onClick={() => {props.toggleMenu()}}
                                     style={setActiveLinkStyle} 
                                     to={item.path}>
                                         {item.title}

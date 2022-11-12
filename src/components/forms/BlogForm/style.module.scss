@@ -9,21 +9,27 @@
     margin: 0 0 20px 0;
     position: relative;
 }
-.input-error,
-.form-error {
-    position: absolute;
-    right: 0;
-    width: 100%;
+.image-inputs-wrapper {
+    margin-bottom: 20px;
+    position: relative;
 }
-.input-error {
-    top: -10px;
+.image-inputs-carousel {
+    display: flex;
+    overflow-x: auto;
+    padding-bottom: 20px;
 }
-.form-error {
-    bottom: calc( 100% + 10px);
+.image-input {
+    margin-right: 20px;
+    flex: 0 0 150px;
+    height: 189px;
+    &:last-child {
+        margin-right: 0px;
+    }
 }
 .input {
     width: 100%;
 }
+
 .buttons {
     display: flex;
     justify-content: space-between;
@@ -31,8 +37,10 @@
 
 .add-images-decor {
     position: absolute;
-    top: 0px;
-    left: 115px;
+    top: 20px;
+    right: 10px;
+    width: 21px;
+    height: 24px;
 }
 
 .preview-image {
@@ -45,6 +53,12 @@
     }
     &.removing {
         animation: PreviewPictureRemoving 0.5s forwards;
+    }
+}
+
+@media(min-width: 380px) {
+    .image-input {
+        flex: 0 0 calc(50% - 10px);
     }
 }
 
@@ -67,11 +81,12 @@
     .input-wrapper {
         margin: 0;
     }
+    .image-input {
+        height: 200px;
+    }
     .add-images-decor {
         top: -7px;
         left: 126px;
-        width: 21px;
-        height: 24px;
     }
     .preview-image {
         flex: 0 0 89.33px;
@@ -87,5 +102,16 @@
         &:nth-child(5) {
             margin-bottom: 0px;
         }
+    }
+}
+
+@media(min-width: 1400px) {
+    .row {
+        &--right {
+            transform: translate(0, -8px);
+        }
+    }
+    .image-inputs-wrapper {
+        margin-bottom: 28px;
     }
 }

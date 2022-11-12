@@ -1,0 +1,55 @@
+.button {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+// button type CIRCLE styles start
+.button-circle {
+    border-radius: 50%;
+    border: 1px solid var(--col-black-light);
+    background-color: var(--col-white);
+    transition: all 0.5s;
+    .cross {
+        position: relative;
+        width: 25px;
+        height: 25px;
+        &-part {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 3px;
+            width: 100%;
+            border-radius: 5px;
+            background-color: var(--col-gray);
+            transform-origin: center center;
+            &:first-child {
+                transform: translateY(-50%) rotateZ(-45deg);
+            }
+            &:nth-child(2) {
+                transform: translateY(-50%) rotateZ(45deg);
+            }
+        }
+        pointer-events: none;
+        transition: all 0.5s;
+    }
+}
+.button-circle:hover,
+.button-circle:focus-visible {
+    background-color: var(--col-white-50-transparent);
+}
+.button-circle.button-light:hover,
+.button-circle.button-light:focus-visible {
+    .cross-part {
+        background-color: var(--col-blue-dark);
+    }
+}
+.button-circle.button-dark:hover,
+.button-circle.button-dark:focus-visible {
+    .cross-part {
+        background-color: var(--col-violet-light);
+    }
+}
+// button type CIRCLE styles finish

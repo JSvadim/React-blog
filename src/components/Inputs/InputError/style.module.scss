@@ -11,6 +11,13 @@
     animation: errorAppearance 0.5s forwards;
 }
 
+.type-textarea-error {
+    position: absolute;
+    right: 0;
+    top: -10px;
+    width: 100%;
+}
+
 .type-input-error {
     position: absolute;
     right: 0;

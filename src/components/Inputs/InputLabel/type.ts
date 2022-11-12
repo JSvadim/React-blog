@@ -1,3 +1,5 @@
+export type labelType = "simple" | "flex-row";
+
 export interface InputLabelI {
-    labelType: "simple" | "flex-row";
+    labelType: labelType;
 }
