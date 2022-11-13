@@ -42,11 +42,11 @@ export const BlogForm: React.FC<BlogFormI> = (props) => {
     const navigate = useNavigate();
 
     const onSubmit: SubmitHandler<BlogFormDataI> = async (data): Promise<void> => {
-        data["first-pic"] = pictures["first-pic"] ? pictures["first-pic"] : null;
-        data["second-pic"] = pictures["second-pic"] ? pictures["second-pic"] : null;
-        data["third-pic"] = pictures["third-pic"] ? pictures["third-pic"] : null;
-        data["fourth-pic"] = pictures["fourth-pic"] ? pictures["fourth-pic"] : null;
-        data["fifth-pic"] = pictures["fifth-pic"] ? pictures["fifth-pic"] : null;
+        data["first-pic"] = pictures["first-pic"]; 
+        data["second-pic"] = pictures["second-pic"];
+        data["third-pic"] = pictures["third-pic"];
+        data["fourth-pic"] = pictures["fourth-pic"]; 
+        data["fifth-pic"] = pictures["fifth-pic"];
         const params = {
             data,
             setFormError, 
