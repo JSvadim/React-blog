@@ -1,14 +1,72 @@
 // third party
 import classNames from "classnames";
+import { useState, useEffect } from "react";
 
 // local imports
 import style from "./style.module.scss";
 import { blogData } from "../../constants/blog-example";
 import Blog from "../../components/Blog";
+import { blogI } from "../../components/Blog/type";
 import Container from "../../components/Container";
 import Pagination from "../../components/Pagination";
+import Loading from "../../components/Loading";
 
 const BlogsPage: React.FC = () => {
+    
+    const [ blogs, setBlogs ] = useState<null | blogI[]>(null);
+    const [ loading, setLoading ] = useState<Boolean>(true);
+
+    useEffect(() => {
+        const fakeBlogs = [
+            {
+                title: blogData.title,
+                text: blogData.text,
+                pics: blogData.pics,
+                isFake: true,
+            },
+            {
+                title: blogData.title,
+                text: blogData.text,
+                isFake: true,
+            },
+            {
+                title: blogData.title,
+                text: blogData.text,
+                isFake: true,
+            },
+            {
+                title: blogData.title,
+                text: blogData.text,
+                pics: blogData.pics,
+                isFake: true,
+            },
+            {
+                title: blogData.title,
+                text: blogData.text,
+                isFake: true,
+            },
+            {
+                title: blogData.title,
+                text: blogData.text,
+                isFake: true,
+            },
+        ]
+        console.log("useeffect");
+        
+        setTimeout(() => {
+            setBlogs(fakeBlogs);
+            setLoading(false);
+        }, 1000);
+    }, [])
+
+    if(loading) {
+        return (
+            <div className={style["loading-wrapper"]}>
+                <Loading/>
+            </div>
+        )
+    }
+
     return (
         <Container>
             <div className={style.wrapper}>
@@ -16,68 +74,31 @@ const BlogsPage: React.FC = () => {
                     <span className={style["title-small"]}>BEST blog</span>
                     <span className={style["title-big"]}>EVER</span>
                 </h1>
-                <ul className={style.blogs}>
-                    <li className={style.blog}>
-                        <Blog
-                            title={blogData.title}
-                            text={blogData.text}
-                            pics={blogData.pics}
-                            isFake={true}/>
-                    </li>
-                    <li className={style.blog}>
-                        <Blog
-                            title={blogData.title}
-                            text={blogData.text}
-                            isFake={true}/>
-                    </li>
-                    <li className={style.blog}>
-                        <Blog
-                            title={blogData.title}
-                            text={blogData.text}
-                            isFake={true}/>
-                    </li>
-                    <li className={style.blog}>
-                        <Blog
-                            title={blogData.title}
-                            text={blogData.text}
-                            pics={blogData.pics}
-                            isFake={true}/>
-                    </li>
-                    <li className={style.blog}>
-                        <Blog
-                            title={blogData.title}
-                            text={blogData.text}
-                            pics={blogData.pics}
-                            isFake={true}/>
-                    </li>
-                    <li className={style.blog}>
-                        <Blog
-                            title={blogData.title}
-                            text={blogData.text}
-                            isFake={true}/>
-                    </li>
-                    <li className={style.blog}>
-                        <Blog
-                            title={blogData.title}
-                            text={blogData.text}
-                            pics={blogData.pics}
-                            isFake={true}/>
-                    </li>
-                    <li className={style.blog}>
-                        <Blog
-                            title={blogData.title}
-                            text={blogData.text}
-                            pics={blogData.pics}
-                            isFake={true}/>
-                    </li>
-                    <li className={style.blog}>
-                        <Blog
-                            title={blogData.title}
-                            text={blogData.text}
-                            isFake={true}/>
-                    </li>
-                </ul>
-                <Pagination className={style.pagination}/>
+                {!blogs && (
+                    <div className={style["no-blogs"]}>
+                        <p className={style["no-blogs__text"]}>
+                            You have no blogs..
+                        </p>
+                    </div>
+                )}
+                {blogs && (
+                    <>
+                        <ul className={style.blogs}>
+                            {blogs.map(blog => {
+                                return (
+                                    <li className={style.blog} key={Math.random()}>
+                                        <Blog
+                                            title={blog.title}
+                                            text={blog.text}
+                                            pics={blog.pics || undefined}
+                                            isFake={true}/>
+                                    </li>
+                                )
+                            })}
+                        </ul>
+                        <Pagination className={style.pagination}/>
+                    </>
+                )}
             </div>
         </Container>
     )

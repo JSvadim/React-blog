@@ -5,7 +5,10 @@
     flex-direction: column;
     align-items: center;
 }
-
+.loading-wrapper {
+    height: calc(100vh - 65px);
+    position: relative;
+}
 .title {
     position: absolute;
     top: 25px;
@@ -32,7 +35,10 @@
     padding: 124px 0 0px 0px;
 }
 .blog {
-    margin: 0 0 34px 0;
+    margin: 0 0 24px 0;
+    padding: 10px 0 0 0;
+    border-radius: 10px;
+    background-color: var(--col-white-75-transparent);
     &:last-child {
         margin: 0;
     }
@@ -76,6 +82,9 @@
 }
 
 @media(min-width: 1400px) {
+    .loading-wrapper {
+        height: calc(100vh - 88px);
+    }
     .title {
         left: -5px;
         top: 62px;
