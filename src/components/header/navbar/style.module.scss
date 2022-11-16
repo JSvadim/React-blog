@@ -30,6 +30,9 @@
         &:focus-visible {
             color: var(--col-text-violet-light);
         }
+        &:focus-visible {
+            outline: 2px solid var(--col-green);
+        }
     }
     .list-item {
         margin: 0 0 8px 0;
@@ -68,6 +71,9 @@
             &:hover,
             &:focus-visible {
                 color: var(--col-text-green);
+            }
+            &:focus-visible {
+                outline: 2px solid var(--col-white);
             }
         }
         & .list-item {

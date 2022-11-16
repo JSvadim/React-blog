@@ -31,9 +31,13 @@
         animation: appearance 0.7s ease 0s forwards;
     }
     &:hover,
-    &:focus-visible
+    &:focus-visible,
     &.active {
         color: var(--col-text-green);
+        text-decoration: initial;
+    }
+    &:focus-visible {
+        outline: 2px solid var(--col-white);
     }
 }
 

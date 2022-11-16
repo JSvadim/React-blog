@@ -14,16 +14,14 @@ const BurgerMenu: React.FC<BurgerPropsI> = (props) => {
 
     return (
         <div className={burgerClassName}>
-            <div className={style.inner}>
-                <div className={style.decor}></div>
-                <div className={style.decor}></div>
-                <div className={style.decor}></div>
-            </div>
             <button 
                 className={style.button} 
                 onClick={() => props.toggleMenu()}>
                 Open menu
             </button>
+            <div className={style.decor}></div>
+            <div className={style.decor}></div>
+            <div className={style.decor}></div>
         </div>
     )
 

@@ -8,29 +8,25 @@
     z-index: 4;
     transform: translateX(15px);
     & .decor {
+        pointer-events: none;
         height: 4px;
-        width: 100%;
+        width: 28px;
         background-color: var(--col-white);
         border-radius: 10px;
         transition: all 0.5s;
         position: absolute;
-        left: 0;
-        &:first-child {
-            top: 0;
-            transform-origin: center left;
-        }
+        left: calc(50% - 14px);
         &:nth-child(2) {
-            top: calc(50% - 2px);
+            top: calc(50% - 12px);
+            transform-origin: center left;
         }
         &:nth-child(3) {
-            bottom: 0;
+            top: calc(50% - 2px);
+        }
+        &:nth-child(4) {
+            top: calc(50% + 8px);
             transform-origin: center left;
         }
-    }
-    & .inner {
-        width: 28px;
-        height: 24px;
-        position: relative;
     }
     & .button {
         position: absolute;
@@ -40,21 +36,26 @@
         height: 100%;
         font-size: 0;
         color: rgba($color: #000000, $alpha: 0);
+        &:hover ~ .decor,
+        &:focus-visible ~ .decor {
+            background-color: var(--col-green);
+        }
+        &:focus-visible {
+            border: 2px solid var(--col-white);
+        }
     }
-    &:hover .decor {
-        background-color: var(--col-green);
-    }
+    
 }
 .burger-opened {
     & .decor {
-        &:first-child {
-            transform: rotateZ(45deg);
-        }
         &:nth-child(2) {
-            opacity: 0;
+            transform: translateX(4.5px) rotateZ(45deg);
         }
         &:nth-child(3) {
-            transform: rotateZ(-45deg);
+            opacity: 0;
+        }
+        &:nth-child(4) {
+            transform: translateX(4.5px) rotateZ(-45deg);
         }
     }
 }
