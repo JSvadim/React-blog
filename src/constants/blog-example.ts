@@ -9,5 +9,5 @@ export const blogData = {
         it was not it but actually was it. I’m not sure, but
         he’s a cato-human, I saw yesterday it and 
         it was not it but actually was it. I’m not sure, but...`,
-    pics: [firstCat, secondCat, thirdCat]
+    pics: `${firstCat} ${secondCat} ${thirdCat}`
 }

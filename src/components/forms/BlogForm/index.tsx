@@ -16,8 +16,6 @@ import Loading from "../../Loading";
 import addImagesDecor from "../../../assets/images/decor-things/add-images-decor.svg";
 import { BlogFormDataI, BlogI } from "../../../types/blog/blog";
 import BlogController from "../../../controllers/blog-controller";
-import { store } from "../../../redux/store";
-import { addBlogCreator } from "../../../redux/action-creators/blog";
 import ButtonBasic from "../../Buttons/ButtonBasic";
 import InputError from "../../Inputs/InputError";
 import { blogTitleValidation, blogTextValidation } from "../../../constants/input-validation";
@@ -54,8 +52,11 @@ export const BlogForm: React.FC<BlogFormI> = (props) => {
         };
         const addedBlog = await BlogController.addBlog(params);
         if(addedBlog) {
-            store.dispatch(addBlogCreator(addedBlog));
-            navigate("/blog");
+            navigate("/blog", {
+                state: {
+                    blog: addedBlog
+                }
+            });
         }
     };
  

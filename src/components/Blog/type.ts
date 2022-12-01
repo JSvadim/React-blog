@@ -1,10 +1,7 @@
 export interface blogI {
+    id: number;
     title: string;
     text: string;
-    pics?: Array<any>;
+    pictures: string | null;
     isFake: boolean;
-}
-
-export interface PicturesListI {
-    pics: Array<any>;
 }

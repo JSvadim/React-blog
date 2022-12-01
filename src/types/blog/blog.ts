@@ -10,11 +10,7 @@ export interface BlogFormDataI {
 export interface BlogI {
     title: string;
     text: string;
-    pic_1: string;
-    pic_2: string;
-    pic_3: string;
-    pic_4: string;
-    pic_5: string;
+    pictures: string | null;
     id_user: number;
     id_blog: number;
     date: Date;

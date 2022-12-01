@@ -1,5 +1,5 @@
 .blog {
-    width: 100%;
+    width: calc(100vw - 20px);
     .title {
         font-size: 20px;
         &-decor {
@@ -17,6 +17,14 @@
             padding: 0 0 0 50px;
             display: flex;
             position: relative;
+        }
+        &-link {
+            color: var(--col-text-black);
+            cursor: pointer;
+            transition: color 0.5s;
+            &:hover {
+                color: var(--col-blue-dark);
+            }
         }
     }
     .body {
@@ -44,18 +52,26 @@
         // Addition of 3 line multiline ellipsis
     }
     .pics {
-        display: flex;
+        white-space: nowrap;
         overflow-y: auto;
         width: 100%;
-        padding: 0 0 10px 0;
+        padding: 0 0 10px 0; 
         &-item {
-            flex: 0 0 69px;
-            width: 69px;
-            height: 74px;
+            display: inline-block;
+            height: 124px;
+            min-width: 100px;
             margin: 0 16px 0 0;
+            overflow: hidden;
+            position: relative;
             &:last-child {
                 margin: 0;
             }
+        }
+        &-image {
+            width: auto;
+            min-width: 100px;
+            height: 100%;
+            object-fit: cover;
         }
     }
     .read-all-link {
@@ -78,7 +94,7 @@
     }
     &--with-pics {
         .body {
-            height: 212px;
+            height: 262px;
         }
         .text {
             margin: 0 0 16px 0;
@@ -105,10 +121,13 @@
                 flex-direction: row;
                 flex-wrap: wrap;
             }
+            .body {
+                height: 250px;
+            }
             .text {
                 margin: 0;
                 width: 124px;
-                -webkit-line-clamp: 8;
+                -webkit-line-clamp: 10;
             }
         }
         .pics {
@@ -118,9 +137,7 @@
             width: 270px;
             padding: 0 0 18px 0;
             &-item {
-                flex: 0 0 117.5px;
-                width: 117.5px;
-                height: 144px;
+                height: 164px;
                 margin: 0 35px 0 0;
                 &:last-child {
                     margin: 0;
@@ -130,27 +147,36 @@
     }
 }
 
+@media(min-width: 1200px) {
+    .blog {
+        .body {
+            height: 250px;
+        }
+        .text {
+            -webkit-line-clamp: 10;
+        }
+    }
+}
+
 @media(min-width: 1400px) {
     .blog {
         width: 380px;
         .body {
-            height: 212px;
+            height: 260px;
         }
         .text {
             font-size: 16px;
+            -webkit-line-clamp: 9;
         }
         &--with-pics {
             .text {
                 width: 145px;
-                -webkit-line-clamp: 7;
+                -webkit-line-clamp: 8;
             }
         }
         .pics {
             width: 180px;
             &-item {
-                flex: 0 0 82.5px;
-                width: 82.5px;
-                height: 108px;
                 margin: 0 15px 0 0;
             }
         }

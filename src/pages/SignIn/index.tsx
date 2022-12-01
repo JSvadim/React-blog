@@ -22,13 +22,16 @@ const SignInPage: React.FC = () => {
                 </div>
                 <div className={style["example-posts"]}>
                     <Blog
+                        id={1}
                         title={blogData.title}
                         text={blogData.text}
-                        pics={blogData.pics}
+                        pictures={blogData.pics}
                         isFake={true}/>
                     <Blog
+                        id={2}
                         title={blogData.title}
                         text={blogData.text}
+                        pictures={null}
                         isFake={true}/>
                 </div>
             </div>

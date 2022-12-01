@@ -1,62 +1,33 @@
+// hooks
+import { useState, useEffect } from "react";
+
 // third party
 import classNames from "classnames";
-import { useState, useEffect } from "react";
 
 // local imports
 import style from "./style.module.scss";
-import { blogData } from "../../constants/blog-example";
 import Blog from "../../components/Blog";
-import { blogI } from "../../components/Blog/type";
 import Container from "../../components/Container";
 import Pagination from "../../components/Pagination";
 import Loading from "../../components/Loading";
+import blogController from "../../controllers/blog-controller";
+import { BlogI } from "../../types/blog/blog";
 
 const BlogsPage: React.FC = () => {
     
-    const [ blogs, setBlogs ] = useState<null | blogI[]>(null);
+    const [ blogs, setBlogs ] = useState<null | BlogI[]>(null);
     const [ loading, setLoading ] = useState<Boolean>(true);
 
     useEffect(() => {
-        const fakeBlogs = [
-            {
-                title: blogData.title,
-                text: blogData.text,
-                pics: blogData.pics,
-                isFake: true,
-            },
-            {
-                title: blogData.title,
-                text: blogData.text,
-                isFake: true,
-            },
-            {
-                title: blogData.title,
-                text: blogData.text,
-                isFake: true,
-            },
-            {
-                title: blogData.title,
-                text: blogData.text,
-                pics: blogData.pics,
-                isFake: true,
-            },
-            {
-                title: blogData.title,
-                text: blogData.text,
-                isFake: true,
-            },
-            {
-                title: blogData.title,
-                text: blogData.text,
-                isFake: true,
-            },
-        ]
-        console.log("useeffect");
-        
-        setTimeout(() => {
-            setBlogs(fakeBlogs);
+        const fetchBlogs = async () => {
+            const fetchedBlogs = await blogController.getBlogs();
+            if(fetchedBlogs?.data) {
+                setBlogs(fetchedBlogs.data);
+            }
             setLoading(false);
-        }, 1000);
+
+        }
+        fetchBlogs();
     }, [])
 
     if(loading) {
@@ -86,12 +57,13 @@ const BlogsPage: React.FC = () => {
                         <ul className={style.blogs}>
                             {blogs.map(blog => {
                                 return (
-                                    <li className={style.blog} key={Math.random()}>
+                                    <li className={style.blog} key={blog.text}>
                                         <Blog
+                                            id={blog["id_blog"]}
                                             title={blog.title}
                                             text={blog.text}
-                                            pics={blog.pics || undefined}
-                                            isFake={true}/>
+                                            pictures={blog.pictures}
+                                            isFake={false}/>
                                     </li>
                                 )
                             })}

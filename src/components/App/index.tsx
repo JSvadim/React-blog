@@ -28,7 +28,6 @@ const App: React.FC = () => {
       checkAuth();
     }
   } , [])
-  const { blog } = useTypedSelector(state => state.blog);
   const { user } = useTypedSelector(state => state.user);
 
 
@@ -37,9 +36,7 @@ const App: React.FC = () => {
       <Header/>
         <Routes>
           <Route path="/" element={ <BlogsPage/> }/>
-          <Route path="/blog" element={ 
-            blog !== null ? <BlogPage blog={blog}/> : <BlogsPage/> 
-          }/>
+          <Route path="/blog" element={<BlogPage/>}/>
           <Route path="/my-blogs" element={
             user !== null ? <MyBlogsPage/> : <LogInPage/> 
           }/>
