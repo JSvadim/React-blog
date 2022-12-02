@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 
 // local imports
 import style from "./style.module.scss";
-import { blogI } from "./type";
+import { BlogComponentI } from "./type";
 import PicturesList from "../PicturesList";
 
 
 
 
-const Blog: React.FC<blogI> = (props) => {
+const Blog: React.FC<BlogComponentI> = (props) => {
 
     const fakeLink = <span className={classNames([style["read-all-link"], "unselectable"])}>read all blog...</span>;
     const trueLink = (

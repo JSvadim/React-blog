@@ -9,12 +9,11 @@ import { SubmitHandler, Controller } from "react-hook-form";
 import classNames from "classnames";
 
 // local imports 
-import { BlogFormI, FormPicturesI, PicNames } from "./type";
+import { AddBlogFormComponentI, AddBlogFormDataI, AddBlogFormPicturesI, PicNames } from "./type";
 import style from "./style.module.scss";
 import Loading from "../../Loading";
 
 import addImagesDecor from "../../../assets/images/decor-things/add-images-decor.svg";
-import { BlogFormDataI, BlogI } from "../../../types/blog/blog";
 import BlogController from "../../../controllers/blog-controller";
 import ButtonBasic from "../../Buttons/ButtonBasic";
 import InputError from "../../Inputs/InputError";
@@ -23,10 +22,10 @@ import InputWrapper from "../../Inputs/InputWrapper";
 import InputTitle from "../../Inputs/InputTitle";
 import ImageInput from "../../Inputs/ImageInput";
 
-export const AddBlogForm: React.FC<BlogFormI> = (props) => {
+export const AddBlogForm: React.FC<AddBlogFormComponentI> = (props) => {
     
     const [ formError, setFormError ] = useState("");
-    const [ pictures, setPictures ] = useState<FormPicturesI>({
+    const [ pictures, setPictures ] = useState<AddBlogFormPicturesI>({
         "first-pic": null,
         "second-pic": null,
         "third-pic": null,
@@ -34,12 +33,12 @@ export const AddBlogForm: React.FC<BlogFormI> = (props) => {
         "fifth-pic": null,
     })
     const [ loading, setLoading ] = useState(false);
-    const { register, control, formState: {errors}, handleSubmit } = useForm<BlogFormDataI>({
+    const { register, control, formState: {errors}, handleSubmit } = useForm<AddBlogFormDataI>({
         mode: "onBlur"
     });
     const navigate = useNavigate();
 
-    const onSubmit: SubmitHandler<BlogFormDataI> = async (data): Promise<void> => {
+    const onSubmit: SubmitHandler<AddBlogFormDataI> = async (data): Promise<void> => {
         data["first-pic"] = pictures["first-pic"]; 
         data["second-pic"] = pictures["second-pic"];
         data["third-pic"] = pictures["third-pic"];

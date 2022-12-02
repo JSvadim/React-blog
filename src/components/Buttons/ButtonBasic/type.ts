@@ -1,4 +1,4 @@
-export interface ButtonBasicPropsI {
+export interface ButtonBasicComponentI {
     theme: "black" |
            "white",
     positioning?: string,

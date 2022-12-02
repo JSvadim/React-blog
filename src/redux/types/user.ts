@@ -1,8 +1,9 @@
-import { UserI } from "../../types/auth/user";
+// local imports
+import { UserResponseI } from "../../types/server-responses/user";
 
 
 export interface UserStateI {
-    user: UserI | null;
+    user: UserResponseI | null;
     loading: boolean;
 }
 
@@ -18,7 +19,7 @@ interface UserLoadingActionI {
 
 interface UserLoginActionI {
     type: UserActions.login;
-    payload: UserI;
+    payload: UserResponseI;
 }
 
 interface UserLogoutActionI {

@@ -1,15 +1,15 @@
 // local imports
-import { LogInDataI } from "./log-in-data";
-import { SignInDataI } from "./sign-in-data";
+import { LogInFormDataI } from "../../components/forms/LogInForm/type";
+import { SignInFormDataI } from "../../components/forms/SignInForm/type";
 
-export interface LoginControllerI {
-    data: LogInDataI;
+export interface LogInControllerI {
+    data: LogInFormDataI;
     setFormError: React.Dispatch<React.SetStateAction<string>>;
     setLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export interface SignInControllerI {
-    data: SignInDataI;
+    data: SignInFormDataI;
     setIsActivationCodeSent: React.Dispatch<React.SetStateAction<boolean>>;
     setFormError: React.Dispatch<React.SetStateAction<string>>;
     setLoading: React.Dispatch<React.SetStateAction<boolean>>;

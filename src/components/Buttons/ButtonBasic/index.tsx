@@ -1,10 +1,10 @@
 // local imports
 import classNames from "classnames";
 import style from "./style.module.scss";
-import { ButtonBasicPropsI } from "./type";
+import { ButtonBasicComponentI } from "./type";
 
 
-const ButtonBasic: React.FC<ButtonBasicPropsI> = (props) => {
+const ButtonBasic: React.FC<ButtonBasicComponentI> = (props) => {
     return (
         <button
             className={

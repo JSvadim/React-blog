@@ -10,11 +10,11 @@ import Pagination from "../../components/Pagination";
 import Blog from "../../components/Blog";
 import Loading from "../../components/Loading";
 import blogController from "../../controllers/blog-controller";
-import { BlogI } from "../../types/blog/blog";
+import { BlogResponseI } from "../../types/server-responses/blog";
 
 const MyBlogsPage: React.FC = () => {
 
-    const [ blogs, setBlogs ] = useState<null | BlogI[]>(null);
+    const [ blogs, setBlogs ] = useState<null | BlogResponseI[]>(null);
     const [ loading, setLoading ] = useState<Boolean>(true);
     const { user } = useTypedSelector(state => state.user);
 

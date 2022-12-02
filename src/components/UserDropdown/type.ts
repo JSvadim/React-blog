@@ -1,10 +1,11 @@
 // local imports
-import { UserI } from "../../types/auth/user";
+import { UserResponseI } from "../../types/server-responses/user";
+
 
 export type UserDropdownThemeType = "black" | "white";
 
-export interface userDropdownI {
+export interface UserDropdownComponentI {
     theme: UserDropdownThemeType;
-    user: UserI;
-    className?: string
+    user: UserResponseI;
+    className?: string;
 }

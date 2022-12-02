@@ -1,4 +1,4 @@
-export interface blogI {
+export interface BlogComponentI {
     id: number;
     title: string;
     text: string;

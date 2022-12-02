@@ -3,12 +3,12 @@ import { useState } from "react"
 
 // local imports
 import { User } from "../User"
-import { userDropdownI } from "./type";
+import { UserDropdownComponentI } from "./type";
 import style from "./style.module.scss";
 import { DropdownNav } from "./DropdownNav";
 
 
-export const UserDropdown: React.FC<userDropdownI> = (props) => {
+export const UserDropdown: React.FC<UserDropdownComponentI> = (props) => {
 
     const [ isOpened, setIsOpened ] = useState(false);
     const [ isClickable, setIsClickable ] = useState(true);

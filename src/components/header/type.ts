@@ -1,9 +1,9 @@
-export interface NavI {
+export interface HeaderNavbarComponentI {
     isNavOpened: boolean;
     toggleMenu: Function;
 }
 
-export interface BurgerPropsI {
+export interface BurgerMenuComponentI {
     isNavOpened: boolean;
     toggleMenu: Function;
 }

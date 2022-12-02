@@ -1,8 +1,8 @@
 // local imports
-import { UserI } from "../../types/auth/user"
+import { UserResponseI } from "../../types/server-responses/user";
 import { UserActions } from "../types/user"
 
-export const loginUserCreator = (payload: UserI) => ({
+export const loginUserCreator = (payload: UserResponseI) => ({
     type: UserActions.login,
     payload
 });

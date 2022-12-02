@@ -1,6 +1,6 @@
 // local imports
 import { BlogService } from "../services/blog-service";
-import { AddBlogControllerI } from "../types/blog/controller";
+import { AddBlogControllerI } from "../types/controllers/blog";
 
 
 class BlogController {

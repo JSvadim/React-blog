@@ -1,9 +1,8 @@
 // local imports
-import { UserI } from "../auth/user";
-import { BlogFormDataI } from "./blog";
+import { AddBlogFormDataI } from "../../components/forms/AddBlogForm/type";
 
 export interface AddBlogControllerI {
-    data: BlogFormDataI;
+    data: AddBlogFormDataI
     setFormError: React.Dispatch<React.SetStateAction<string>>;
     setLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }

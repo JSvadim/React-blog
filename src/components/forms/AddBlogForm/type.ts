@@ -1,8 +1,13 @@
-export interface BlogFormI {
+export interface AddBlogFormComponentI {
     className?: string;
 }
 
-export interface FormPicturesI {
+export interface AddBlogFormDataI extends AddBlogFormPicturesI {
+    title: string;
+    text: string;
+}
+
+export interface AddBlogFormPicturesI {
     "first-pic": null | File,
     "second-pic": null | File,
     "third-pic": null | File,

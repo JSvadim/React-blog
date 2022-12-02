@@ -1,10 +1,10 @@
 // local imports
 import { User } from "../User";
 import style from "./style.module.scss";
-import { CommentComponentPropsI } from "./type";
+import { CommentComponentI } from "./type";
 
 
-const Comment: React.FC<CommentComponentPropsI> = (props) => {
+const Comment: React.FC<CommentComponentI> = (props) => {
     return (
         <div className={props.className}>
 

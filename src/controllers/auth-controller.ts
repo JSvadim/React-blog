@@ -1,11 +1,11 @@
 // local imports 
 import { AuthService } from "../services/auth-service";
-import { loginUserCreator, loadingUserCreator, logoutUserCreator } from "../redux/action-creators/user";
-import { LogInSignInResponseI } from "../types/auth/response";
+import { loginUserCreator } from "../redux/action-creators/user";
+import { LogInResponseI, SignInResponseI } from "../types/server-responses/auth";
 import { localStorageAccessToken } from "../constants/local-storage";
 import { store } from "../redux/store";
-import { LoginControllerI, SignInControllerI } from "../types/auth/controller";
 import { UserActions } from "../redux/types/user";
+import { LogInControllerI, SignInControllerI } from "../types/controllers/auth";
 
 export class AuthController {
     static async refresh () {
@@ -21,12 +21,12 @@ export class AuthController {
             console.log(e);
           }
     }
-    static async login (params: LoginControllerI) {
+    static async login (params: LogInControllerI) {
         try { 
             params.setFormError('');
             params.setLoading(true);
 
-            const response: LogInSignInResponseI = await AuthService.logIn(params.data);
+            const response: LogInResponseI = await AuthService.logIn(params.data);
             const { user, token } = response;
 
             localStorage.setItem(localStorageAccessToken, token);
@@ -52,7 +52,7 @@ export class AuthController {
             params.setFormError('');
             params.setLoading(true);
 
-            const response: LogInSignInResponseI | string = await AuthService.signIn(params.data);
+            const response: SignInResponseI | string = await AuthService.signIn(params.data);
             if(typeof response === 'string') {
                 params.setIsActivationCodeSent(true);
                 return params.setLoading(false);

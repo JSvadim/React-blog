@@ -3,23 +3,23 @@ import { AxiosResponse } from "axios";
 
 // local imports
 import { $api } from "../http/index";
-import { LogInSignInResponseI } from "../types/auth/response";
-import { SignInDataI } from "../types/auth/sign-in-data";
-import { LogInDataI } from "../types/auth/log-in-data";
+import { LogInResponseI, RefreshResponseI, SignInResponseI } from "../types/server-responses/auth";
+import { SignInFormDataI } from "../components/forms/SignInForm/type";
+import { LogInFormDataI } from "../components/forms/LogInForm/type";
 
 
 export class AuthService {
 
-    static async signIn(data: SignInDataI): Promise<LogInSignInResponseI | string> {
-        const response = await $api.post<LogInSignInResponseI | string>("/auth/signin", data);
+    static async signIn(data: SignInFormDataI): Promise<SignInResponseI | string> {
+        const response = await $api.post<SignInResponseI | string>("/auth/signin", data);
         if(response.data === "activation mail has been sent") {
             return "activation mail has been sent"
         }
         return response.data
     }
 
-    static async logIn(data: LogInDataI): Promise<LogInSignInResponseI> {
-        const response = await $api.post<LogInSignInResponseI>("/auth/login", data);
+    static async logIn(data: LogInFormDataI): Promise<LogInResponseI> {
+        const response = await $api.post<LogInResponseI>("/auth/login", data);
         return response.data
     }
 
@@ -30,8 +30,8 @@ export class AuthService {
     static async (): Promise<void> {
         return $api.post("/auth/refresh");
     }
-    static async refresh(): Promise<LogInSignInResponseI> {
-        const response = await $api.post<LogInSignInResponseI>("/auth/refresh");
+    static async refresh(): Promise<RefreshResponseI> {
+        const response = await $api.post<RefreshResponseI>("/auth/refresh");
         return response.data
     }
 

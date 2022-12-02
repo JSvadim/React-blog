@@ -1,5 +1,5 @@
 
-export interface ButtonCloseI {
+export interface ButtonCloseComponentI {
     theme: "light" | "dark";
     type: "circle" | "no-background";
     sizesClass: string;

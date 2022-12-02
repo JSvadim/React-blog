@@ -10,7 +10,6 @@ import style from "./style.module.scss";
 import { BlogPageLocationI } from "./type";
 import Container from "../../components/Container";
 import blogController from "../../controllers/blog-controller";
-import { BlogI } from "../../types/blog/blog";
 import Loading from "../../components/Loading";
 import { User } from "../../components/User";
 import { formatDate } from "./helpers";
@@ -20,6 +19,7 @@ import Comment from "../../components/Comment";
 import ButtonBasic from "../../components/Buttons/ButtonBasic";
 import { AddCommentForm } from "../../components/forms/AddCommentForm";
 import finalPropsSelectorFactory from "react-redux/es/connect/selectorFactory";
+import { BlogResponseI } from "../../types/server-responses/blog";
 
 
 const BlogPage: React.FC = () => {
@@ -27,7 +27,7 @@ const BlogPage: React.FC = () => {
     const location = useLocation()
     const { blogId } = location.state as BlogPageLocationI;
 
-    const [ blog, setBlog ] = useState<BlogI | null>(null);
+    const [ blog, setBlog ] = useState<BlogResponseI | null>(null);
     const [ loading, setLoading ] = useState<Boolean>(true);
     
 

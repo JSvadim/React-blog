@@ -6,11 +6,11 @@ import classNames from "classnames";
 
 // local imports
 import style from "./style.module.scss";
-import { ButtonLikePropsI } from "./type";
+import { ButtonLikeComponentI } from "./type";
 import Loading from "../../Loading";
 
 
-const ButtonLike: React.FC<ButtonLikePropsI> = (props) => {
+const ButtonLike: React.FC<ButtonLikeComponentI> = (props) => {
 
     const [ loading, setLoading ] = useState(false);
     const buttonClass = classNames([style.button, style[`button--theme-${props.theme}`]]);

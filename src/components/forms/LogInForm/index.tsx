@@ -9,26 +9,26 @@ import { Link } from "react-router-dom";
 import classNames from "classnames";
 
 // local imports
-import style from "./style.module.scss";
-import { LogInDataI } from "../../../types/auth/log-in-data";
-import { AuthController } from "../../../controllers/auth-controller";
-import Loading from "../../Loading";
-import ButtonBasic from "../../Buttons/ButtonBasic";
-import InputError from "../../Inputs/InputError";
-import { userEmailValidation, userPasswordValidation } from "../../../constants/input-validation";
 import InputWrapper from "../../Inputs/InputWrapper";
+import ButtonBasic from "../../Buttons/ButtonBasic";
 import InputTitle from "../../Inputs/InputTitle";
+import InputError from "../../Inputs/InputError";
+import Loading from "../../Loading";
+import { userEmailValidation, userPasswordValidation } from "../../../constants/input-validation";
+import { AuthController } from "../../../controllers/auth-controller";
+import { LogInFormDataI } from "./type";
+import style from "./style.module.scss";
 
 const LogInForm: React.FC = () => {
 
     const [ formError, setFormError ] = useState("");
     const [ loading, setLoading ] = useState(false);
-    const { register, formState: {errors}, handleSubmit } = useForm<LogInDataI>({
+    const { register, formState: {errors}, handleSubmit } = useForm<LogInFormDataI>({
         mode: "onBlur"
     });
 
 
-    const onSubmit: SubmitHandler<LogInDataI> = async (data): Promise<void> => {
+    const onSubmit: SubmitHandler<LogInFormDataI> = async (data): Promise<void> => {
         const params = {
             data, 
             setFormError, 

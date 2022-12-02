@@ -3,10 +3,10 @@ import classNames from "classnames";
 
 // local imports
 import style from "./style.module.scss";
-import { ButtonCloseI } from "./type";
+import { ButtonCloseComponentI } from "./type";
 
 
-const ButtonClose:React.FC<ButtonCloseI> = (props) => {
+const ButtonClose:React.FC<ButtonCloseComponentI> = (props) => {
     return (
         <div className={props.sizesClass}>
             <button 

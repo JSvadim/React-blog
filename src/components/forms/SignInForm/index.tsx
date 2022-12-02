@@ -11,7 +11,6 @@ import 'regenerator-runtime/runtime';
 
 // local imports
 import style from "./style.module.scss";
-import { SignInDataI } from "../../../types/auth/sign-in-data";
 import { AuthController } from "../../../controllers/auth-controller";
 import Loading from "../../Loading";
 import ButtonBasic from "../../Buttons/ButtonBasic";
@@ -19,6 +18,7 @@ import InputError from "../../Inputs/InputError";
 import { requiredFieldValidation, userEmailValidation, userNicknameValidation, userOtherGenderValidation, userPasswordValidation } from "../../../constants/input-validation";
 import InputWrapper from "../../Inputs/InputWrapper";
 import InputTitle from "../../Inputs/InputTitle";
+import { SignInFormDataI } from "./type";
 
 
 const SignInForm: React.FC = () => {
@@ -26,11 +26,11 @@ const SignInForm: React.FC = () => {
     const [ isActivationCodeSent, setIsActivationCodeSent ] = useState(false);
     const [ formError, setFormError ] = useState("");
     const [ loading, setLoading ] = useState(false);
-    const { register, watch, formState: {errors}, handleSubmit } = useForm<SignInDataI>({
+    const { register, watch, formState: {errors}, handleSubmit } = useForm<SignInFormDataI>({
         mode: "onBlur"
     });
 
-    const onSubmit: SubmitHandler<SignInDataI> = (data): void => {
+    const onSubmit: SubmitHandler<SignInFormDataI> = (data): void => {
         const params = {
             data,
             setIsActivationCodeSent,

@@ -4,7 +4,7 @@ import { useState } from "react";
 
 // local imports
 import style from "./style.module.scss";
-import { CommentFormPropsI } from "./type";
+import { AddCommentFormComponentI } from "./type";
 import ButtonBasic from "../../Buttons/ButtonBasic";
 import Loading from "../../Loading";
 import InputError from "../../Inputs/InputError";
@@ -12,7 +12,7 @@ import InputWrapper from "../../Inputs/InputWrapper";
 import { requiredFieldValidation } from "../../../constants/input-validation";
 
 
-export const AddCommentForm: React.FC<CommentFormPropsI> = (props) => {
+export const AddCommentForm: React.FC<AddCommentFormComponentI> = (props) => {
 
     const [ formError, setFormError ] = useState("");
     const [ loading, setLoading ] = useState(false);

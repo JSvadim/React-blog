@@ -3,12 +3,12 @@ import { AxiosResponse } from "axios";
 
 // local imports
 import { $api } from "../http/index";
-import { UserI } from "../types/auth/user";
+import { UserResponseI } from "../types/server-responses/user";
 
 export class UserService {
 
-    static async getUsers(): Promise<AxiosResponse<UserI[]>> {
-        return $api.get<UserI[]>("/user/all");
+    static async getUsers(): Promise<AxiosResponse<UserResponseI[]>> {
+        return $api.get<UserResponseI[]>("/user/all");
     }
 
 }
