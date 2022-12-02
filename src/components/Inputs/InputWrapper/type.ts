@@ -7,5 +7,5 @@ export interface InputWrapperI {
     registerName: string;
     errors: object;
     errorType?: InputErrorType;
-    labelType: labelType;
+    labelType: labelType | "no-label";
 }

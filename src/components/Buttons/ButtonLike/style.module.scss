@@ -1,0 +1,82 @@
+.button {
+    width: 148px;
+    height: 50px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    &:hover,
+    &:focus-visible {
+        .add-like__heart {
+            fill: var(--col-red);
+        }
+        .remove-like {
+            color: var(--col-text-red);
+        }
+    }
+    &:active {
+        .add-like__heart,
+        .remove-like {
+            transition: all 0s;
+        }
+    }
+    &--theme-white {
+        background-color: var(--col-white);
+        .add-like__text, 
+        .remove-like {
+            color: var(--col-text-black);
+        }
+        .add-like__heart {
+            fill: var(--col-black);
+        }
+    }
+    &--theme-black {
+        background-color: var(--col-black);
+        .add-like__text, 
+        .remove-like {
+            color: var(--col-text-white);
+        }
+        .add-like__heart {
+            fill: var(--col-white);
+        }
+    }
+    &--theme-white:active {
+        .add-like__heart {
+            fill: var(--col-blue-dark);
+        }
+        .remove-like {
+            color: var(--col-text-blue-dark);
+        }
+    }
+    &--theme-black:active {
+        .add-like__heart {
+            fill: var(--col-violet-light);
+        }
+        .remove-like {
+            color: var(--col-text-violet-light);
+        }
+    }
+}
+
+.remove-like,
+.add-like__text {
+    font-size: 18px;
+    line-height: 1.64%;
+    letter-spacing: 0.025em;
+}
+
+.remove-like {
+    transition: color 0.5s;
+    pointer-events: none;
+}
+
+.add-like {
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    &__heart {
+        transition: fill 0.5s;
+        margin: 0 10px 0 0;
+    }
+}

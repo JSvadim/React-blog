@@ -8,8 +8,16 @@
     height: 60px;
     width: 185px;
     padding: 10px;
-    transform: translate(0, -100%);
-    animation: appearance 0.8s ease forwards;
+    transform: translate(-10px, -100%);
+    animation: headerDropdownAppearance 0.8s ease forwards;
+    
+    @keyframes headerDropdownAppearance {
+        0% {}
+        100% {
+            opacity: 1;
+            transform: translate(-10px,0);
+        }
+    }
 }
 .toggle-btn {
     position: absolute;
@@ -28,7 +36,7 @@
     width: 6.18px;
     height: 4px;
     position: absolute;
-    top: 30px;
+    top: 27.5px;
     right: 10px;
     z-index: 4;
     transform: rotateZ(180deg);
@@ -79,6 +87,21 @@
     .body {
         pointer-events: all;
         height: 200px;
+    }
+}
+
+@media(min-width: 768px) {
+    .user-dropdown {
+        transform: translate(10px, -100%);
+        animation: headerDropdownAppearanceDesktop 0.8s ease forwards;
+        
+        @keyframes headerDropdownAppearanceDesktop {
+            0% {}
+            100% {
+                opacity: 1;
+                transform: translate(10px,0);
+            }
+        }
     }
 }
 

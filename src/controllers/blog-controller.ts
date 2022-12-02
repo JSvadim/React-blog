@@ -32,6 +32,22 @@ class BlogController {
             return setFormError("unknown error");
         }
     }
+    async getBlog(blogId: number) {
+        try {
+            const blog = await BlogService.getBlog(blogId);
+            return blog
+        } catch (e) {
+            console.log(e);
+        }
+    }
+    async getBlogs(userId?: number) {
+        try {
+            const blogs = await BlogService.getBlogs(userId);
+            return blogs
+        } catch (e) {
+            console.log(e);
+        }
+    }
 }
 
 export default new BlogController();

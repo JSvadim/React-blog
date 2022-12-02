@@ -1,7 +1,7 @@
 import { UserI } from "../../types/auth/user";
 
 export interface userProps {
-    theme: string;
-    user: UserI;
+    theme: "white" | "black";
+    userNickname: string;
     sizingClass?: string;
 }

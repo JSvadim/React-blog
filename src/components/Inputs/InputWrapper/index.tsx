@@ -9,9 +9,14 @@ import InputLabel from "../InputLabel";
 const InputWrapper: React.FC<InputWrapperI> = (props) => {
     return (
         <div className={props.sizesClass}>
-            <InputLabel labelType={props.labelType}>
-                {props.children}
-            </InputLabel>
+            {props.labelType !== "no-label" && 
+                <InputLabel labelType={props.labelType}>
+                    {props.children}
+                </InputLabel>
+            }
+            {props.labelType === "no-label" &&
+                props.children
+            }
             <ErrorMessage
                 errors={props.errors || {}}
                 name={props.registerName || ''}

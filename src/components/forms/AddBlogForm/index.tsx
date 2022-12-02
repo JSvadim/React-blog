@@ -23,7 +23,7 @@ import InputWrapper from "../../Inputs/InputWrapper";
 import InputTitle from "../../Inputs/InputTitle";
 import ImageInput from "../../Inputs/ImageInput";
 
-export const BlogForm: React.FC<BlogFormI> = (props) => {
+export const AddBlogForm: React.FC<BlogFormI> = (props) => {
     
     const [ formError, setFormError ] = useState("");
     const [ pictures, setPictures ] = useState<FormPicturesI>({

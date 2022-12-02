@@ -1,14 +1,10 @@
 // local imports
 import { UserI } from "../../types/auth/user";
 
-interface sizingI {
-    dropdown: string;
-    button: string;
-    opened: string;
-}
+export type UserDropdownThemeType = "black" | "white";
 
 export interface userDropdownI {
-    theme: string;
+    theme: UserDropdownThemeType;
     user: UserI;
     className?: string
 }

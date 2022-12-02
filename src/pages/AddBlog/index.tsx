@@ -4,7 +4,7 @@ import classNames from "classnames";
 // local imports
 import style from "./style.module.scss";
 import Container from "../../components/Container";
-import { BlogForm } from "../../components/forms/BlogForm";
+import { AddBlogForm } from "../../components/forms/AddBlogForm";
 
 
 const AddBlogPage: React.FC = () => {
@@ -14,7 +14,7 @@ const AddBlogPage: React.FC = () => {
                 <h1 className={style.title}>
                     add blog
                 </h1>
-                <BlogForm className={style["blog-form"]} requestURL="/blog/add"/>
+                <AddBlogForm className={style["blog-form"]}/>
             </div>
         </Container>
     )

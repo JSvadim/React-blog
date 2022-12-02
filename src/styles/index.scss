@@ -149,46 +149,6 @@ body.burger-lock {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-.user {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    &__pic {
-        display: inline-block;
-        width: 40px;
-        height: 40px;
-        flex: 0 0 40px;
-        border-radius: 50%;
-        margin: 0 10px 0 0;
-        transition: all 0.5s;
-        &:hover {
-            transform: scale(1.2);
-        }
-    }
-    &__nickname {
-        font-size: 16px;
-        display: inline-block;
-        width: calc(100% - 50px);
-        flex: 0 0 calc(100% - 50px);
-        overflow: hidden;
-        text-overflow: ellipsis;
-        transition: all 0.5s;
-        &:hover {
-            text-decoration: underline;
-        }
-    }
-    &--theme-white {
-        & .user__nickname {
-            color: white;
-        }
-    }
-    &--theme-black {
-        & .user__nickname {
-            color: black;
-        }
-    }
-}
 @media(min-width: 768px) {
     body.burger-lock {
         overflow-y: auto;
@@ -225,19 +185,6 @@ body.burger-lock {
 }
 
 @media(min-width: 1400px) {
-    .user {
-        &__pic {
-            width: 50px;
-            height: 50px;
-            flex: 0 0 50px;
-            margin: 0 14px 0 0;
-        }
-        &__nickname {
-            font-size: 20px;
-            width: calc(100% - 64px);
-            flex: 0 0 calc(100% - 64px);
-        }
-    }
     .labeled-input {
         &__pics {
             &-preview {

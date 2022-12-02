@@ -4,7 +4,6 @@ import { useState } from "react"
 // local imports
 import { User } from "../User"
 import { userDropdownI } from "./type";
-import { getColors } from "./helpers";
 import style from "./style.module.scss";
 import { DropdownNav } from "./DropdownNav";
 
@@ -13,8 +12,10 @@ export const UserDropdown: React.FC<userDropdownI> = (props) => {
 
     const [ isOpened, setIsOpened ] = useState(false);
     const [ isClickable, setIsClickable ] = useState(true);
+    
+    const firstColor = props.theme === "white" ? "white" : "black";
+    const secondColor = props.theme === "white" ? "black" : "white";
 
-    const { firstColor, secondColor } = getColors(props.theme);
     return (
         <div 
             className={`
@@ -30,7 +31,7 @@ export const UserDropdown: React.FC<userDropdownI> = (props) => {
         >
             <User 
                 sizingClass={style.user}
-                user={props.user}
+                userNickname={props.user.nickname}
                 theme={isOpened ? secondColor : props.theme}/>
 
             <svg className={style.decor} viewBox="0 0 5 4" fill="none">
