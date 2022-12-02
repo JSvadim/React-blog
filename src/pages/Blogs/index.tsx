@@ -59,10 +59,7 @@ const BlogsPage: React.FC = () => {
                                 return (
                                     <li className={style.blog} key={blog.text}>
                                         <Blog
-                                            id={blog["id_blog"]}
-                                            title={blog.title}
-                                            text={blog.text}
-                                            pictures={blog.pictures}
+                                            blog={blog}
                                             isFake={false}/>
                                     </li>
                                 )

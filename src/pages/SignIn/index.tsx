@@ -1,6 +1,6 @@
 // local imports
 import style from "../LogIn/style.module.scss";
-import { blogData } from "../../constants/blog-example";
+import { firstBlogExample, secondBlogExample } from "../../constants/blog-example";
 import SignInForm from "../../components/forms/SignInForm";
 import TwoPartsTitle from "../../components/TwoPartsTitle/index";
 import Blog from "../../components/Blog/index";
@@ -22,16 +22,10 @@ const SignInPage: React.FC = () => {
                 </div>
                 <div className={style["example-posts"]}>
                     <Blog
-                        id={1}
-                        title={blogData.title}
-                        text={blogData.text}
-                        pictures={blogData.pics}
+                        blog={firstBlogExample}
                         isFake={true}/>
                     <Blog
-                        id={2}
-                        title={blogData.title}
-                        text={blogData.text}
-                        pictures={null}
+                        blog={secondBlogExample}
                         isFake={true}/>
                 </div>
             </div>

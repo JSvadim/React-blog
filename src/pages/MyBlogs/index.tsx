@@ -4,7 +4,6 @@ import { useTypedSelector } from "../../hooks/useTypedSelector";
 
 // local imports
 import style from "./style.module.scss";
-import { blogData } from "../../constants/blog-example";
 import Container from "../../components/Container";
 import Pagination from "../../components/Pagination";
 import Blog from "../../components/Blog";
@@ -59,10 +58,7 @@ const MyBlogsPage: React.FC = () => {
                                 return (
                                     <li className={style.blog} key={blog.text}>
                                         <Blog
-                                            id={blog["id_blog"]}
-                                            title={blog.title}
-                                            text={blog.text}
-                                            pictures={blog.pictures}
+                                            blog={blog}
                                             isFake={false}/>
                                     </li>
                                 )

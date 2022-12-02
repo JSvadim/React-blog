@@ -1,7 +1,7 @@
+// local imports
+import { BlogResponseI } from "../../types/server-responses/blog";
+
 export interface BlogComponentI {
-    id: number;
-    title: string;
-    text: string;
-    pictures: string | null;
+    blog: BlogResponseI;
     isFake: boolean;
 }

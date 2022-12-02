@@ -1,3 +1,7 @@
+// local imports
+import { BlogResponseI } from "../../types/server-responses/blog";
+
+
 export interface BlogPageLocationI {
-    blogId: number;
+    blog: BlogResponseI;
 }

@@ -12,40 +12,41 @@ import PicturesList from "../PicturesList";
 
 const Blog: React.FC<BlogComponentI> = (props) => {
 
+    const { blog, isFake } = props;
     const fakeLink = <span className={classNames([style["read-all-link"], "unselectable"])}>read all blog...</span>;
     const trueLink = (
-        <Link className={style["read-all-link"]} to="/blog" state={{ blogId: props.id }}>
+        <Link className={style["read-all-link"]} to="/blog" state={{ blog }}>
             read all blog...
         </Link>
     );
     const title = props.isFake ? 
         (<h3 className={classNames([style.title, style["title-link"]])}>
-            {props.title}
+            {blog.title}
         </h3>) :
         (<h3 className={style.title}>
-            <Link className={style["title-link"]} to="/blog" state={{ blogId: props.id }}>
-                {props.title}
+            <Link className={style["title-link"]} to="/blog" state={{ blog }}>
+                {blog.title}
             </Link>
         </h3>);
 
-    const blogClass = props.pictures ? classNames([style.blog, style["blog--with-pics"]]) : style.blog;
+    const blogClass = blog.pictures ? classNames([style.blog, style["blog--with-pics"]]) : style.blog;
     const titleDecorClass = classNames(["unselectable", style["title-decor"]])
 
     
     return (
         <article 
             className={blogClass} 
-            aria-hidden={props.isFake ? "true" : "false"}>
+            aria-hidden={isFake ? "true" : "false"}>
             <div className={style["title-wrapper"]}>
                 <span className={titleDecorClass}>“</span>
                 {title}
             </div>
             <div className={style.body}>
                 <div className={style.content}>
-                    <p className={style.text}> {props.text} </p>
-                    { props.pictures && 
+                    <p className={style.text}> {blog.text} </p>
+                    { blog.pictures && 
                         <PicturesList 
-                            pictures = {props.pictures} 
+                            pictures = {blog.pictures} 
                             listClassName={style.pics}
                             itemClassName={style["pics-item"]}
                             pictureClassName={style["pics-image"]}

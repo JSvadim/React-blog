@@ -1,9 +1,6 @@
-// third-party
-import classNames from "classnames";
-
 // local imports
 import style from "./style.module.scss";
-import { blogData } from "../../constants/blog-example";
+import { firstBlogExample, secondBlogExample } from "../../constants/blog-example";
 import LogInForm from "../../components/forms/LogInForm/index";
 import TwoPartsTitle from "../../components/TwoPartsTitle/index";
 import Blog from "../../components/Blog/index";
@@ -25,16 +22,10 @@ const LogInPage: React.FC = () => {
                 </div>
                 <div className={style["example-posts"]}>
                     <Blog
-                        id={1}
-                        title={blogData.title}
-                        text={blogData.text}
-                        pictures={blogData.pics}
+                        blog={firstBlogExample}
                         isFake={true}/>
                     <Blog
-                        id={2}
-                        title={blogData.title}
-                        text={blogData.text}
-                        pictures={null}
+                        blog={secondBlogExample}
                         isFake={true}/>
                 </div>
             </div>
