@@ -41,6 +41,9 @@
     &:hover {
         text-decoration: underline;
     }
+    &:focus-visible {
+        outline: 3px solid var(--col-violet-light);
+    }
 }
 
 

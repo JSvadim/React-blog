@@ -21,9 +21,13 @@
         &-link {
             color: var(--col-text-black);
             cursor: pointer;
-            transition: color 0.5s;
+            transition: all 0.5s;
             &:hover {
                 color: var(--col-blue-dark);
+            }
+            &:focus-visible {
+                color: var(--col-red);
+                text-decoration: underline;
             }
         }
     }

@@ -13,7 +13,10 @@ import Loading from "../../Loading";
 const ButtonLike: React.FC<ButtonLikeComponentI> = (props) => {
 
     const [ loading, setLoading ] = useState(false);
-    const buttonClass = classNames([style.button, style[`button--theme-${props.theme}`]]);
+    const buttonClass = classNames([
+        style.button, 
+        style[`button--theme-${props.theme}`], 
+        loading ? style["button--loading"] : ""]);
 
     const innerContent = props.isLiked ? 
     (<p className={style["remove-like"]}>UNLIKE! :(</p>) :
@@ -37,8 +40,8 @@ const ButtonLike: React.FC<ButtonLikeComponentI> = (props) => {
     </div>);
 
     const handleClick = () => {
+        if(loading) return
         setLoading(true);
-        // add pointer events none while button is loading
     }
 
 
@@ -47,6 +50,7 @@ const ButtonLike: React.FC<ButtonLikeComponentI> = (props) => {
             <button 
             className={buttonClass} 
             onClick={handleClick}
+            tabIndex={loading ? -1 : 0}
             type="button">
                 {loading && <Loading/>}
                 {innerContent}

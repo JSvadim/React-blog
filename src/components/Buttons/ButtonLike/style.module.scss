@@ -15,6 +15,9 @@
             color: var(--col-text-red);
         }
     }
+    &:focus-visible {
+        outline: 3px solid var(--col-red);
+    }
     &:active {
         .add-like__heart,
         .remove-like {
@@ -56,6 +59,9 @@
         .remove-like {
             color: var(--col-text-violet-light);
         }
+    }
+    &--loading {
+        pointer-events: none;
     }
 }
 
