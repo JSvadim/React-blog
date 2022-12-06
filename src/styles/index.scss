@@ -53,13 +53,6 @@ body.burger-lock {
             border: 1px solid var(--col-blue-dark);
         }
     }
-    &__textarea {
-        height: 119px;
-        min-height: 119px;
-        max-height: 300px;
-        padding: 10px;
-        resize: vertical;
-    }
     &__select {
         cursor: pointer;
         line-height: 1.15em;
@@ -77,41 +70,6 @@ body.burger-lock {
             transform: translate(0, -50%);
             background: url('../assets/images/decor-things/select.svg');
         }
-    }
-    &__pics {
-        &-preview {
-            height: 139px;
-            padding: 10px 10px 0 10px;
-        }
-        &-preview-outer {
-            width: 100%;
-            height: 100%;
-            overflow-y: hidden;
-            overflow-x: auto;
-        }
-        &-preview-row {
-            width: auto;
-            display: flex;
-        }
-        &-placeholder {
-            display: inline-block;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 18px;
-            color: var(--col-text-black-50);
-        }
-    }
-    &__file-input {
-        position: absolute;
-        z-index: 2;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 55px;
-        opacity: 0;
-        cursor: pointer;
     }
 }
 
@@ -160,38 +118,9 @@ body.burger-lock {
     .gray-link {
         font-size: 16px;
     }
-    .labeled-input {
-        &__textarea {
-            height: 200px;
-            min-height: 200px;
-            max-height: 200px;
-        }
-        &__pics {
-            &-preview {
-                height: 212px;
-                padding: 10px 23.5px;
-            }
-            &-preview-outer {
-                overflow-x: hidden;
-            }
-            &-preview-row {
-                flex-wrap: wrap;
-            }
-        }
-        &__file-input {
-            height: 40px;
-        }
-    }
 }
 
 @media(min-width: 1400px) {
-    .labeled-input {
-        &__pics {
-            &-preview {
-                padding: 10px 25px;
-            }
-        }
-    }
     #root {
         padding: 88px 0 0 0;
     }

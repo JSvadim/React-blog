@@ -1,0 +1,32 @@
+.text-area {
+    padding: 10px;
+    border-radius: 10px;
+    appearance: none;
+    font-size: 18px;
+    background-color: transparent;
+    &::placeholder {
+        font-size: 18px;
+    }
+    &--theme-white {
+        border: 1px solid var(--col-white);
+        color: var(--col-text-white);
+        &::placeholder {
+            color: var(--col-text-white-50-transparent);
+        }
+        &:hover,
+        &:focus-visible {
+            border: 1px solid var(--col-violet);
+        }
+    }
+    &--theme-black {
+        border: 1px solid var(--col-black-light);
+        color: var(--col-text-black);
+        &::placeholder {
+            color: var(--col-text-black-50);
+        }
+        &:hover,
+        &:focus-visible {
+            border: 1px solid var(--col-blue-dark);
+        }
+    }
+}

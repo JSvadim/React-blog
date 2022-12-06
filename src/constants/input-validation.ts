@@ -72,3 +72,13 @@ export const userOtherGenderValidation = {
         message: "Nickname can't be longer than 25 symbols"
     }
 }
+
+export type ValidationsType = 
+    typeof requiredFieldValidation | 
+    typeof blogTitleValidation |
+    typeof blogTextValidation |
+    typeof userEmailValidation |
+    typeof userPasswordValidation | 
+    typeof userNicknameValidation |
+    typeof userOtherGenderValidation |
+    {};

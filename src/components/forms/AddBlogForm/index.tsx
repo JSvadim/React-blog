@@ -21,6 +21,7 @@ import { blogTitleValidation, blogTextValidation } from "../../../constants/inpu
 import InputWrapper from "../../Inputs/InputWrapper";
 import InputTitle from "../../Inputs/InputTitle";
 import ImageInput from "../../Inputs/ImageInput";
+import { TextArea } from "../../Inputs/TextArea";
 
 export const AddBlogForm: React.FC<AddBlogFormComponentI> = (props) => {
     
@@ -98,11 +99,14 @@ export const AddBlogForm: React.FC<AddBlogFormComponentI> = (props) => {
                     errorType="textarea"
                     labelType="simple">
                         <InputTitle title="Blog text:"/>
-                        <textarea 
-                            className={classNames(["labeled-input__input", "labeled-input__textarea", style.input])}
+                        <TextArea
+                            className={classNames([style.input, style["blog-text-input"]])}
+                            theme="black"
+                            register={register}
+                            registerName="text"
                             placeholder="Blog text"
-                            {...register("text", blogTextValidation)}>
-                        </textarea>
+                            validation={blogTextValidation}
+                        />
                 </InputWrapper>
             </div>
             <div className={classNames([style.row, style["row--right"]])}>

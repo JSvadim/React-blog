@@ -29,6 +29,11 @@
 .input {
     width: 100%;
 }
+.blog-text-input {
+    height: 120px;
+    max-height: 120px;
+    min-height: 120px;
+}
 
 .buttons {
     display: flex;
@@ -75,7 +80,8 @@
         flex-direction: column;
         justify-content: space-between;
         &--left {
-            padding: 19px 0 0 0;
+            padding: 22px 0 0 0;
+            transform: translateY(3px);
         }
     }
     .input-wrapper {
@@ -83,6 +89,11 @@
     }
     .image-input {
         height: 200px;
+    }
+    .blog-text-input {
+        height: 200px;
+        max-height: 200px;
+        min-height: 200px;
     }
     .add-images-decor {
         top: -7px;
@@ -107,8 +118,9 @@
 
 @media(min-width: 1400px) {
     .row {
-        &--right {
-            transform: translate(0, -8px);
+        &--left {
+            padding: 19px 0 0 0;
+            transform: translateY(7px);
         }
     }
     .image-inputs-wrapper {

@@ -10,6 +10,7 @@ import Loading from "../../Loading";
 import InputError from "../../Inputs/InputError";
 import InputWrapper from "../../Inputs/InputWrapper";
 import { requiredFieldValidation } from "../../../constants/input-validation";
+import { TextArea } from "../../Inputs/TextArea";
 
 
 export const AddCommentForm: React.FC<AddCommentFormComponentI> = (props) => {
@@ -38,10 +39,13 @@ export const AddCommentForm: React.FC<AddCommentFormComponentI> = (props) => {
                     labelType="no-label"
                     errorType="form"
                     errors={errors}>
-                        <textarea
+                        <TextArea
+                            theme="white"
                             className={style["textarea"]}
                             placeholder="your comment..."
-                            {...register("comment", requiredFieldValidation)}
+                            register={register}
+                            registerName="comment"
+                            validation={requiredFieldValidation}
                         />
             </InputWrapper>
             <ButtonBasic
