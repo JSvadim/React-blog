@@ -1,0 +1,49 @@
+.select {
+    height: 46px;
+    width: 100%;
+    padding: 0 10px;
+    position: relative;
+    border-radius: 10px;
+    appearance: none;
+    background-color: transparent;
+    font-size: 18px;
+    line-height: 1em;
+    cursor: pointer;
+    &--theme-white {
+        border: 1px solid var(--col-white);
+        color: var(--col-text-white);
+        &:hover,
+        &:focus-visible {
+            border: 1px solid var(--col-violet);
+        }
+    }
+    &--theme-black {
+        border: 1px solid var(--col-black-light);
+        color: var(--col-text-black);
+        &:hover,
+        &:focus-visible {
+            border: 1px solid var(--col-blue-dark);
+        }
+    }
+        
+}
+
+.select-wrapper {
+    position: relative;
+    &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        width: 14px;
+        height: 8px;
+        transform: translate(0, -50%);
+    }
+    &--theme-black::after {
+        background: url('../../../assets/images/decor-things/select--black.svg');
+    }
+    &--theme-white::after {
+        background: url('../../../assets/images/decor-things/select--white.svg');
+    }
+}

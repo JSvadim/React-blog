@@ -53,24 +53,6 @@ body.burger-lock {
             border: 1px solid var(--col-blue-dark);
         }
     }
-    &__select {
-        cursor: pointer;
-        line-height: 1.15em;
-    }
-    &__select-wrapper {
-        position: relative;
-        &::before {
-            content: '';
-            display: block;
-            position: absolute;
-            top: 50%;
-            right: 10px;
-            width: 14px;
-            height: 8px;
-            transform: translate(0, -50%);
-            background: url('../assets/images/decor-things/select.svg');
-        }
-    }
 }
 
 .blue-link {

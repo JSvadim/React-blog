@@ -19,6 +19,7 @@ import { requiredFieldValidation, userEmailValidation, userNicknameValidation, u
 import InputWrapper from "../../Inputs/InputWrapper";
 import InputTitle from "../../Inputs/InputTitle";
 import { SignInFormDataI } from "./type";
+import { Select } from "../../Inputs/Select";
 
 
 const SignInForm: React.FC = () => {
@@ -29,6 +30,12 @@ const SignInForm: React.FC = () => {
     const { register, watch, formState: {errors}, handleSubmit } = useForm<SignInFormDataI>({
         mode: "onBlur"
     });
+    const genderSelectOptions = [
+        {value:"", text: "Choose gender"},
+        {value:"male", text: "male"},
+        {value:"female", text: "female"},
+        {value:"other", text: "Type other gender"}
+    ];
 
     const onSubmit: SubmitHandler<SignInFormDataI> = (data): void => {
         const params = {
@@ -95,16 +102,13 @@ const SignInForm: React.FC = () => {
                 errors={errors}
                 labelType="simple">
                     <InputTitle title="Gender:"/>
-                    <div className="labeled-input__select-wrapper">
-                        <select 
-                            {...register("gender", requiredFieldValidation)}
-                            className={classNames(["labeled-input__input labeled-input__select", style.input])}>
-                            <option value="">Choose gender</option>
-                            <option value="male">male</option>
-                            <option value="female">female</option>
-                            <option value="other">Type other gender</option>
-                        </select>
-                    </div>
+                    <Select
+                        options={genderSelectOptions}
+                        theme="black"
+                        register={register}
+                        registerName="gender"
+                        validation={requiredFieldValidation}
+                    />
             </InputWrapper>
 
             {(watch("gender") === "other") && 
