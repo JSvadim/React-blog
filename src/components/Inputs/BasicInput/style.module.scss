@@ -1,0 +1,37 @@
+.input {
+    font-size: 18px;
+    line-height: 1em;
+    height: 46px;
+    padding: 0 10px;
+    position: relative;
+    border-radius: 10px;
+    border: 1px solid var(--col-black-light);
+    color: var(--col-text-black);
+    appearance: none;
+    transition: border 0.5s;
+    &::placeholder {
+        font-size: 16px;
+    }
+    &--theme-white {
+        border: 1px solid var(--col-white);
+        color: var(--col-text-white);
+        &::placeholder {
+            color: var(--col-text-white-50-transparent);
+        }
+        &:hover,
+        &:focus-visible {
+            border: 1px solid var(--col-violet);
+        }
+    }
+    &--theme-black {
+        border: 1px solid var(--col-black-light);
+        color: var(--col-text-black);
+        &::placeholder {
+            color: var(--col-text-black-50);
+        }
+        &:hover,
+        &:focus-visible {
+            border: 1px solid var(--col-blue-dark);
+        }
+    }
+}

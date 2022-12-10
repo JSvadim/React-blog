@@ -29,32 +29,6 @@ body.burger-lock {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-.labeled-input {
-    &__title,
-    &__input {
-        font-size: 18px;
-        line-height: 1em;
-    }
-    &__input {
-        height: 46px;
-        padding: 0 10px;
-        position: relative;
-        border-radius: 10px;
-        border: 1px solid var(--col-black-light);
-        color: var(--col-text-black);
-        appearance: none;
-        transition: border 0.5s;
-        &::placeholder {
-            font-size: 16px;
-            color: var(--col-text-black-50);
-        }
-        &:hover,
-        &:focus-visible {
-            border: 1px solid var(--col-blue-dark);
-        }
-    }
-}
-
 .blue-link {
     font-size: 14px;
     line-height: 1em;
@@ -85,7 +59,7 @@ body.burger-lock {
     object-fit: cover;
 }
 
-.whithout-highlight {
+.without-highlight {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 

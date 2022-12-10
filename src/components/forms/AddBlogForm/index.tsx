@@ -22,6 +22,7 @@ import InputWrapper from "../../Inputs/InputWrapper";
 import InputTitle from "../../Inputs/InputTitle";
 import ImageInput from "../../Inputs/ImageInput";
 import { TextArea } from "../../Inputs/TextArea";
+import { BasicInput } from "../../Inputs/BasicInput";
 
 export const AddBlogForm: React.FC<AddBlogFormComponentI> = (props) => {
     
@@ -84,12 +85,15 @@ export const AddBlogForm: React.FC<AddBlogFormComponentI> = (props) => {
                     errors={errors}
                     labelType="simple">
                         <InputTitle title="Blog title:"/>
-                        <input 
-                            className={classNames(["labeled-input__input", style.input])}
+                        <BasicInput
+                            theme="black"
+                            className={style.input}
                             type="text" 
                             placeholder="title"
-                            {...register("title", blogTitleValidation)}>
-                        </input>
+                            register={register}
+                            registerName="title"
+                            validation={blogTitleValidation}
+                        />
                 </InputWrapper>
 
                 <InputWrapper

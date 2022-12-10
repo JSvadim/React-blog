@@ -18,6 +18,7 @@ import { userEmailValidation, userPasswordValidation } from "../../../constants/
 import { AuthController } from "../../../controllers/auth-controller";
 import { LogInFormDataI } from "./type";
 import style from "./style.module.scss";
+import { BasicInput } from "../../Inputs/BasicInput";
 
 const LogInForm: React.FC = () => {
 
@@ -50,12 +51,15 @@ const LogInForm: React.FC = () => {
                 errors={errors}
                 labelType="simple">
                     <InputTitle title="Email:"/>
-                    <input 
-                        className={classNames(["labeled-input__input", style.input])}
+                    <BasicInput
+                        theme="black"
+                        className={style.input}
                         type="email" 
                         placeholder="your email"
-                        {...register("email", userEmailValidation)}>
-                    </input>
+                        register={register}
+                        registerName="email"
+                        validation={userEmailValidation}
+                    />
             </InputWrapper>
 
             <InputWrapper
@@ -64,12 +68,15 @@ const LogInForm: React.FC = () => {
                 errors={errors}
                 labelType="simple">
                     <InputTitle title="Password:"/>
-                    <input 
-                        className={classNames(["labeled-input__input", style.input])}
+                    <BasicInput
+                        theme="black"
+                        className={style.input}
                         type="password" 
                         placeholder="your password"
-                        {...register("password", userPasswordValidation)}>
-                    </input>
+                        register={register}
+                        registerName="password"
+                        validation={userPasswordValidation}
+                    />
             </InputWrapper>
             
             <div>

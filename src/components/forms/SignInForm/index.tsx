@@ -7,7 +7,6 @@ import React from "react";
 import { SubmitHandler } from "react-hook-form";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
-import 'regenerator-runtime/runtime';
 
 // local imports
 import style from "./style.module.scss";
@@ -20,6 +19,7 @@ import InputWrapper from "../../Inputs/InputWrapper";
 import InputTitle from "../../Inputs/InputTitle";
 import { SignInFormDataI } from "./type";
 import { Select } from "../../Inputs/Select";
+import { BasicInput } from "../../Inputs/BasicInput";
 
 
 const SignInForm: React.FC = () => {
@@ -60,12 +60,15 @@ const SignInForm: React.FC = () => {
                 errors={errors}
                 labelType="simple">
                     <InputTitle title="Nickname:"/>
-                    <input 
-                        className={classNames(["labeled-input__input", style.input])}
+                    <BasicInput
+                        theme="black"
+                        className={style.input}
                         type="text" 
                         placeholder="your nick"
-                        {...register("nickname", userNicknameValidation)}>
-                    </input>
+                        register={register}
+                        registerName="nickname"
+                        validation={userNicknameValidation}
+                    />
             </InputWrapper>
             
             <InputWrapper
@@ -74,12 +77,15 @@ const SignInForm: React.FC = () => {
                 errors={errors}
                 labelType="simple">
                     <InputTitle title="Email:"/>
-                    <input 
-                        className={classNames(["labeled-input__input", style.input])}
+                    <BasicInput
+                        theme="black"
+                        className={style.input}
                         type="email" 
                         placeholder="your email"
-                        {...register("email", userEmailValidation)}>
-                    </input>
+                        register={register}
+                        registerName="email"
+                        validation={userEmailValidation}
+                    />
             </InputWrapper>
 
             <InputWrapper
@@ -88,12 +94,15 @@ const SignInForm: React.FC = () => {
                 errors={errors}
                 labelType="simple">
                     <InputTitle title="Password:"/>
-                    <input 
-                        className={classNames(["labeled-input__input", style.input])}
+                    <BasicInput
+                        theme="black"
+                        className={style.input}
                         type="password" 
                         placeholder="your password"
-                        {...register("password", userPasswordValidation)}>
-                    </input>
+                        register={register}
+                        registerName="password"
+                        validation={userPasswordValidation}
+                    />
             </InputWrapper>
 
             <InputWrapper
@@ -118,12 +127,15 @@ const SignInForm: React.FC = () => {
                     errors={errors}
                     labelType="simple">
                         <InputTitle title="Type your gender:"/>
-                        <input 
-                            className={classNames(["labeled-input__input", style.input])}
+                        <BasicInput
+                            theme="black"
+                            className={style.input}
                             type="text" 
                             placeholder="gender..."
-                            {...register("otherGender", userOtherGenderValidation)}>
-                        </input>
+                            register={register}
+                            registerName="otherGender"
+                            validation={userOtherGenderValidation}
+                        />
                 </InputWrapper>
             }
             
@@ -134,12 +146,15 @@ const SignInForm: React.FC = () => {
                     errors={errors}
                     labelType="simple">
                         <InputTitle title="Type code, that has been sent to your email:"/>
-                        <input 
-                            className={classNames(["labeled-input__input", style.input])}
+                        <BasicInput
+                            theme="black"
+                            className={style.input}
                             type="text" 
                             placeholder="Sent code to your email..."
-                            {...register("activationCode", requiredFieldValidation)}>
-                        </input>
+                            register={register}
+                            registerName="activationCode"
+                            validation={requiredFieldValidation}
+                        />
                 </InputWrapper>
             }
 
