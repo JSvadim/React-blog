@@ -7,5 +7,6 @@ export type UserDropdownThemeType = "black" | "white";
 export interface UserDropdownComponentI {
     theme: UserDropdownThemeType;
     user: UserResponseI;
-    className?: string;
+    dropdownClassName: string;
+    userClassName: string;
 }

@@ -2,22 +2,15 @@
 
 .user-dropdown {
     position: relative;
-    border-radius: 10px;
-    transition: background-color 0.5s, border 0.5s;
-    border: 1px solid transparent;
+    display: inline-flex;
+    align-items: center;
     height: 60px;
-    width: 185px;
+    min-width: 150px;
+    max-width: 100%;
     padding: 10px;
-    transform: translate(-10px, -100%);
-    animation: headerDropdownAppearance 0.8s ease forwards;
-    
-    @keyframes headerDropdownAppearance {
-        0% {}
-        100% {
-            opacity: 1;
-            transform: translate(-10px,0);
-        }
-    }
+    border-radius: 10px;
+    border: 1px solid transparent;
+    transition: background-color 0.5s, border 0.5s;
 }
 .toggle-btn {
     position: absolute;
@@ -33,19 +26,14 @@
     }
 }
 .decor {
+    position: relative;
+    z-index: 2;
     width: 6.18px;
     height: 4px;
-    position: absolute;
-    top: 27.5px;
-    right: 10px;
-    z-index: 4;
+    margin: 0 0 0 auto;
+    flex: 0 0 6.18px;
     transform: rotateZ(180deg);
     transition: all 0.5s;
-}
-.user {
-    position: relative;
-    z-index: 3;
-    max-width: calc(100% - 12px);
 }
 .body {
     position: absolute;
@@ -90,25 +78,15 @@
     }
 }
 
-@media(min-width: 768px) {
+@media(min-width: 1200px) {
     .user-dropdown {
-        transform: translate(10px, -100%);
-        animation: headerDropdownAppearanceDesktop 0.8s ease forwards;
-        
-        @keyframes headerDropdownAppearanceDesktop {
-            0% {}
-            100% {
-                opacity: 1;
-                transform: translate(10px,0);
-            }
-        }
+        min-width: 180px;
     }
 }
 
 @media(min-width: 1400px) {
     .user-dropdown {
         height: 70px;
-        width: 210px;
     }
     .toggle-btn {
         height: 70px;
@@ -123,6 +101,6 @@
     .decor {
         width: 7.35px;
         height: 5px;
-        top: 32.5px;
+        flex: 0 0 7.35px;
     }
 }

@@ -10,8 +10,12 @@ import defaultUserPic from "../../assets/images/user-default-pic.jpg";
 import style from "./style.module.scss";
 import { userProps } from "./type";
 
-export const User: React.FC<userProps> = ({userNickname, theme, sizingClass}) => {
-    const userClassName = classNames([style.user, style[`user--theme-${theme}`], sizingClass]);
+    // this component should get max-height in styles defined in props.className
+    // or overflowing text will not pretty hidden with ellipsis
+
+
+export const User: React.FC<userProps> = ({userNickname, theme, className}) => {
+    const userClassName = classNames([style.user, style[`user--theme-${theme}`], className]);
     return (
         <div className={userClassName}>
             <div className={style["pic-container"]}>

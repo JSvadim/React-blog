@@ -11,7 +11,7 @@ const Comment: React.FC<CommentComponentI> = (props) => {
             <article className={style.comment}>
                 <header className={style.header}>
                     <User 
-                        sizingClass={style.user}
+                        className={style.user}
                         theme="black" 
                         userNickname="angela"/>
                     <time className={style.date}>{props.date}</time>

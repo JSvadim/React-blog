@@ -24,8 +24,9 @@ const Header: React.FC = (props) => {
             <Container>
                 <div className={style.inner}>
                     {user === null ? <SignInLinks/> : 
-                        <UserDropdown 
-                            className={style["user-dropdown"]}
+                        <UserDropdown
+                            userClassName={style.user} 
+                            dropdownClassName={style["user-dropdown"]}
                             theme="white" 
                             user={user}/>}
                     <BurgerMenu 

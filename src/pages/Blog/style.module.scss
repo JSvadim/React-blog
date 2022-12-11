@@ -14,6 +14,9 @@
         font-size: 16px;
         color: var(--col-text-black);
     }
+    &__user {
+        max-width: calc(100% - 120px);
+    }
 }
 .loading-wrapper {
     height: calc(100vh - 65px);

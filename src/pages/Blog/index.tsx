@@ -67,7 +67,10 @@ const BlogPage: React.FC = () => {
             <header className={style["main-header"]}>
                 <Container>
                     <div className={style["main-header__inner"]}>
-                        <User theme="black" userNickname="Boris breicha"/>
+                        <User 
+                            className={style["main-header__user"]} 
+                            theme="black" 
+                            userNickname="Boris breicha"/>
                         <time className={style["main-header__date"]}>
                             {formatDate(blog.date)}
                         </time>
