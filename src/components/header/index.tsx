@@ -18,6 +18,7 @@ const Header: React.FC = (props) => {
     const { user } = useTypedSelector(state => state.user);
 
     const toggleMenu = (): void => handleNavToggling(isNavigationOpened, toggleNav);
+    const closeMenu = (): void => handleNavToggling(isNavigationOpened, toggleNav, true);
 
     return (
         <header className={style.header}>
@@ -34,7 +35,7 @@ const Header: React.FC = (props) => {
                         toggleMenu={toggleMenu}/>
                     <Navbar
                         isNavOpened={isNavigationOpened}
-                        toggleMenu={toggleMenu}/>
+                        toggleMenu={closeMenu}/>
                 </div>
             </Container>
         </header>

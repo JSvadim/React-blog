@@ -13,9 +13,10 @@ export const setActiveLinkStyle = (params: {isActive: boolean}): object => {
 
 export const handleNavToggling = (
     isOpened: boolean,
-    changeState: React.Dispatch<React.SetStateAction<boolean>>
+    changeState: React.Dispatch<React.SetStateAction<boolean>>,
+    toClose?: boolean
 ):void => {
-    if(!isOpened) {
+    if(!isOpened && !toClose) {
         document.body.classList.add("burger-lock");
         return changeState(true);
     }
