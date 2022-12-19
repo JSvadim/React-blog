@@ -3,51 +3,36 @@ import classNames from "classnames";
 
 // local imports
 import style from "./style.module.scss";
-import { PaginationI } from "./type";
+import { PaginationItem } from "./PaginationItem";
+import { PaginationComponentI } from "./type";
+import { generatePaginationItems } from "./helpers";
 
 
-const Pagination: React.FC<PaginationI> = (props) => {
+const Pagination: React.FC<PaginationComponentI> = (props) => {
 
     const navClassName = classNames([style.nav || '', props.className || '']);
+    const paginationItemsNumbers = generatePaginationItems(
+        props.amountOfItems, 
+        props.itemsPerPage, 
+        props.currentPageNumber);
+
 
     return (
         <nav className={navClassName}>
             <ul className={style["list"]}>
-                <li className={style["item"]}>
-                    <button className={style["button"]}>
-                        1
-                    </button>
-                </li>
-                <li className={style["item"]}>
-                    <button className={style["button"]}>
-                        2
-                    </button>
-                </li>
-                <li className={style["item"]}>
-                    <button className={style["button"]}>
-                        3
-                    </button>
-                </li>
-                <li className={style["item"]}>
-                    <button className={style["button"]}>
-                        4
-                    </button>
-                </li>
-                <li className={style["item"]}>
-                    <button className={style["button"]}>
-                        5
-                    </button>
-                </li>
-                <li className={style["item"]}>
-                    <button className={classNames([style["button"], style["button--all"]])}>
-                        ...
-                    </button>
-                </li>
-                <li className={style["item"]}>
-                    <button className={style["button"]}>
-                        16
-                    </button>
-                </li>
+               {paginationItemsNumbers.map((item, index) => {
+                    const isActive = 
+                        typeof(item) === "number" &&
+                        item === props.currentPageNumber ?
+                        true : false;
+                    
+                    return <PaginationItem
+                                key={index}
+                                isActive={isActive}
+                                isEllipsis={typeof(item) === "number" ? false : true}
+                                pageNumber={typeof(item) === "number" ? item : 0}
+                                onClick={props.onClick}/>
+               })} 
             </ul>
         </nav>
     )
