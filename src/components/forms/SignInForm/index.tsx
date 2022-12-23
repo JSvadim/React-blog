@@ -167,7 +167,7 @@ const SignInForm: React.FC = () => {
             />
             <div className={style["gray-link-wrapper"]}>
                 <Link 
-                    className={classNames(["gray-link", style["gray-link"]])}
+                    className={classNames(["gray-link", "unselectable", style["gray-link"]])}
                     to="/log-in"> Log in if you already have an account
                 </Link>
             </div> 

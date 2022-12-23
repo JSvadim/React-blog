@@ -13,8 +13,10 @@ const ButtonClose:React.FC<ButtonCloseComponentI> = (props) => {
                 className={classNames([
                     style["button"],
                     style[`button-${props.theme}`],
-                    style[`button-${props.type}`]])}
-                    type="reset"  
+                    style[`button-${props.type}`],
+                    "unselectable"
+                ])}
+                type="reset"  
                 onClick={() => props.onClick()}
             >
                 <div className={style.cross}>

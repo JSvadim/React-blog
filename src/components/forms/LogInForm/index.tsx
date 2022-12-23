@@ -80,7 +80,7 @@ const LogInForm: React.FC = () => {
             </InputWrapper>
             
             <div>
-                <a className={classNames(["blue-link", style["blue-link"]])} 
+                <a className={classNames(["blue-link", "unselectable", style["blue-link"]])} 
                     href="/"> Forgot password?
                 </a>
             </div>
@@ -95,7 +95,7 @@ const LogInForm: React.FC = () => {
             
             <div className={style["gray-link-wrapper"]}>
                 <Link 
-                    className={classNames(["gray-link", style["gray-link"]])}
+                    className={classNames(["gray-link", "unselectable", style["gray-link"]])}
                     to="/sign-in"> Sign in if you don't have an account
                 </Link>
             </div> 

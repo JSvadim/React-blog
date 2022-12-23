@@ -2,12 +2,15 @@
     margin: 0 5px 0 0;
     border: 1px solid transparent;
     transition: border 0.5s;
+    &:hover,
     &--active {
-        border: 1px solid var(--col-blue-dark);
         & .button {
-            // font-size: 18px;
             color: var(--col-blue-dark);
         }
+    }
+    &--active {
+        border: 1px solid var(--col-blue-dark);
+        pointer-events: none;
     }
     &:last-child {
         margin: 0;

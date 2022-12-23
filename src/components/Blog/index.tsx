@@ -15,7 +15,7 @@ const Blog: React.FC<BlogComponentI> = (props) => {
     const { blog, isFake } = props;
     const fakeLink = <span className={classNames([style["read-all-link"], "unselectable"])}>read all blog...</span>;
     const trueLink = (
-        <Link className={style["read-all-link"]} to="/blog" state={{ blog }}>
+        <Link className={classNames([style["read-all-link"], "unselectable"])} to="/blog" state={{ blog }}>
             read all blog...
         </Link>
     );
@@ -24,7 +24,7 @@ const Blog: React.FC<BlogComponentI> = (props) => {
             {blog.title}
         </h3>) :
         (<h3 className={style.title}>
-            <Link className={style["title-link"]} to="/blog" state={{ blog }}>
+            <Link className={classNames([style["title-link"], "unselectable"])} to="/blog" state={{ blog }}>
                 {blog.title}
             </Link>
         </h3>);

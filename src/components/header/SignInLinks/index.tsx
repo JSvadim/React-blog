@@ -12,14 +12,14 @@ const SignInLinks: React.FC = () => {
         <nav className={style["nav"]}>
             <ul className={style["list"]}>
                 <li>
-                    <NavLink className={classNames([style["link"], style["first"]])} 
+                    <NavLink className={classNames([style["link"], style["first"], "unselectable"])} 
                         style={setActiveLinkStyle}
                         to="/log-in">Log in&nbsp;
                     </NavLink> 
                     <span className={style["decor"]}>/</span>
                 </li>
                 <li>
-                    <NavLink className={classNames([style["link"], style["second"]])}
+                    <NavLink className={classNames([style["link"], style["second"], "unselectable"])}
                         style={setActiveLinkStyle}
                         to="/sign-in">&nbsp;Sign in
                     </NavLink>

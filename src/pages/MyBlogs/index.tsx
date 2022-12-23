@@ -10,6 +10,7 @@ import Loading from "../../components/Loading";
 import blogController from "../../controllers/blog-controller";
 import { BlogResponseI } from "../../types/server-responses/blog";
 import { BlogsList } from "../../components/BlogsList";
+import classNames from "classnames";
 
 const MyBlogsPage: React.FC = () => {
 
@@ -72,7 +73,7 @@ const MyBlogsPage: React.FC = () => {
     return (
         <Container>
             <div className={style.wrapper}>
-                <h1 className={style.title}>
+                <h1 className={classNames([style.title, "unselectable"])}>
                     MY BLOGS
                 </h1>
                 {!blogs && (

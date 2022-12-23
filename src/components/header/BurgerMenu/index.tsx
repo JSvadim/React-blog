@@ -15,7 +15,7 @@ const BurgerMenu: React.FC<BurgerMenuComponentI> = (props) => {
     return (
         <div className={burgerClassName}>
             <button 
-                className={style.button} 
+                className={classNames([style.button, "unselectable"])} 
                 onClick={() => props.toggleMenu()}>
                 Open menu
             </button>

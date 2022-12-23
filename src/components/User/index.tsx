@@ -15,7 +15,11 @@ import { userProps } from "./type";
 
 
 export const User: React.FC<userProps> = ({userNickname, theme, className}) => {
+
     const userClassName = classNames([style.user, style[`user--theme-${theme}`], className]);
+    const linkClassName = classNames([style.nickname, "unselectable"]);
+
+
     return (
         <div className={userClassName}>
             <div className={style["pic-container"]}>
@@ -26,7 +30,7 @@ export const User: React.FC<userProps> = ({userNickname, theme, className}) => {
             </div>
             {/* ADD DYNAMIC ID DOWN THERE */}
             <div className={style["nickname-container"]}>
-                <Link className={style.nickname} to="/profile" state={{ userId: 34 }}>
+                <Link className={linkClassName} to="/profile" state={{ userId: 34 }}>
                     {userNickname}
                 </Link>
             </div>

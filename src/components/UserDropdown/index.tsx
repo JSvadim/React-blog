@@ -1,6 +1,9 @@
 // hooks
 import { useState } from "react"
 
+// third-party
+import classNames from "classnames";
+
 // local imports
 import { User } from "../User"
 import { UserDropdownComponentI } from "./type";
@@ -43,7 +46,7 @@ export const UserDropdown: React.FC<UserDropdownComponentI> = (props) => {
                 </svg>
 
                 <button 
-                    className={style["toggle-btn"]}
+                    className={classNames([style["toggle-btn"], "unselectable"])}
                     onClick={() => {setIsOpened(!isOpened)}}
                     type="button"
                     >

@@ -40,7 +40,8 @@ const ImageInput: React.FC<ImageInputI> = (props) => {
             <input
                 className={classNames([
                     style["file-input"],
-                    image ? style["file-input-disabled"] : ""
+                    image ? style["file-input-disabled"] : "",
+                    "unselectable"
                 ])}
                 type="file" 
                 accept=".png, .jpg, .jpeg, .gif"

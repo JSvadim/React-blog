@@ -21,7 +21,7 @@ const Navbar: React.FC<HeaderNavbarComponentI> = (props) => {
                     {navItems.map( (item: {title: string, path: string}, index: number) => {
                         return (
                             <li className={style["list-item"]} key={index}>
-                                <NavLink className={style.link} 
+                                <NavLink className={classNames([style.link, "unselectable"])} 
                                     onClick={() => {props.toggleMenu()}}
                                     style={setActiveLinkStyle} 
                                     to={item.path}>

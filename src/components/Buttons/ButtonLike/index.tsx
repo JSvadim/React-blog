@@ -14,6 +14,7 @@ const ButtonLike: React.FC<ButtonLikeComponentI> = (props) => {
 
     const [ loading, setLoading ] = useState(false);
     const buttonClass = classNames([
+        "unselectable",
         style.button, 
         style[`button--theme-${props.theme}`], 
         loading ? style["button--loading"] : ""]);

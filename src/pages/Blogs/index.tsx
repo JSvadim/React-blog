@@ -74,7 +74,7 @@ const BlogsPage: React.FC = () => {
     return (
         <Container>
             <div className={style.wrapper}>
-                <h1 className={style.title}>
+                <h1 className={classNames([style.title, "unselectable"])}>
                     <span className={style["title-small"]}>BEST blog</span>
                     <span className={style["title-big"]}>EVER</span>
                 </h1>

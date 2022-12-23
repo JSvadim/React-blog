@@ -9,6 +9,7 @@ import style from "./style.module.scss";
 export const PaginationItem: React.FC<PaginationItemComponentI> = (props) => {
 
     const itemClassName = classNames([style["item"], props.isActive ? style["item--active"] : ""]);
+    const buttonClassName = classNames([style["button"], "unselectable"]);
 
 
     return (
@@ -21,7 +22,7 @@ export const PaginationItem: React.FC<PaginationItemComponentI> = (props) => {
             {!props.isEllipsis && 
             <button 
                 onClick={() => {props.onClick(props.pageNumber)}}
-                className={style["button"]}>
+                className={buttonClassName}>
                     {props.pageNumber}
             </button>}
         </li>
