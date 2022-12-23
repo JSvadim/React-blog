@@ -9,30 +9,14 @@
     font-size: 18px;
     width: 153px;
     height: 43px;
-    &:hover,
-    &:focus-visible {
-        transform: translate(-7px, -7px);
-    }
-    &:active {
-        transition: all 0s;
-        transform: translate(-2px, -2px);
-    }
 }
 
 
 //  THEMES
-
 .black {
     background-color: var(--col-black-light);
     color: var(--col-text-white);
     box-shadow: 0px 0px 0px var(--col-violet-light);
-    &:hover,
-    &:focus-visible {
-        box-shadow: 7px 7px 0px var(--col-violet-light);
-    }
-    &:active {
-        box-shadow: 2px 2px 0px var(--col-violet-light);
-    }
 }
 
 .white {
@@ -40,12 +24,57 @@
     border: 1px solid var(--col-black);
     color: var(--col-text-blue-dark);
     box-shadow: 0px 0px 0px var(--col-violet);
-    &:hover,
-    &:focus-visible {
-        box-shadow: 7px 7px 0px var(--col-violet);
+}
+
+@media(hover: hover) {
+    .button {
+        &:hover,
+        &:focus-visible {
+            transform: translate(-7px, -7px);
+        }
+        &:active {
+            transition: all 0s;
+            transform: translate(-2px, -2px);
+        }
     }
-    &:active {
-        box-shadow: 2px 2px 0px var(--col-violet);
+    .black {
+        &:hover,
+        &:focus-visible {
+            box-shadow: 7px 7px 0px var(--col-violet-light);
+        }
+        &:active {
+            box-shadow: 2px 2px 0px var(--col-violet-light);
+        }
+    }
+    .white {
+        &:hover,
+        &:focus-visible {
+            box-shadow: 7px 7px 0px var(--col-violet);
+        }
+        &:active {
+            box-shadow: 2px 2px 0px var(--col-violet);
+        }
+    }
+}
+
+@media(hover: none) {
+    // for mobile devices I add animation to show that button is clicked.
+    // every time button clicked ".clicked" class adds and removes after 0.5s.
+    // so we have 0.5s to show animation to user.
+    .clicked {
+        animation: mobileClick 0.5s ease-in;
+        pointer-events: none;
+    }
+    
+    @keyframes mobileClick {
+        0% {
+            opacity: 0.6;
+            transform: scale(0.85);
+        }
+        100% {
+            opacity: 1;
+            transform: scale(1);
+        }
     }
 }
 
