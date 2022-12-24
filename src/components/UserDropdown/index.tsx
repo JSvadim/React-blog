@@ -1,5 +1,5 @@
 // hooks
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 // third-party
 import classNames from "classnames";
@@ -25,6 +25,32 @@ export const UserDropdown: React.FC<UserDropdownComponentI> = (props) => {
     const firstColor = props.theme === "white" ? "white" : "black";
     const secondColor = props.theme === "white" ? "black" : "white";
 
+
+    const watchClickOutOfDropdown = (e: MouseEvent) => {
+        // if dropdown is opened and user clicks out of dropdown it closes
+        const element = e.target as HTMLElement;
+        if(element && isOpened) {
+
+            const isClickInsideDropdown = 
+                element.classList.contains(props.dropdownClassName) ||
+                element.closest(`.${props.dropdownClassName}`) ?
+                true : 
+                false;
+
+            if(!isClickInsideDropdown) {
+                setIsOpened(false);
+            }
+        }
+    }
+
+    useEffect(() => {
+        if(isOpened) {
+            document.addEventListener("click", watchClickOutOfDropdown);
+        }
+        return () => {document.removeEventListener("click", watchClickOutOfDropdown)}
+    }, [isOpened]);
+
+    
     return (
         <div className={props.dropdownClassName}>
             <div 
