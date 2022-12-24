@@ -81,7 +81,7 @@ const BlogsPage: React.FC = () => {
                 {!blogs && (
                     <div className={style["no-blogs"]}>
                         <p className={style["no-blogs__text"]}>
-                            You have no blogs..
+                            We have no blogs..
                         </p>
                     </div>
                 )}

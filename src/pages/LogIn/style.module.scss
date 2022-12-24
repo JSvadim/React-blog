@@ -29,6 +29,9 @@
 }
 
 @media(min-width: 1200px) {
+    .wrapper {
+        min-height: 800px;
+    }
     .example-posts {
         display: block;
         position: absolute;
@@ -53,7 +56,6 @@
 @media (min-width: 1400px) {
     .wrapper {
         padding-top: 200px;
-        min-height: 750px;
     }
     .example-posts {
         article:first-child {
