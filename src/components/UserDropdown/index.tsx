@@ -32,8 +32,8 @@ export const UserDropdown: React.FC<UserDropdownComponentI> = (props) => {
         if(element && isOpened) {
 
             const isClickInsideDropdown = 
-                element.classList.contains(props.dropdownClassName) ||
-                element.closest(`.${props.dropdownClassName}`) ?
+                element.closest(`.${props.dropdownClassName}`) &&
+                !element.classList.contains(props.dropdownClassName) ?
                 true : 
                 false;
 
