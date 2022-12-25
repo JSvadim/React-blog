@@ -40,8 +40,8 @@ export const AddCommentForm: React.FC<AddCommentFormComponentI> = (props) => {
                     errorType="form"
                     errors={errors}>
                         <TextArea
-                            theme="white"
-                            className={style["textarea"]}
+                            theme={props.theme}
+                            className={props.textAreaClassName}
                             placeholder="your comment..."
                             register={register}
                             registerName="comment"
@@ -50,7 +50,7 @@ export const AddCommentForm: React.FC<AddCommentFormComponentI> = (props) => {
             </InputWrapper>
             <ButtonBasic
                 type="submit"
-                theme="white"
+                theme={props.theme}
                 text="add comment"
                 onClick={() => {}}
             />

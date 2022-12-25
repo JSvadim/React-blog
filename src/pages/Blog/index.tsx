@@ -9,27 +9,24 @@ import classNames from "classnames";
 import style from "./style.module.scss";
 import { BlogPageLocationI } from "./type";
 import Container from "../../components/Container";
-import blogController from "../../controllers/blog-controller";
-import Loading from "../../components/Loading";
 import { User } from "../../components/User";
 import { formatDate } from "./helpers";
 import PicturesList from "../../components/PicturesList";
 import ButtonLike from "../../components/Buttons/ButtonLike";
 import Comment from "../../components/Comment";
-import ButtonBasic from "../../components/Buttons/ButtonBasic";
 import { AddCommentForm } from "../../components/forms/AddCommentForm";
-import { BlogResponseI } from "../../types/server-responses/blog";
+import { CommentComponentI } from "../../components/Comment/type";
 
 
 const BlogPage: React.FC = () => {
 
     const location = useLocation()
     const { blog } = location.state as BlogPageLocationI;
-    const fakeComments = [
+    const fakeComments: [] | CommentComponentI[] = [
         {
             userId: 2,
             date: "12.06.2078",
-            text: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit quasi et at soluta sit odit ipsam nobis, optio corporis praesentium consectetur culpa quia, voluptas asperiores, perferendis mollitia deserunt expedita! Iure, eveniet aut necessitatibus deserunt accusantium velit aperiam omnis nobis fugit dicta veritatis distinctio nesciunt nisi error. Aliquam quo quod mollitia?"
+            text: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit quasi et at soluta sit odit ipsam nobis, optio corporis praesentium consectetur culpa quia, voluptas asperiores, perferendis mollitia deserunt expedita! Iure, eveniet aut necessitatibus deserunt accusantium velit aperiam omnis nobis fugit dicta veritatis distinctio nesciunt nisi error."
         },
         {
             userId: 4,
@@ -57,6 +54,10 @@ const BlogPage: React.FC = () => {
             text: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit quasi et at soluta sit odit ipsam nobis, optio corporis praesentium consectetur culpa quia, voluptas asperiores, perferendis mollitia deserunt expedita! Iure, eveniet aut necessitatibus deserunt accusantium velit aperiam omnis nobis fugit dicta veritatis distinctio nesciunt nisi error. Aliquam quo quod mollitia?"
         }
     ]
+    const containerClass = classNames([
+        style["tablet-desktop-container"],
+        blog.pictures ? style.pictured : ''
+    ])
     if(!blog) {
         return (
             <p>Error</p>
@@ -70,14 +71,14 @@ const BlogPage: React.FC = () => {
                         <User 
                             className={style["main-header__user"]} 
                             theme="black" 
-                            userNickname="Boris breicha"/>
+                            userNickname="Boris Meow"/>
                         <time className={style["main-header__date"]}>
                             {formatDate(blog.date)}
                         </time>
                     </div>
                 </Container>
             </header>
-            <div className={style["tablet-desktop-container"]}>
+            <div className={containerClass}>
                 <section className={style["blog"]}>
                     <header className={style["blog__header"]}>
                         <h1 className={style["blog__title"]}>
@@ -110,12 +111,14 @@ const BlogPage: React.FC = () => {
                         isFake={false}
                         isCompressed={false}
                     />}
-                    <p className={style["blog__text"]}>
-                        {blog.text}
-                    </p>
-                    <ButtonLike
-                        theme="white"
-                        isLiked={false}/>
+                    <div className={style["blog__text-and-like-btn"]}>
+                        <p className={style["blog__text"]}>
+                            {blog.text}
+                        </p>
+                        <ButtonLike
+                            theme="white"
+                            isLiked={false}/>
+                    </div>
                 </section>
                 <section className={style["comments"]}>
                     <header className={style["comments__header"]}>
@@ -124,24 +127,27 @@ const BlogPage: React.FC = () => {
                     </header>
                     <div className={style["comments__list-wrapper"]}>
                         <ul className={style["comments__list"]}>
-                            {
-                                fakeComments.map((comment) => {
-                                    return (
-                                        <li className={style["comments__list-item"]} key={comment.userId}>
-                                            <Comment
-                                                userId={comment.userId}
-                                                date={comment.date}
-                                                text={comment.text}
-                                            />
-                                        </li>
-                                    )
-                                })
-                            }
+                            {fakeComments.length > 0 && 
+                            fakeComments.map((comment) => {
+                                return (
+                                    <li className={style["comments__list-item"]} key={comment.userId}>
+                                        <Comment
+                                            userId={comment.userId}
+                                            date={comment.date}
+                                            text={comment.text}
+                                        />
+                                    </li>
+                                )
+                            })}
+                            {fakeComments.length === 0 &&
+                            <p className={style["comments__no-comments"]}>No comments...</p>}
                         </ul>
                     </div>
                     <AddCommentForm
+                        theme="white"
                         blogId={blog.id_blog}
-                        className={style["comments__form"]}/>
+                        className={style["comments__form"]}
+                        textAreaClassName={style["comments__form-textarea"]}/>
                 </section>
             </div>
         </section>

@@ -7,6 +7,7 @@
 }
 
 .user {
+    flex: 0 1 calc(100% - 100px);
     max-width: calc(100% - 100px);
 }
 
@@ -23,9 +24,13 @@
 
 .text {
     font-size: 18px;
-    height: 63px;
-    max-height: 63px;
+    min-height: 43px;
+    max-height: 128px;
     line-height: 1.2em;
-    overflow-y: auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
     padding: 0 10px 0 0;
 }
