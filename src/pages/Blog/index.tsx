@@ -4,18 +4,20 @@ import { useState, useEffect } from "react";
 
 // third party
 import classNames from "classnames";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css"; 
 
 // local imports
 import style from "./style.module.scss";
 import { BlogPageLocationI } from "./type";
 import Container from "../../components/Container";
 import { User } from "../../components/User";
-import { formatDate } from "./helpers";
-import PicturesList from "../../components/PicturesList";
+import { formatDate, SlickArrowsMobileAnimation } from "./helpers";
 import ButtonLike from "../../components/Buttons/ButtonLike";
 import Comment from "../../components/Comment";
 import { AddCommentForm } from "../../components/forms/AddCommentForm";
 import { CommentComponentI } from "../../components/Comment/type";
+import ServerImage from "../../components/ServerImage";
 
 
 const BlogPage: React.FC = () => {
@@ -58,6 +60,19 @@ const BlogPage: React.FC = () => {
         style["tablet-desktop-container"],
         blog.pictures ? style.pictured : ''
     ])
+    const sliderSettings = {
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1
+    };
+    useEffect(() => {
+        const animatedMobileArrows = new SlickArrowsMobileAnimation(style["blog__pics"], 600);
+        return () => animatedMobileArrows.removeListenersAndTimers()
+    }, [])
+
+
+
     if(!blog) {
         return (
             <p>Error</p>
@@ -103,14 +118,20 @@ const BlogPage: React.FC = () => {
                             <p className={style["likes__number"]}>24</p>
                         </div>
                     </header>
-                    {blog.pictures && <PicturesList
-                        pictures={blog.pictures}
-                        listClassName={classNames([style["blog__pics"]])}
-                        itemClassName={classNames([style["blog__pics-item"]])}
-                        pictureClassName={classNames([style["blog__pics-image"]])}
-                        isFake={false}
-                        isCompressed={false}
-                    />}
+                    {blog.pictures && 
+                        <Slider {...sliderSettings} lazyLoad="progressive" className={style["blog__pics"]}>
+                            {blog.pictures.split(" ").map((image) => {
+                                return (
+                                    <div className={classNames([style["blog__pics-item"]])} key={image}>
+                                        <ServerImage 
+                                            className={classNames([style["blog__pics-image"]])}
+                                            imageName={image}
+                                            compressed={false}/>
+                                    </div>
+                                )
+                            })}
+                        </Slider>
+                    }
                     <div className={style["blog__text-and-like-btn"]}>
                         <p className={style["blog__text"]}>
                             {blog.text}
