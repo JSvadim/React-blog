@@ -80,9 +80,10 @@ const LogInForm: React.FC = () => {
             </InputWrapper>
             
             <div>
-                <a className={classNames(["blue-link", "unselectable", style["blue-link"]])} 
-                    href="/"> Forgot password?
-                </a>
+                <Link 
+                    className={classNames(["blue-link", "unselectable", style["blue-link"]])}
+                    to="/log-in"> Forgot password?
+                </Link>
             </div>
 
             <ButtonBasic
