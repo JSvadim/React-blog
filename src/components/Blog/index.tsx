@@ -6,13 +6,13 @@ import { Link } from "react-router-dom";
 import style from "./style.module.scss";
 import { BlogComponentI } from "./type";
 import PicturesList from "../PicturesList";
-
-
+import { User } from "../User";
 
 
 const Blog: React.FC<BlogComponentI> = (props) => {
 
     const { blog, isFake } = props;
+
     const fakeLink = <span className={classNames([style["read-all-link"], "unselectable"])}>read all blog...</span>;
     const trueLink = (
         <Link className={classNames([style["read-all-link"], "unselectable"])} to="/blog" state={{ blog }}>
@@ -52,7 +52,17 @@ const Blog: React.FC<BlogComponentI> = (props) => {
                             pictureClassName={style["pics-image"]}
                             isFake={props.isFake}
                             isCompressed={true}/> }
-                    { props.isFake ? fakeLink : trueLink }
+                    <div className={style["content__bottom-row"]}>
+                        { props.isFake ? fakeLink : trueLink }
+                        { props.isFake && <User isFake={true} theme="white" className={style.user}/>}
+                        {!props.isFake && 
+                            <User 
+                                isFake={false} 
+                                databaseSelector="id_user"
+                                dbSelectorValue={blog.id_user}
+                                theme="white" 
+                                className={style.user}/>}
+                    </div>
                 </div>
             </div>
         </article>
