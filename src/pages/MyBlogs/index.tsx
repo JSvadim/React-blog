@@ -24,8 +24,8 @@ const MyBlogsPage: React.FC = () => {
         const fetchBlogs = async () => {
             if(user?.id) {
                 const fetchedBlogs = await blogController.getBlogs(user.id);
-                if(fetchedBlogs?.data) {
-                    setBlogs(fetchedBlogs.data);
+                if(fetchedBlogs?.data && fetchedBlogs.data.length > 0) {
+                    setBlogs([...fetchedBlogs.data].reverse());
                     /* 
                         FOR PAGINATION TESTING
                         const gottenBlogs = [...fetchedBlogs.data];

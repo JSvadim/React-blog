@@ -20,12 +20,11 @@ const BlogsPage: React.FC = () => {
     const [ loading, setLoading ] = useState<Boolean>(true);
     const [ pageNumber, setPageNumber ] = useState<number>(1);
 
-
     useEffect(() => {
         const fetchBlogs = async () => {
             const fetchedBlogs = await blogController.getBlogs();
-            if(fetchedBlogs?.data) {
-                setBlogs(fetchedBlogs.data);
+            if(fetchedBlogs?.data && fetchedBlogs.data.length > 0) {
+                setBlogs([...fetchedBlogs.data].reverse());
                 /* 
                 FOR PAGINATION TESTING
                 const gottenBlogs = [...fetchedBlogs.data];

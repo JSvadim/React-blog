@@ -108,14 +108,21 @@
         top: 12px;
     }
     .blogs {
-        width: initial;
-        width: 1230px;
-        padding: 256px 10px 0px 0px;
+        width: 1260px;
+        padding: 256px 0px 0px 0px;
+        transform: initial;
+        justify-content: flex-start;
+    }
+    .wrapper {
+        align-items: flex-start;
     }
     .blog {
-        margin: 0 0 44px 0;
+        margin: 0 30px 44px 0;
         &:nth-last-child(-n + 3) {
-            margin: 0;
+            margin: 0 30px 44px 0;
+        }
+        &:nth-child(3n) {
+            margin: 0 0 44px 0;
         }
     }
     .pagination {
