@@ -18,12 +18,16 @@ import Comment from "../../components/Comment";
 import { AddCommentForm } from "../../components/forms/AddCommentForm";
 import { CommentComponentI } from "../../components/Comment/type";
 import ServerImage from "../../components/ServerImage";
+import { UserResponseI } from "../../types/server-responses/user";
+import { UserController } from "../../controllers/user-controller";
 
 
 const BlogPage: React.FC = () => {
 
     const location = useLocation()
-    const { blog } = location.state as BlogPageLocationI;
+    const { blog } = location.state as BlogPageLocationI;   
+    
+    
     const fakeComments: [] | CommentComponentI[] = [
         {
             userId: 2,
@@ -66,11 +70,12 @@ const BlogPage: React.FC = () => {
         slidesToShow: 1,
         slidesToScroll: 1
     };
+
+
     useEffect(() => {
         const animatedMobileArrows = new SlickArrowsMobileAnimation(style["blog__pics"], 600);
         return () => animatedMobileArrows.removeListenersAndTimers()
-    }, [])
-
+    }, []);
 
 
     if(!blog) {
@@ -84,9 +89,11 @@ const BlogPage: React.FC = () => {
                 <Container>
                     <div className={style["main-header__inner"]}>
                         <User 
+                            isFake={false}
+                            databaseSelector="id_user"
+                            dbSelectorValue={blog.id_user}
                             className={style["main-header__user"]} 
-                            theme="black" 
-                            userNickname="Boris Meow"/>
+                            theme="black"/>
                         <time className={style["main-header__date"]}>
                             {formatDate(blog.date)}
                         </time>

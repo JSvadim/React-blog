@@ -62,7 +62,8 @@ export const UserDropdown: React.FC<UserDropdownComponentI> = (props) => {
                 style={ isClickable ? {} : {pointerEvents: "none"} }>
                 <User 
                     className={props.userClassName}
-                    userNickname={props.user.nickname}
+                    userProp={props.user}
+                    isFake={false}
                     theme={isOpened ? secondColor : props.theme}/>
 
                 <svg className={style.decor} viewBox="0 0 5 4">

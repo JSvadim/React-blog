@@ -13,7 +13,7 @@ const Comment: React.FC<CommentComponentI> = (props) => {
                     <User 
                         className={style.user}
                         theme="black" 
-                        userNickname="angela"/>
+                        isFake={true}/>
                     <time className={style.date}>{props.date}</time>
                 </header>
                 <p className={style.text}>
