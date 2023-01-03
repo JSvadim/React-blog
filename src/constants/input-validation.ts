@@ -64,12 +64,11 @@ export const userOtherGenderValidation = {
     required: "This field is required. ",
     pattern: {
         value: /^[a-zA-Zа-яА-Я\d\-_ ]+$/g,
-        message: `Nickname can contain only Numbers,
-             Russian and English letters, spaces and - _ signs`
+        message: `Gender can contain only Russian and English letters, spaces and - _ signs`
     },
     maxLength: {
         value: 25,
-        message: "Nickname can't be longer than 25 symbols"
+        message: "Gender can't be longer than 25 symbols"
     }
 }
 
