@@ -11,56 +11,52 @@ import blogController from "../../controllers/blog-controller";
 import { BlogResponseI } from "../../types/server-responses/blog";
 import { BlogsList } from "../../components/BlogsList";
 import classNames from "classnames";
+import { usePagination } from "../../hooks/usePagination";
+import { localStorageMyBlogsPagination } from "../../constants/local-storage";
 
 const MyBlogsPage: React.FC = () => {
 
     const [ blogs, setBlogs ] = useState<null | BlogResponseI[]>(null);
     const [ loading, setLoading ] = useState<Boolean>(true);
     const { user } = useTypedSelector(state => state.user);
-    const [ pageNumber, setPageNumber ] = useState<number>(1);
+    
+    const itemsPerPage = 12;
+    const usePaginationProps = { localStorageVariableName: localStorageMyBlogsPagination, itemsPerPage };
+    const [ pageNumber, paginationClickHandler, sliceBlogs ] = usePagination(usePaginationProps);
 
     useEffect(() => {
-
         const fetchBlogs = async () => {
             if(user?.id) {
                 const fetchedBlogs = await blogController.getBlogs(user.id);
+                // COMMENT THIS IF STATEMENT IF TESTING PAGINATION
                 if(fetchedBlogs?.data && fetchedBlogs.data.length > 0) {
                     setBlogs([...fetchedBlogs.data].reverse());
-                    /* 
-                        FOR PAGINATION TESTING
-                        const gottenBlogs = [...fetchedBlogs.data];
-                        for (let i = 200; i < 4000; i++) {
-                            gottenBlogs.push({
-                                title: `blog number ${i}`,
-                                text: `My cat John is not a cat but actually  
-                                    he’s a cato-human, I saw yesterday it and 
-                                    it was not it but actually was it. I’m not sure, but
-                                    he’s a cato-human, I saw yesterday it and 
-                                    it was not it but actually was it. I’m not sure, but...`,
-                                pictures: null,
-                                id_blog: i,
-                                id_user: 32,
-                                date: new Date()
-                            })
-                        }
-                        setBlogs(gottenBlogs); 
-                    */
                 }
+                // FOR PAGINATION TESTING
+                /* if(fetchedBlogs?.data ) {
+                    const gottenBlogs = [...fetchedBlogs.data].reverse();
+                    for (let i = 200; i < 988; i++) {
+                        gottenBlogs.push({
+                            title: `blog number ${i}`,
+                            text: `My cat John is not a cat but actually  
+                                he’s a cato-human, I saw yesterday it and 
+                                it was not it but actually was it. I’m not sure, but
+                                he’s a cato-human, I saw yesterday it and 
+                                it was not it but actually was it. I’m not sure, but...`,
+                            pictures: null,
+                            id_blog: i,
+                            id_user: 32,
+                            date: new Date()
+                        })
+                    }
+                    setBlogs(gottenBlogs); 
+                } */
             }
             setLoading(false);
         }
         fetchBlogs();
 
     }, [])
-    const paginationClickHandler = (numberOfPage: number) => {
-        setPageNumber(numberOfPage);
-    }
-    const itemsPerPage = 12;
-    const sliceBlogs = (blogs: Array<BlogResponseI>) => {
-        const firstBlogNumber = pageNumber * itemsPerPage - itemsPerPage;
-        const lastBlogNumber = pageNumber * itemsPerPage;
-        return blogs.slice(firstBlogNumber, lastBlogNumber);
-    }
 
 
     if(loading) {
@@ -70,6 +66,8 @@ const MyBlogsPage: React.FC = () => {
             </div>
         )
     }
+
+
     return (
         <Container>
             <div className={style.wrapper}>
@@ -99,7 +97,7 @@ const MyBlogsPage: React.FC = () => {
                                     blogs={sliceBlogs(blogs)}/>
                                 <Pagination 
                                     amountOfItems={blogs.length}
-                                    itemsPerPage={12}
+                                    itemsPerPage={itemsPerPage}
                                     className={style.pagination}
                                     onClick={paginationClickHandler}
                                     currentPageNumber={pageNumber}/>

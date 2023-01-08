@@ -12,54 +12,46 @@ import Loading from "../../components/Loading";
 import blogController from "../../controllers/blog-controller";
 import { BlogResponseI } from "../../types/server-responses/blog";
 import { BlogsList } from "../../components/BlogsList";
+import { localStorageBlogsPagination } from "../../constants/local-storage";
+import { usePagination } from "../../hooks/usePagination";
 
 
 const BlogsPage: React.FC = () => {
     
     const [ blogs, setBlogs ] = useState<null | BlogResponseI[]>(null);
     const [ loading, setLoading ] = useState<Boolean>(true);
-    const [ pageNumber, setPageNumber ] = useState<number>(1);
+    
+    const itemsPerPage = 12;
+    const usePaginationProps = { localStorageVariableName: localStorageBlogsPagination, itemsPerPage };
+    const [ pageNumber, paginationClickHandler, sliceBlogs ] = usePagination(usePaginationProps);
 
     useEffect(() => {
         const fetchBlogs = async () => {
             const fetchedBlogs = await blogController.getBlogs();
+            let gottenBlogs: BlogResponseI[] = [];
+
             if(fetchedBlogs?.data && fetchedBlogs.data.length > 0) {
-                setBlogs([...fetchedBlogs.data].reverse());
-                /* 
-                FOR PAGINATION TESTING
-                const gottenBlogs = [...fetchedBlogs.data];
-                for (let i = 200; i < 4000; i++) {
-                    gottenBlogs.push({
-                        title: `blog number ${i}`,
-                        text: `My cat John is not a cat but actually  
-                            he’s a cato-human, I saw yesterday it and 
-                            it was not it but actually was it. I’m not sure, but
-                            he’s a cato-human, I saw yesterday it and 
-                            it was not it but actually was it. I’m not sure, but...`,
-                        pictures: null,
-                        id_blog: i,
-                        id_user: 32,
-                        date: new Date()
-                    })
-                }
-                setBlogs(gottenBlogs); 
-                */
+                gottenBlogs = [...fetchedBlogs.data].reverse();
             }
+            // FOR PAGINATION TESTING
+            for (let i = 200; i < 800; i++) {
+                gottenBlogs.push({
+                    title: `blog number ${i + 300000}`,
+                    text: `This blog is used for testing pagination. 
+                            Or to just show how pagination works...`,
+                    pictures: null,
+                    id_blog: i,
+                    id_user: 320000,
+                    date: new Date(),
+                    fake: true,
+                })
+            }
+            setBlogs(gottenBlogs); 
             setLoading(false);
 
         }
         fetchBlogs();
     }, [])
-
-    const paginationClickHandler = (numberOfPage: number) => {
-        setPageNumber(numberOfPage);
-    }
-    const itemsPerPage = 12;
-    const sliceBlogs = (blogs: Array<BlogResponseI>) => {
-        const firstBlogNumber = pageNumber * itemsPerPage - itemsPerPage;
-        const lastBlogNumber = pageNumber * itemsPerPage;
-        return blogs.slice(firstBlogNumber, lastBlogNumber);
-    }
     
 
     if(loading) {

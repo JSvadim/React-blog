@@ -1,70 +1,119 @@
 // local imports
-import { GeneratePaginationItemsFuncI } from "./type";
+import { AssignTwoFirstItemsFuncI, AssignTwoLastItemsFuncI, GeneratePaginationItemsFuncI, GetFirstPageNumberFuncI } from "./type";
 
 
-export const generatePaginationItems = (amountOfItems: number, itemsPerPage: number, currentPageNumber: number): Array<"ellipsis" | number> => {
-    
+export const generatePaginationItems = (args: GeneratePaginationItemsFuncI): Array<"ellipsis" | number> => {
+    const { amountOfItems, itemsPerPage, currentPageNumber } = args;
+
     const items: Array<"ellipsis" | number> = [];
     const pagesAmount = Math.ceil(amountOfItems / itemsPerPage);
-    const maxCountOfItems = 7;
+    const maxCountOfItems = 9;
+    
     const stopNumber = 
-        pagesAmount > maxCountOfItems ?
+        pagesAmount >= maxCountOfItems ?
         maxCountOfItems : pagesAmount; // index on which for loop stops
 
-    // finding out number of first pagination item
-    let firstPageNumber: number;
-    if(currentPageNumber - 2 > 0 && currentPageNumber + 2 < pagesAmount) {
-        firstPageNumber = currentPageNumber - 2;
-    }else if(currentPageNumber - 2 <= 0) {
-        firstPageNumber = 1;
-    }else if(currentPageNumber + 2 >= pagesAmount) {
-        firstPageNumber = pagesAmount - maxCountOfItems + 1;
-    }else {
-        firstPageNumber = 1;
-        // this "else" is for typescript
-        // I think I thought about all possible variants, so everything have to work well.
-    }
+    const firstPageNumber: number = getFirstPageNumber({
+        pagesAmount, maxCountOfItems, currentPageNumber
+    });
+    
+    assignTwoFirstItems({
+        pagesAmount, currentPageNumber, firstPageNumber, items
+    });
 
-    // assigning ellipsis or pagination item to 5th arrays element if it exists
-    if(pagesAmount > 10) {
-        items[5] = "ellipsis";
-    }else if(pagesAmount < 10 && pagesAmount >= 5) {
-        items[5] = firstPageNumber + 5
-    }
+    assignTwoLastItems({
+        pagesAmount, currentPageNumber, firstPageNumber, items, maxCountOfItems
+    });
 
     // assigning numbers of pages
     for (let i = 0; i < stopNumber; i++) {
-        if(i === 5) continue
-        items[i] = i === 6 ? pagesAmount : firstPageNumber + i;
+        if(i === 0 || i === 1 || i === 7 || i === 8) continue
+        items[i] = firstPageNumber + i;
     }
+    /* console.table({
+        amountOfItems,
+        pagesAmount,
+        firstPageNumber,
+        currentPageNumber,
+        items
+    }) */
     return items
 }
 
 
-            // if currentPageNumber - 2 > 0 && currentPageNumber + 2 < pagesAmount
-            // first page = currentPageNumber - 2
+function getFirstPageNumber(args: GetFirstPageNumberFuncI): number {
+    const { maxCountOfItems, pagesAmount, currentPageNumber} = args;
 
-            // else if currentPageNumber - 2 <= 0 
-            // first page = 1
+    // if all pagination items are already visible
+    if(pagesAmount < maxCountOfItems) {
+        return 1;
+    }
+    // if we can't move pagination items backwards
+    else if(currentPageNumber - 5 <= 0) {
+        return 1;
+    }
+    // moving items forwards
+    else if(currentPageNumber + 4 < pagesAmount) {
+        return currentPageNumber - 4;
+    }
+    // if pagination items can't move forward
+    else if(currentPageNumber + 5 > pagesAmount) {
+        return pagesAmount - (maxCountOfItems - 1);
+    }
+    // default
+    else {
+        return 1
+    }
+}
 
-            // else if currentPageNumber + 2 >= pagesAmount
-            // firstPage = pagesAmount - maxCountOfItems + 1
+function assignTwoFirstItems(args: AssignTwoFirstItemsFuncI): void {
+    // if certain conditions are true function adds ellipsis and link to the
+    // first page to two first pagination items
+    const { pagesAmount, firstPageNumber, currentPageNumber, items } = args;
 
-            /*  console.table({
-                "pageNumber": pageNumber,
-                "currentPageNumber": props.currentPageNumber,
-            }) */
-            // I can show pagination with ellipsis if pagesAmount is > 10
-            // And without ellipsis if pagesAmount is <= 7
+    if(pagesAmount <= 30) {
+        items[0] = firstPageNumber;
+        items[1] = firstPageNumber + 1;
+    } 
+    else if(currentPageNumber >= 20) {
+        items[0] = 1;
+        items[1] = "ellipsis";
+    }
+    else {
+        items[0] = firstPageNumber;
+        items[1] = firstPageNumber + 1;
+    } 
+}
 
-            // Active item should be in the middle, so user can go to prev and to next pages
-            // but if we on last page active item is last item
-            // if we on first page active item is first item
-
-
-            // if pagesAmount is > 10 assign to 5 item ellipsis
-            // if pagesAmount is < 10 && >= 5 assign to 5 item item 
-            // two above actions are done before cycle
-
-            
-            // also before cycle I need to find out a number of first page
+function assignTwoLastItems(args: AssignTwoLastItemsFuncI): void {
+    // if certain conditions are true function adds ellipsis and link to the
+    // last page to two last pagination items
+    const { pagesAmount, firstPageNumber, currentPageNumber, items, maxCountOfItems } = args;
+    
+    if(pagesAmount <= 30 && pagesAmount >= maxCountOfItems) {
+        const lastNumber = firstPageNumber + (maxCountOfItems - 1);
+        // last page
+        items[lastNumber] = lastNumber;
+        // page before last one
+        items[lastNumber - 1] = lastNumber - 1;
+    } 
+    else if(pagesAmount <= 30 && pagesAmount < maxCountOfItems) {
+        // last page
+        items[pagesAmount - 1] = pagesAmount
+        // page before last one
+        items[pagesAmount - 2] = pagesAmount - 1;
+    } 
+    else if(pagesAmount > 30 && currentPageNumber < pagesAmount - maxCountOfItems * 2) {
+        // last page
+        items[pagesAmount] = pagesAmount;
+        // page before last one
+        items[pagesAmount - 1] = "ellipsis";
+    }
+    else {
+        const lastNumber = firstPageNumber + (maxCountOfItems - 1);
+        // last page
+        items[lastNumber] = lastNumber;
+        // page before last one
+        items[lastNumber - 1] = lastNumber - 1;
+    }
+}

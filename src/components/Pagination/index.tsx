@@ -11,10 +11,10 @@ import { generatePaginationItems } from "./helpers";
 const Pagination: React.FC<PaginationComponentI> = (props) => {
 
     const navClassName = classNames([style.nav || '', props.className || '']);
-    const paginationItemsNumbers = generatePaginationItems(
-        props.amountOfItems, 
-        props.itemsPerPage, 
-        props.currentPageNumber);
+    const paginationItemsNumbers = generatePaginationItems({
+        amountOfItems: props.amountOfItems,
+        itemsPerPage: props.itemsPerPage,
+        currentPageNumber: props.currentPageNumber});
 
 
     return (

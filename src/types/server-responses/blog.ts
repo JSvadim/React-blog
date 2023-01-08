@@ -5,4 +5,5 @@ export interface BlogResponseI {
     id_user: number;
     id_blog: number;
     date: Date;
+    fake?: boolean;
 }

@@ -11,7 +11,7 @@ export const BlogsList: React.FC<BlogsListComponentI> = (props) => {
                     <li className={props.itemClassName} key={blog.id_blog}>
                         <Blog
                             blog={blog}
-                            isFake={false}/>
+                            isFake={blog?.fake ? true : false}/>
                     </li>
                 )
             })}

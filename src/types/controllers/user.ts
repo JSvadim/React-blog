@@ -1,1 +1,1 @@
-export type userDatabaseSelector = "id_user" | "email" | "nickname";
+export type UserDatabaseSelector = "id_user" | "email" | "nickname";
