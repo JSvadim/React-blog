@@ -18,8 +18,6 @@ import Comment from "../../components/Comment";
 import { AddCommentForm } from "../../components/forms/AddCommentForm";
 import { CommentComponentI } from "../../components/Comment/type";
 import ServerImage from "../../components/ServerImage";
-import { UserResponseI } from "../../types/server-responses/user";
-import { UserController } from "../../controllers/user-controller";
 
 
 const BlogPage: React.FC = () => {
@@ -132,8 +130,7 @@ const BlogPage: React.FC = () => {
                                     <div className={classNames([style["blog__pics-item"]])} key={image}>
                                         <ServerImage 
                                             className={classNames([style["blog__pics-image"]])}
-                                            imageName={image}
-                                            compressed={false}/>
+                                            imageName={image}/>
                                     </div>
                                 )
                             })}

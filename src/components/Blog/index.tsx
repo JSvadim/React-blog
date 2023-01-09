@@ -50,8 +50,7 @@ const Blog: React.FC<BlogComponentI> = (props) => {
                             listClassName={style.pics}
                             itemClassName={style["pics-item"]}
                             pictureClassName={style["pics-image"]}
-                            isFake={props.isFake}
-                            isCompressed={true}/> }
+                            isFake={props.isFake}/> }
                     <div className={style["content__bottom-row"]}>
                         { props.isFake ? fakeLink : trueLink }
                         { props.isFake && <User isFake={true} theme="white" className={style.user}/>}

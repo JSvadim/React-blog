@@ -6,7 +6,7 @@ import classNames from "classnames";
 
 // local imports
 import { ServerImageI } from "./type"
-import { serverURL } from "../../constants/server-url";
+import { imageKitUrl } from "../../constants/imagekit";
 import Loading from "../Loading";
 import style from "./style.module.scss";
 
@@ -15,12 +15,7 @@ const ServerImage: React.FC<ServerImageI> = (props) => {
     
     // to see loading gif, div that contains ServerImage should have min-width or width specified
     const [ loading, setLoading ] = useState(true);
-    const imageExtension = props.imageName.split('.')[1];
-    const isImageGif = imageExtension === "gif" ? true : false;
-    const imageFolder = isImageGif || !props.compressed ?
-        "images" : 
-        "images-compressed";
-
+    const imageURL = `${imageKitUrl}/blog-images/${props.imageName}`;
     return (
         <>
             {loading && <Loading/>}
@@ -32,7 +27,7 @@ const ServerImage: React.FC<ServerImageI> = (props) => {
                 onLoad={() => {
                     setLoading(false);
                 }}
-                src={`${serverURL}/${imageFolder}/${props.imageName}`}>
+                src={imageURL}>
             </img>
         </>
     )

@@ -1,7 +1,7 @@
 .wrapper {
     padding-top: 35px;
     position: relative;
-    min-height: 700px;
+    min-height: 800px;
 }
 
 .example-posts {
@@ -29,9 +29,6 @@
 }
 
 @media(min-width: 1200px) {
-    .wrapper {
-        min-height: 800px;
-    }
     .example-posts {
         display: block;
         position: absolute;

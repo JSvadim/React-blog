@@ -1,0 +1,1 @@
+export const imageKitUrl = "https://ik.imagekit.io/vadimsImages";

@@ -4,5 +4,4 @@ export interface PicturesListI {
     itemClassName?: string;
     pictureClassName?: string;
     isFake: boolean;
-    isCompressed: boolean;
 }

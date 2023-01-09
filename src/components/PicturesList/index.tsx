@@ -4,6 +4,7 @@ import { PicturesListI } from "./type";
 
 
 const PicturesList: React.FC<PicturesListI> = (props) => {
+    
     const imagesNames = props.pictures.split(" ");
     return (
         <ul className={props.listClassName}>
@@ -13,8 +14,7 @@ const PicturesList: React.FC<PicturesListI> = (props) => {
                         {!props.isFake && 
                             <ServerImage 
                                 className={props.pictureClassName}
-                                imageName={image}
-                                compressed={props.isCompressed}/>
+                                imageName={image}/>
                         }
                         {props.isFake && 
                             <img 
