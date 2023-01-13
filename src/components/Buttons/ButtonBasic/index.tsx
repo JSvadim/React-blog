@@ -1,33 +1,21 @@
 // hooks
-import { useEffect, useState } from "react";
+
 
 // local imports
 import classNames from "classnames";
+import { useIsClicked } from "../../../hooks/useIsClicked";
 import style from "./style.module.scss";
 import { ButtonBasicComponentI } from "./type";
 
 
 const ButtonBasic: React.FC<ButtonBasicComponentI> = (props) => {
 
-    // isClicked and useEffect are for adding click animation for mobile devices.
-    const [ isClicked, setIsClicked ] = useState<boolean>(false);
-    useEffect(() => {
-
-        if(!isClicked) return
-
-        const clickedTimer = setTimeout(() => {
-            setIsClicked(false);
-        }, 500);
-
-        return () => {clearTimeout(clickedTimer)}
-
-    })
+    const [ isClicked, setIsClicked ] = useIsClicked(500);
 
     const clickHandler = () => {
         props.onClick();
         setIsClicked(true);
     }
-
 
     return (
         <button
