@@ -3,17 +3,22 @@ import { HashRouter } from "react-router-dom";
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from "react-redux";
+import { PersistGate } from 'redux-persist/integration/react'
 
 // local imports
 import './styles/index.scss';
 import App from './components/App/index';
-import { store } from "./redux/store";
+import { store, persistor } from "./redux/store";
+import Loading from "./components/Loading";
+
 
 ReactDOM.render(
   <React.StrictMode>
     <HashRouter>
     <Provider store={store}>
-      <App />
+      <PersistGate loading={<Loading/>} persistor={persistor}>
+        <App />
+      </PersistGate>
     </Provider>
     </HashRouter>
   </React.StrictMode>,

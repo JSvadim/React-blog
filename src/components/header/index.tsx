@@ -10,6 +10,7 @@ import SignInLinks from "./SignInLinks/index";
 import { UserDropdown } from "../UserDropdown";
 import Container from "../Container";
 import { handleNavToggling } from "./helpers";
+import { LanguageSwitch } from "./LanguageSwitch";
 
 
 const Header: React.FC = (props) => {
@@ -30,6 +31,7 @@ const Header: React.FC = (props) => {
                             dropdownClassName={style["user-dropdown"]}
                             theme="white" 
                             user={user}/>}
+                    <LanguageSwitch/>
                     <BurgerMenu 
                         isNavOpened={isNavigationOpened}
                         toggleMenu={toggleMenu}/>

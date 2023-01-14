@@ -28,12 +28,12 @@
 .user {
     position: relative;
     z-index: 3;
-    margin: 0 26px 0 0;
-    max-width: calc(250px - (20px + 6.18px + 26px));
+    margin: 0 10px 0 0;
+    max-width: calc(230px - (40px + 6.18px));
 }
 .user-dropdown {
    z-index: 4;
-   width: 250px;
+   width: 230px;
    transform: translate(-10px, -100%);
    animation: headerDropdownAppearance 0.8s ease forwards;
    @keyframes headerDropdownAppearance {
@@ -52,7 +52,6 @@
     .user-dropdown {
         transform: translate(10px, -100%);
         animation: headerDropdownAppearanceDesktop 0.8s ease forwards;
-        width: 350px;
         text-align: right;
         @keyframes headerDropdownAppearanceDesktop {
             0% {}
@@ -61,8 +60,13 @@
             }
         }
     }
+}
+@media(min-width: 1200px) {
+    .user-dropdown {
+        width: 400px;
+    }
     .user {
-        max-width: calc(350px - (20px + 6.18px + 26px));
+        max-width: calc(400px - (40px + 6.18px));
     }
 }
 @media (min-width: 1400px) {

@@ -1,9 +1,12 @@
+// local imports
 import { UserStateI, UserAction, UserActions } from "../types/user";
+
 
 const defaultState: UserStateI = {
     user: null,
     loading: false
 }
+
 
 export const userReducer = (state = defaultState, action: UserAction): UserStateI => {
     switch (action.type) {

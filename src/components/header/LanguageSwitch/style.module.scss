@@ -1,0 +1,60 @@
+.wrapper {
+    position: relative;
+    height: 30px;
+    width: 60px;
+    cursor: pointer;
+}
+
+.button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    font-size: 0;
+    z-index: 6;
+    &--clicked {
+        pointer-events: none;
+    }
+}
+
+.arrows {
+    fill: var(--col-gray);
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    z-index: 4;
+    width: 24px;
+    height: 24px;
+    &--animated {
+        transition: transform 0.5s;
+        transform: rotateZ(180deg);
+        fill: var(--col-green);
+    }
+}
+
+.flag {
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    width: 33px;
+    height: 24px;
+    z-index: 4;
+    transition: all 0.5s;
+    transform: scale(0.7);
+    opacity: 0.5;
+    &__russian {
+        background: url("../../../assets/images/flags/flag-russia.svg") 0 0 / 100%;
+    }
+    &__usa {
+        background: url("../../../assets/images/flags/flag-usa.svg") 0 0 / 100% 100%;
+    }
+    &--active {
+        top: 50%;
+        left: 0;
+        transform: translate(0, -50%);
+        opacity: 1;
+        z-index: 5;
+    }
+}

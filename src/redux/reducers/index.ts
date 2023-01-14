@@ -1,10 +1,13 @@
+// third party
 import { combineReducers } from "redux";
-import { themeReducer } from "./themeReducer";
+// local imports
+import { languageReducer } from "./languageReducer";
 import { userReducer } from "./userReducer";
+
 
 export const rootReducer = combineReducers({
     user: userReducer,
-    theme: themeReducer,
+    language: languageReducer,
 })
 
 export type RootStateType = ReturnType<typeof rootReducer>
