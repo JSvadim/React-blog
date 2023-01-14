@@ -5,22 +5,29 @@ import classNames from "classnames";
 // local imports
 import style from "./style.module.scss";
 import { setActiveLinkStyle } from "../helpers";
+import { SignInLinksComponentI } from "./type";
 
 
-const SignInLinks: React.FC = () => {
+const SignInLinks: React.FC<SignInLinksComponentI> = (props) => {
+
+    const { closeMenu } = props;
+
+
     return (
-        <nav className={style["nav"]}>
+        <nav className={classNames([style["nav"], "unselectable"])}>
             <ul className={style["list"]}>
                 <li>
                     <NavLink className={classNames([style["link"], style["first"], "unselectable"])} 
-                        style={setActiveLinkStyle}
+                        style={setActiveLinkStyle} 
+                        onClick={closeMenu}
                         to="/log-in">Log in&nbsp;
                     </NavLink> 
                     <span className={style["decor"]}>/</span>
                 </li>
                 <li>
                     <NavLink className={classNames([style["link"], style["second"], "unselectable"])}
-                        style={setActiveLinkStyle}
+                        style={setActiveLinkStyle} 
+                        onClick={closeMenu}
                         to="/sign-in">&nbsp;Sign in
                     </NavLink>
                 </li>

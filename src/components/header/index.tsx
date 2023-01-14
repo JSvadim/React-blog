@@ -25,7 +25,7 @@ const Header: React.FC = (props) => {
         <header className={style.header}>
             <Container>
                 <div className={style.inner}>
-                    {user === null ? <SignInLinks/> : 
+                    {user === null ? <SignInLinks closeMenu={closeMenu}/> : 
                         <UserDropdown
                             userClassName={style.user} 
                             dropdownClassName={style["user-dropdown"]}
