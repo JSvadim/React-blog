@@ -1,3 +1,5 @@
+@use "../../styles/animations.scss";
+
 .wrapper {
     height: calc(100vh - 65px - 110px);
     position: relative;
@@ -60,6 +62,8 @@
     &__text {
         font-family: var(--font-pretty);
         font-size: 20px;
+        transform: scale(0);
+        animation: errorAppearance 1s forwards;
     }
 }
 
