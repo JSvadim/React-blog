@@ -1,3 +1,6 @@
+// hooks
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+
 // third-party
 import classNames from "classnames";
 import { Link } from "react-router-dom";
@@ -7,20 +10,24 @@ import style from "./style.module.scss";
 import { BlogComponentI } from "./type";
 import PicturesList from "../PicturesList";
 import { User } from "../User";
+import { blogVocabulary } from "../../vocabulary/components/Blog";
 
 
 const Blog: React.FC<BlogComponentI> = (props) => {
 
+    const { language } = useTypedSelector(state => state.language);
     const { blog, isFake } = props;
 
-    const fakeLink = <span className={classNames([style["read-all-link"], "unselectable"])}>read all blog...</span>;
+    const fakeLink = <span className={classNames([style["read-all-link"], "unselectable"])}>
+        {blogVocabulary.readAllLink[language]}
+    </span>;
     const trueLink = (
         <Link className={classNames([style["read-all-link"], "unselectable"])} to="/blog" state={{ blog }}>
-            read all blog...
+            {blogVocabulary.readAllLink[language]}
         </Link>
     );
     const title = props.isFake ? 
-        (<h3 className={classNames([style.title, style["title-link"]])}>
+        (<h3 className={classNames([style.title, style["title-link"], "unselectable"])}>
             {blog.title}
         </h3>) :
         (<h3 className={style.title}>

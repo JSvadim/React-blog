@@ -13,9 +13,11 @@ import { BlogsList } from "../../components/BlogsList";
 import classNames from "classnames";
 import { usePagination } from "../../hooks/usePagination";
 import { localStorageMyBlogsPagination } from "../../constants/local-storage";
+import { myBlogsPageVocabulary } from "../../vocabulary/pages/MyBlogs";
 
 const MyBlogsPage: React.FC = () => {
 
+    const { language } = useTypedSelector(state => state.language);
     const [ blogs, setBlogs ] = useState<null | BlogResponseI[]>(null);
     const [ loading, setLoading ] = useState<Boolean>(true);
     const { user } = useTypedSelector(state => state.user);
@@ -77,7 +79,7 @@ const MyBlogsPage: React.FC = () => {
                 {!blogs && (
                     <div className={style["no-blogs"]}>
                         <p className={style["no-blogs__text"]}>
-                            You have no blogs..
+                            {myBlogsPageVocabulary.noBlogs[language]}
                         </p>
                     </div>
                 )}

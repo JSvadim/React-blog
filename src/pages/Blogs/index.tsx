@@ -1,5 +1,6 @@
 // hooks
 import { useState, useEffect } from "react";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
 
 // third party
 import classNames from "classnames";
@@ -14,10 +15,12 @@ import { BlogResponseI } from "../../types/server-responses/blog";
 import { BlogsList } from "../../components/BlogsList";
 import { localStorageBlogsPagination } from "../../constants/local-storage";
 import { usePagination } from "../../hooks/usePagination";
+import { blogsPageVocabulary } from "../../vocabulary/pages/Blogs";
 
 
 const BlogsPage: React.FC = () => {
     
+    const { language } = useTypedSelector(state => state.language);
     const [ blogs, setBlogs ] = useState<null | BlogResponseI[]>(null);
     const [ loading, setLoading ] = useState<Boolean>(true);
     
@@ -72,7 +75,7 @@ const BlogsPage: React.FC = () => {
                 {!blogs && (
                     <div className={style["no-blogs"]}>
                         <p className={style["no-blogs__text"]}>
-                            We have no blogs..
+                            {blogsPageVocabulary.noBlogs[language]}
                         </p>
                     </div>
                 )}

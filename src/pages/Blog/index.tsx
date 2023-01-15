@@ -1,6 +1,7 @@
 // hooks
 import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
 
 // third party
 import classNames from "classnames";
@@ -18,10 +19,12 @@ import Comment from "../../components/Comment";
 import { AddCommentForm } from "../../components/forms/AddCommentForm";
 import { CommentComponentI } from "../../components/Comment/type";
 import ServerImage from "../../components/ServerImage";
+import { blogPageVocabulary } from "../../vocabulary/pages/Blog";
 
 
 const BlogPage: React.FC = () => {
 
+    const { language } = useTypedSelector( state => state.language);
     const location = useLocation()
     const { blog } = location.state as BlogPageLocationI;   
     
@@ -147,7 +150,9 @@ const BlogPage: React.FC = () => {
                 </section>
                 <section className={style["comments"]}>
                     <header className={style["comments__header"]}>
-                        <h2 className={style["comments__header-title"]}>Comments</h2>
+                        <h2 className={style["comments__header-title"]}>
+                            {blogPageVocabulary.commentsTitle[language]}
+                        </h2>
                         <p className={style["comments__header-count"]}>12</p>
                     </header>
                     <div className={style["comments__list-wrapper"]}>
@@ -165,7 +170,10 @@ const BlogPage: React.FC = () => {
                                 )
                             })}
                             {fakeComments.length === 0 &&
-                            <p className={style["comments__no-comments"]}>No comments...</p>}
+                                <p className={style["comments__no-comments"]}>
+                                    {blogPageVocabulary.noComments[language]}
+                                </p>
+                            }
                         </ul>
                     </div>
                     <AddCommentForm

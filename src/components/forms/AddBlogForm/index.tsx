@@ -2,6 +2,7 @@
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
+import { useTypedSelector } from "../../../hooks/useTypedSelector";
 
 // third-party 
 import React from "react";
@@ -23,9 +24,13 @@ import InputTitle from "../../Inputs/InputTitle";
 import ImageInput from "../../Inputs/ImageInput";
 import { TextArea } from "../../Inputs/TextArea";
 import { BasicInput } from "../../Inputs/BasicInput";
+import { inputsVocabulary } from "../../../vocabulary/inputs";
+import { addBlogPageVocabulary } from "../../../vocabulary/pages/AddBlog";
+
 
 export const AddBlogForm: React.FC<AddBlogFormComponentI> = (props) => {
     
+    const { language } = useTypedSelector( state => state.language);
     const [ formError, setFormError ] = useState("");
     const [ pictures, setPictures ] = useState<AddBlogFormPicturesI>({
         "first-pic": null,
@@ -84,15 +89,15 @@ export const AddBlogForm: React.FC<AddBlogFormComponentI> = (props) => {
                     registerName="title"
                     errors={errors}
                     labelType="simple">
-                        <InputTitle title="Blog title:"/>
+                        <InputTitle title={inputsVocabulary.blogTitle.label[language]}/>
                         <BasicInput
                             theme="black"
                             className={style.input}
                             type="text" 
-                            placeholder="title"
+                            placeholder={inputsVocabulary.blogTitle.placeholder[language]}
                             register={register}
                             registerName="title"
-                            validation={blogTitleValidation}
+                            validation={blogTitleValidation[language]}
                         />
                 </InputWrapper>
 
@@ -102,21 +107,21 @@ export const AddBlogForm: React.FC<AddBlogFormComponentI> = (props) => {
                     errors={errors}
                     errorType="textarea"
                     labelType="simple">
-                        <InputTitle title="Blog text:"/>
+                        <InputTitle title={inputsVocabulary.blogText.label[language]}/>
                         <TextArea
                             className={classNames([style.input, style["blog-text-input"]])}
                             theme="black"
                             register={register}
                             registerName="text"
-                            placeholder="Blog text"
-                            validation={blogTextValidation}
+                            placeholder={inputsVocabulary.blogText.placeholder[language]}
+                            validation={blogTextValidation[language]}
                         />
                 </InputWrapper>
             </div>
             <div className={classNames([style.row, style["row--right"]])}>
                 <div className={style["image-inputs-wrapper"]}>
-                    <InputTitle title={`Add images,`}/>
-                    <InputTitle title={`Each picture less than 5mb.`}/>
+                    <InputTitle title={addBlogPageVocabulary.imagesTitle1[language]}/>
+                    <InputTitle title={addBlogPageVocabulary.imagesTitle2[language]}/>
                     <img className={style["add-images-decor"]} 
                          src={addImagesDecor} 
                          alt="add images decoration" />
@@ -187,13 +192,13 @@ export const AddBlogForm: React.FC<AddBlogFormComponentI> = (props) => {
                     <ButtonBasic
                         theme="black"
                         type="button"
-                        text="watch preview"
+                        text={addBlogPageVocabulary.previewBtn[language]}
                         onClick={() => {}}
                     />
                     <ButtonBasic
                         theme="white"
                         type="submit"
-                        text="add blog"
+                        text={addBlogPageVocabulary.submitBtn[language]}
                         onClick={() => {}}
                     />
                 </div>

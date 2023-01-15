@@ -31,13 +31,16 @@ const Header: React.FC = (props) => {
                             dropdownClassName={style["user-dropdown"]}
                             theme="white" 
                             user={user}/>}
-                    <LanguageSwitch/>
                     <BurgerMenu 
+                        className={style.burger}
                         isNavOpened={isNavigationOpened}
                         toggleMenu={toggleMenu}/>
-                    <Navbar
-                        isNavOpened={isNavigationOpened}
-                        toggleMenu={closeMenu}/>
+                    <div className={style["navbar-language-container"]}>
+                        <Navbar
+                            isNavOpened={isNavigationOpened}
+                            toggleMenu={closeMenu}/>
+                        <LanguageSwitch className={style.language}/>
+                    </div>
                 </div>
             </Container>
         </header>

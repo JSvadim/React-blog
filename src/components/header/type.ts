@@ -4,6 +4,7 @@ export interface HeaderNavbarComponentI {
 }
 
 export interface BurgerMenuComponentI {
+    className?: string;
     isNavOpened: boolean;
     toggleMenu: Function;
 }

@@ -1,15 +1,35 @@
+import { navbarVocabulary } from "../vocabulary/components/Navbar";
+
+interface navItemTitleI {
+    eng: string;
+    ru: string;
+}
+
+export interface navItemI {
+    title: navItemTitleI;
+    path: string;
+}
 
 export const navItems = [
     {
-        title: "Blogs",
+        title: {
+            eng: navbarVocabulary.blogs.eng,
+            ru: navbarVocabulary.blogs.ru,
+        },
         path: "/"
     },
     {
-        title: "Add blog",
+        title: {
+            eng: navbarVocabulary.addBlog.eng,
+            ru: navbarVocabulary.addBlog.ru,
+        },
         path: "/add-blog"
     },
     {
-        title: "My blogs",
+        title: {
+            eng: navbarVocabulary.myBlogs.eng,
+            ru: navbarVocabulary.myBlogs.ru,
+        },
         path: "/my-blogs"
     }
 ]

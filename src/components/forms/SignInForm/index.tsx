@@ -1,6 +1,7 @@
 // hooks
 import { useForm } from "react-hook-form";
 import { useState } from "react";
+import { useTypedSelector } from "../../../hooks/useTypedSelector";
 
 // third-party
 import React from "react";
@@ -20,22 +21,19 @@ import InputTitle from "../../Inputs/InputTitle";
 import { SignInFormDataI } from "./type";
 import { Select } from "../../Inputs/Select";
 import { BasicInput } from "../../Inputs/BasicInput";
+import { inputsVocabulary } from "../../../vocabulary/inputs";
+import { signInFormVocabulary } from "../../../vocabulary/forms/SignInForm";
 
 
 const SignInForm: React.FC = () => {
 
+    const { language } = useTypedSelector(state => state.language);
     const [ isActivationCodeSent, setIsActivationCodeSent ] = useState(false);
     const [ formError, setFormError ] = useState("");
     const [ loading, setLoading ] = useState(false);
     const { register, watch, formState: {errors}, handleSubmit } = useForm<SignInFormDataI>({
         mode: "onBlur"
     });
-    const genderSelectOptions = [
-        {value:"", text: "Choose gender"},
-        {value:"male", text: "male"},
-        {value:"female", text: "female"},
-        {value:"other", text: "Type other gender"}
-    ];
 
     const onSubmit: SubmitHandler<SignInFormDataI> = (data): void => {
         const params = {
@@ -59,15 +57,15 @@ const SignInForm: React.FC = () => {
                 registerName="nickname" 
                 errors={errors}
                 labelType="simple">
-                    <InputTitle title="Nickname:"/>
+                    <InputTitle title={inputsVocabulary.nickname.label[language]}/>
                     <BasicInput
                         theme="black"
                         className={style.input}
                         type="text" 
-                        placeholder="your nick"
+                        placeholder={inputsVocabulary.nickname.placeholder[language]}
                         register={register}
                         registerName="nickname"
-                        validation={userNicknameValidation}
+                        validation={userNicknameValidation[language]}
                     />
             </InputWrapper>
             
@@ -76,15 +74,15 @@ const SignInForm: React.FC = () => {
                 registerName="email"
                 errors={errors}
                 labelType="simple">
-                    <InputTitle title="Email:"/>
+                    <InputTitle title={inputsVocabulary.email.label[language]}/>
                     <BasicInput
                         theme="black"
                         className={style.input}
                         type="email" 
-                        placeholder="your email"
+                        placeholder={inputsVocabulary.email.placeholder[language]}
                         register={register}
                         registerName="email"
-                        validation={userEmailValidation}
+                        validation={userEmailValidation[language]}
                     />
             </InputWrapper>
 
@@ -93,15 +91,15 @@ const SignInForm: React.FC = () => {
                 registerName="password"
                 errors={errors}
                 labelType="simple">
-                    <InputTitle title="Password:"/>
+                    <InputTitle title={inputsVocabulary.password.label[language]}/>
                     <BasicInput
                         theme="black"
                         className={style.input}
                         type="password" 
-                        placeholder="your password"
+                        placeholder={inputsVocabulary.password.placeholder[language]}
                         register={register}
                         registerName="password"
-                        validation={userPasswordValidation}
+                        validation={userPasswordValidation[language]}
                     />
             </InputWrapper>
 
@@ -110,13 +108,13 @@ const SignInForm: React.FC = () => {
                 registerName="gender"
                 errors={errors}
                 labelType="simple">
-                    <InputTitle title="Gender:"/>
+                    <InputTitle title={inputsVocabulary.selectGender.label[language]}/>
                     <Select
-                        options={genderSelectOptions}
+                        options={inputsVocabulary.selectGender.options[language]}
                         theme="black"
                         register={register}
                         registerName="gender"
-                        validation={requiredFieldValidation}
+                        validation={requiredFieldValidation[language]}
                     />
             </InputWrapper>
 
@@ -126,15 +124,15 @@ const SignInForm: React.FC = () => {
                     registerName="otherGender"
                     errors={errors}
                     labelType="simple">
-                        <InputTitle title="Type your gender:"/>
+                        <InputTitle title={inputsVocabulary.otherGender.label[language]}/>
                         <BasicInput
                             theme="black"
                             className={style.input}
                             type="text" 
-                            placeholder="gender..."
+                            placeholder={inputsVocabulary.otherGender.placeholder[language]}
                             register={register}
                             registerName="otherGender"
-                            validation={userOtherGenderValidation}
+                            validation={userOtherGenderValidation[language]}
                         />
                 </InputWrapper>
             }
@@ -145,15 +143,15 @@ const SignInForm: React.FC = () => {
                     registerName="activationCode"
                     errors={errors}
                     labelType="simple">
-                        <InputTitle title="Type code, that has been sent to your email:"/>
+                        <InputTitle title={inputsVocabulary.activationCode.label[language]}/>
                         <BasicInput
                             theme="black"
                             className={style.input}
                             type="text" 
-                            placeholder="Sent code to your email..."
+                            placeholder={inputsVocabulary.activationCode.placeholder[language]}
                             register={register}
                             registerName="activationCode"
-                            validation={requiredFieldValidation}
+                            validation={requiredFieldValidation[language]}
                         />
                 </InputWrapper>
             }
@@ -162,13 +160,16 @@ const SignInForm: React.FC = () => {
                 theme="black"
                 positioning={style.btn}
                 type="submit"
-                text={isActivationCodeSent ? "confirm code" : "Sign in"}
+                text={isActivationCodeSent ? 
+                    signInFormVocabulary.submitBtn.confirmCode[language] 
+                    : 
+                    signInFormVocabulary.submitBtn.signIn[language]}
                 onClick={() => {}}
             />
             <div className={style["gray-link-wrapper"]}>
                 <Link 
                     className={classNames(["gray-link", "unselectable", style["gray-link"]])}
-                    to="/log-in"> Log in if you already have an account
+                    to="/log-in"> {signInFormVocabulary.linkToLogIn[language]}
                 </Link>
             </div> 
         </form>

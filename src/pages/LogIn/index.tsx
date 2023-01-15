@@ -1,3 +1,6 @@
+// hooks
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+
 // local imports
 import style from "./style.module.scss";
 import { firstBlogExample, secondBlogExample } from "../../constants/blog-example";
@@ -8,6 +11,10 @@ import Container from "../../components/Container";
 
 
 const LogInPage: React.FC = () => {
+
+    const { language } = useTypedSelector(state => state.language);
+
+
     return (
         <Container>
             <div className={style.wrapper}>
@@ -22,10 +29,10 @@ const LogInPage: React.FC = () => {
                 </div>
                 <div className={style["example-posts"]}>
                     <Blog
-                        blog={firstBlogExample}
+                        blog={firstBlogExample[language]}
                         isFake={true}/>
                     <Blog
-                        blog={secondBlogExample}
+                        blog={secondBlogExample[language]}
                         isFake={true}/>
                 </div>
             </div>

@@ -13,15 +13,17 @@ const BurgerMenu: React.FC<BurgerMenuComponentI> = (props) => {
         style['burger'];
 
     return (
-        <div className={burgerClassName}>
-            <button 
-                className={classNames([style.button, "unselectable"])} 
-                onClick={() => props.toggleMenu()}>
-                Open menu
-            </button>
-            <div className={style.decor}></div>
-            <div className={style.decor}></div>
-            <div className={style.decor}></div>
+        <div className={props.className}>
+            <div className={burgerClassName}>
+                <button 
+                    className={classNames([style.button, "unselectable"])} 
+                    onClick={() => props.toggleMenu()}>
+                    Open menu
+                </button>
+                <div className={style.decor}></div>
+                <div className={style.decor}></div>
+                <div className={style.decor}></div>
+            </div>
         </div>
     )
 

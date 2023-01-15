@@ -1,6 +1,7 @@
 // hooks
 import { useForm } from "react-hook-form";
 import { useState } from "react";
+import { useTypedSelector } from "../../../hooks/useTypedSelector";
 
 // third-party
 import React, { SyntheticEvent } from "react";
@@ -19,9 +20,13 @@ import { AuthController } from "../../../controllers/auth-controller";
 import { LogInFormDataI } from "./type";
 import style from "./style.module.scss";
 import { BasicInput } from "../../Inputs/BasicInput";
+import { logInFormVocabulary } from "../../../vocabulary/forms/LogInForm";
+import { inputsVocabulary } from "../../../vocabulary/inputs";
+
 
 const LogInForm: React.FC = () => {
 
+    const { language } = useTypedSelector(state => state.language);
     const [ formError, setFormError ] = useState("");
     const [ loading, setLoading ] = useState(false);
     const { register, formState: {errors}, handleSubmit } = useForm<LogInFormDataI>({
@@ -50,15 +55,15 @@ const LogInForm: React.FC = () => {
                 registerName="email"
                 errors={errors}
                 labelType="simple">
-                    <InputTitle title="Email:"/>
+                    <InputTitle title={inputsVocabulary.email.label[language]}/>
                     <BasicInput
                         theme="black"
                         className={style.input}
                         type="email" 
-                        placeholder="your email"
+                        placeholder={inputsVocabulary.email.placeholder[language]}
                         register={register}
                         registerName="email"
-                        validation={userEmailValidation}
+                        validation={userEmailValidation[language]}
                     />
             </InputWrapper>
 
@@ -67,22 +72,22 @@ const LogInForm: React.FC = () => {
                 registerName="password"
                 errors={errors}
                 labelType="simple">
-                    <InputTitle title="Password:"/>
+                    <InputTitle title={inputsVocabulary.password.label[language]}/>
                     <BasicInput
                         theme="black"
                         className={style.input}
                         type="password" 
-                        placeholder="your password"
+                        placeholder={inputsVocabulary.password.placeholder[language]}
                         register={register}
                         registerName="password"
-                        validation={userPasswordValidation}
+                        validation={userPasswordValidation[language]}
                     />
             </InputWrapper>
             
             <div>
                 <Link 
                     className={classNames(["blue-link", "unselectable", style["blue-link"]])}
-                    to="/log-in"> Forgot password?
+                    to="/log-in"> {logInFormVocabulary.forgotPassword[language]}
                 </Link>
             </div>
 
@@ -90,14 +95,14 @@ const LogInForm: React.FC = () => {
                 theme="black"
                 positioning={style.btn}
                 type="submit"
-                text="Log in"
+                text={logInFormVocabulary.submitBtn[language]}
                 onClick={() => {}}
             />
             
             <div className={style["gray-link-wrapper"]}>
                 <Link 
                     className={classNames(["gray-link", "unselectable", style["gray-link"]])}
-                    to="/sign-in"> Sign in if you don't have an account
+                    to="/sign-in"> {logInFormVocabulary.linkToSignIn[language]}
                 </Link>
             </div> 
         </form>
