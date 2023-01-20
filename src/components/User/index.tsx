@@ -1,6 +1,6 @@
 // hooks
 import classNames from "classnames";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // third party
 import { Link } from "react-router-dom";
@@ -21,9 +21,14 @@ import { userProps } from "./type";
 export const User: React.FC<userProps> = ({userProp, theme, className, isFake, databaseSelector, dbSelectorValue}) => {
 
     const userClassName = classNames([style.user, style[`user--theme-${theme}`], className]);
+    const [ fakeUsername, setFakeUsername ] = useState("");
     const linkClassName = classNames([style.nickname, "unselectable"]);
     const [ user, setUser ] = useState<null | UserResponseI>(null);
     useGetUser({initialValue: userProp, setUser, databaseSelector, dbSelectorValue});
+
+    useEffect(() => {
+        setFakeUsername(getFakeUserName());
+    }, []);
 
 
     if(isFake) {
@@ -37,7 +42,7 @@ export const User: React.FC<userProps> = ({userProp, theme, className, isFake, d
                 </div>
                 <div className={style["nickname-container"]}>
                     <span className={linkClassName}>
-                        {getFakeUserName()}
+                        {fakeUsername}
                     </span>
                 </div>
             </div>
