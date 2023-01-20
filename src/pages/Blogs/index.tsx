@@ -27,6 +27,10 @@ const BlogsPage: React.FC = () => {
     const itemsPerPage = 12;
     const usePaginationProps = { localStorageVariableName: localStorageBlogsPagination, itemsPerPage };
     const [ pageNumber, paginationClickHandler, sliceBlogs ] = usePagination(usePaginationProps);
+    
+    const wrapperClassname = classNames([
+        style.wrapper, 
+        blogs?.length && blogs.length > itemsPerPage ? style["wrapper__paginated"] : ""]);
 
     useEffect(() => {
         const fetchBlogs = async () => {
@@ -67,7 +71,7 @@ const BlogsPage: React.FC = () => {
 
     return (
         <Container>
-            <div className={style.wrapper}>
+            <div className={wrapperClassname}>
                 <h1 className={classNames([style.title, "unselectable"])}>
                     <span className={style["title-small"]}>BEST blog</span>
                     <span className={style["title-big"]}>EVER</span>

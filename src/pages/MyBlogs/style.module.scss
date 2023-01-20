@@ -1,11 +1,14 @@
 @use "../../styles/animations.scss";
 
 .wrapper {
-    height: calc(100vh - 65px - 110px);
+    height: calc(100vh - 65px - 20px);
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
+    &__paginated {
+        height: calc(100vh - 65px - 110px);
+    }
 }
 .loading-wrapper {
     height: calc(100vh - 65px);
