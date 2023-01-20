@@ -10,11 +10,11 @@ import { LogInControllerI, SignInControllerI } from "../types/controllers/auth";
 export class AuthController {
     static async refresh () {
           try {
-            store.dispatch({type: UserActions.loading})
             const { user, token } = await AuthService.refresh();
             
             localStorage.setItem(localStorageAccessToken, token);
             store.dispatch(loginUserCreator(user));
+            
 
           } catch(e) {
             console.log("authorization error:");
