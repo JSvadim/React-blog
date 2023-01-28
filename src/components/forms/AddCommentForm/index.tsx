@@ -10,7 +10,7 @@ import ButtonBasic from "../../Buttons/ButtonBasic";
 import Loading from "../../Loading";
 import InputError from "../../Inputs/InputError";
 import InputWrapper from "../../Inputs/InputWrapper";
-import { requiredFieldValidation } from "../../../constants/input-validation";
+import { commentValidation } from "../../../constants/input-validation";
 import { TextArea } from "../../Inputs/TextArea";
 import { addCommentFormVocabulary } from "../../../vocabulary/forms/AddCommentForm";
 import { inputsVocabulary } from "../../../vocabulary/inputs";
@@ -49,7 +49,7 @@ export const AddCommentForm: React.FC<AddCommentFormComponentI> = (props) => {
                             placeholder={inputsVocabulary.comment.placeholder[language]}
                             register={register}
                             registerName="comment"
-                            validation={requiredFieldValidation[language]}
+                            validation={commentValidation[language]}
                         />
             </InputWrapper>
             <ButtonBasic
