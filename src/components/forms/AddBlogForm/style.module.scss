@@ -41,11 +41,18 @@
 }
 
 .add-images-decor {
-    position: absolute;
-    top: 20px;
-    right: 10px;
     width: 21px;
     height: 24px;
+    &__ru {
+        position: absolute;
+        top: -5px;
+        left: 185px;
+    }
+    &__eng {
+        position: absolute;
+        top: -5px;
+        left: 120px;
+    }
 }
 
 .preview-image {
@@ -64,6 +71,17 @@
 @media(min-width: 380px) {
     .image-input {
         flex: 0 0 calc(50% - 10px);
+    }
+}
+
+@media(min-width: 768px) {
+    .add-images-decor {
+        &__ru {
+            left: 200px;
+        }
+        &__eng {
+            left: 125px;
+        }
     }
 }
 
@@ -95,10 +113,6 @@
         max-height: 200px;
         min-height: 200px;
     }
-    .add-images-decor {
-        top: -7px;
-        left: 126px;
-    }
     .preview-image {
         flex: 0 0 89.33px;
         width: 89.33px;
@@ -117,13 +131,21 @@
 }
 
 @media(min-width: 1400px) {
+    .form {
+        display: flex;
+        justify-content: space-between;
+        height: 365px;
+        padding: 10px 0;
+    }
     .row {
         &--left {
             padding: 19px 0 0 0;
-            transform: translateY(7px);
+        }
+        &--right {
+            transform: translateY(-4px);
         }
     }
     .image-inputs-wrapper {
-        margin-bottom: 28px;
+        margin-bottom: 33px;
     }
 }

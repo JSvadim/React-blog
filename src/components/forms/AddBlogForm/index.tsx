@@ -122,7 +122,7 @@ export const AddBlogForm: React.FC<AddBlogFormComponentI> = (props) => {
                 <div className={style["image-inputs-wrapper"]}>
                     <InputTitle title={addBlogPageVocabulary.imagesTitle1[language]}/>
                     <InputTitle title={addBlogPageVocabulary.imagesTitle2[language]}/>
-                    <img className={style["add-images-decor"]} 
+                    <img className={classNames([style["add-images-decor"], style[`add-images-decor__${language}`]])} 
                          src={addImagesDecor} 
                          alt="add images decoration" />
                     <div className={style["image-inputs-carousel"]}>
