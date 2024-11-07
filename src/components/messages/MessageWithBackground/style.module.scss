@@ -1,0 +1,43 @@
+@use "../../../styles/animations.scss";
+
+.text {
+    font-family: var(--font-pretty);
+    font-size: 22px;
+    line-height: 1.3em;
+    &__default-pos{
+        width: 100%;
+        max-width: 80%;
+        text-align: center;
+        transform: scale(0);
+        animation: errorAppearance 1s forwards;
+    }
+    &--theme {
+        &-white {
+            color: var(--col-text-black);
+        }
+        &-black {
+            color: var(--col-text-white);
+        }
+    }
+}
+.background {
+    background-color: var(--col-white-75-transparent);
+    &__default-pos{
+        position: absolute;
+        top: 0%;
+        left: 0%;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    &--theme {
+        &-white {
+            background-color: var(--col-white-75-transparent);
+        }
+        &-black {
+            background-color: var(--col-black-light);
+        }
+    }
+}

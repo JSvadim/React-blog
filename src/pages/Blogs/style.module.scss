@@ -60,25 +60,6 @@
     justify-content: center;
     background-color: var(--col-white);
 }
-.no-blogs {
-    position: absolute;
-    z-index: 3;
-    top: 0;
-    left: 50%;
-    width: 100vw;
-    transform: translate(-50%, 0);
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--col-white-75-transparent);
-    &__text {
-        font-family: var(--font-pretty);
-        font-size: 20px;
-        transform: scale(0);
-        animation: errorAppearance 1s forwards;
-    }
-}
 
 @media(min-width: 768px) {
     .title {

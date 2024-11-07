@@ -1,6 +1,6 @@
 // hooks
 import { useLocation } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 
 // third party
@@ -17,50 +17,34 @@ import { formatDate, SlickArrowsMobileAnimation } from "./helpers";
 import ButtonLike from "../../components/Buttons/ButtonLike";
 import Comment from "../../components/Comment";
 import { AddCommentForm } from "../../components/forms/AddCommentForm";
-import { CommentComponentI } from "../../components/Comment/type";
 import ServerImage from "../../components/ServerImage";
 import { blogPageVocabulary } from "../../vocabulary/pages/Blog";
+import { fakeComments } from "../../constants/fake-comments";
+import { MessageBasic } from "../../components/messages/MessageBasic";
 
 
 const BlogPage: React.FC = () => {
 
     const { language } = useTypedSelector( state => state.language);
     const location = useLocation()
-    const { blog } = location.state as BlogPageLocationI;   
+    const passedData = location.state as BlogPageLocationI;
+    const blog = passedData?.blog ? passedData.blog : null;   
+
+    useEffect(() => {
+        const animatedMobileArrows = new SlickArrowsMobileAnimation(style["blog__pics"], 600);
+        return () => animatedMobileArrows.removeListenersAndTimers()
+    }, []);
+
+    if(!blog) {
+        return (
+            <MessageBasic 
+                text={blogPageVocabulary.error[language]}
+                position="centered-fixed"
+                />
+        )
+    }
+
     
-    
-    const fakeComments: [] | CommentComponentI[] = [
-        {
-            userId: 2,
-            date: "12.06.2078",
-            text: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit quasi et at soluta sit odit ipsam nobis, optio corporis praesentium consectetur culpa quia, voluptas asperiores, perferendis mollitia deserunt expedita! Iure, eveniet aut necessitatibus deserunt accusantium velit aperiam omnis nobis fugit dicta veritatis distinctio nesciunt nisi error."
-        },
-        {
-            userId: 4,
-            date: "02.03.2008",
-            text: "Lorem ipsum, dolor sit amet consectetur adipisici."
-        },
-        {
-            userId: 8,
-            date: "01.13.2067",
-            text: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit quasi et at soluta sit odit ipsam nobis, optio corporis praesentium consectetur culpa quia, voluptas asperiores, perferendis mollitia deserunt expedita! Iure, eveniet aut necessitatibus deserunt accusantium velit aperiam omnis nobis fugit dicta veritatis distinctio nesciunt nisi error. Aliquam quo quod mollitia?"
-        },
-        {
-            userId: 7,
-            date: "12.06.2078",
-            text: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit quasi et at soluta sit odit ipsam nobis, optio corporis praesentium consectetur culpa quia, voluptas asperiores, perferendis mollitia deserunt expedita! Iure, eveniet aut necessitatibus deserunt accusantium velit aperiam omnis nobis fugit dicta veritatis distinctio nesciunt nisi error. Aliquam quo quod mollitia?"
-        },
-        {
-            userId: 45,
-            date: "02.03.2008",
-            text: "Lorem ipsum, dolor sit amet consectetur adipisici."
-        },
-        {
-            userId: 84,
-            date: "01.13.2067",
-            text: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit quasi et at soluta sit odit ipsam nobis, optio corporis praesentium consectetur culpa quia, voluptas asperiores, perferendis mollitia deserunt expedita! Iure, eveniet aut necessitatibus deserunt accusantium velit aperiam omnis nobis fugit dicta veritatis distinctio nesciunt nisi error. Aliquam quo quod mollitia?"
-        }
-    ]
     const containerClass = classNames([
         style["tablet-desktop-container"],
         blog.pictures ? style.pictured : ''
@@ -73,17 +57,6 @@ const BlogPage: React.FC = () => {
     };
 
 
-    useEffect(() => {
-        const animatedMobileArrows = new SlickArrowsMobileAnimation(style["blog__pics"], 600);
-        return () => animatedMobileArrows.removeListenersAndTimers()
-    }, []);
-
-
-    if(!blog) {
-        return (
-            <p>Error</p>
-        )
-    }
     return (
         <section className={style["main-section"]}>
             <header className={style["main-header"]}>

@@ -14,6 +14,7 @@ import classNames from "classnames";
 import { usePagination } from "../../hooks/usePagination";
 import { localStorageMyBlogsPagination } from "../../constants/local-storage";
 import { myBlogsPageVocabulary } from "../../vocabulary/pages/MyBlogs";
+import { MessageWithBackground } from "../../components/messages/MessageWithBackground";
 
 const MyBlogsPage: React.FC = () => {
 
@@ -31,6 +32,7 @@ const MyBlogsPage: React.FC = () => {
         blogs?.length && blogs.length > itemsPerPage ? style["wrapper__paginated"] : ""]);
 
     useEffect(() => {
+        throw new Error("helo niga");
         const fetchBlogs = async () => {
             if(user?.id) {
                 const fetchedBlogs = await blogController.getBlogs(user.id);
@@ -81,11 +83,10 @@ const MyBlogsPage: React.FC = () => {
                     MY BLOGS
                 </h1>
                 {!blogs && (
-                    <div className={style["no-blogs"]}>
-                        <p className={style["no-blogs__text"]}>
-                            {myBlogsPageVocabulary.noBlogs[language]}
-                        </p>
-                    </div>
+                    <MessageWithBackground
+                        theme="white"
+                        text={myBlogsPageVocabulary.noBlogs[language]}
+                        position="default-pos"/>
                 )}
                 {blogs &&
                     (<>

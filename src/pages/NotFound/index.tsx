@@ -5,6 +5,7 @@ import { useTypedSelector } from "../../hooks/useTypedSelector";
 import Container from "../../components/Container";
 import style from "./style.module.scss";
 import { notFoundPageVocabulary } from "../../vocabulary/pages/NotFound";
+import { MessageBasic } from "../../components/messages/MessageBasic";
 
 
 const NotFoundPage: React.FC = () => {
@@ -13,9 +14,9 @@ const { language } = useTypedSelector(state => state.language);
 
     return (
         <Container>
-            <h1 className={style["page-title"]}>
-                {notFoundPageVocabulary.title[language]}
-            </h1>
+            <MessageBasic
+                text={notFoundPageVocabulary.title[language]}
+                position="centered-fixed"/>
         </Container>
     )
 }

@@ -16,6 +16,7 @@ import { BlogsList } from "../../components/BlogsList";
 import { localStorageBlogsPagination } from "../../constants/local-storage";
 import { usePagination } from "../../hooks/usePagination";
 import { blogsPageVocabulary } from "../../vocabulary/pages/Blogs";
+import { MessageWithBackground } from "../../components/messages/MessageWithBackground";
 
 
 const BlogsPage: React.FC = () => {
@@ -77,11 +78,10 @@ const BlogsPage: React.FC = () => {
                     <span className={style["title-big"]}>EVER</span>
                 </h1>
                 {!blogs && (
-                    <div className={style["no-blogs"]}>
-                        <p className={style["no-blogs__text"]}>
-                            {blogsPageVocabulary.noBlogs[language]}
-                        </p>
-                    </div>
+                    <MessageWithBackground
+                        theme="white"
+                        text={blogsPageVocabulary.noBlogs[language]}
+                        position="default-pos"/>
                 )}
                 {blogs &&
                     (<>

@@ -1,0 +1,27 @@
+@use "../../../styles/animations.scss";
+
+.message {
+    font-family: var(--font-pretty);
+    font-size: 22px;
+    line-height: 1.3em;
+    color: var(--col-text-black);
+}
+.centered-absolute {
+    position: absolute;
+    width: 100%;
+    max-width: 80%;
+    text-align: center;
+}
+.centered-fixed {
+    position: fixed;
+    width: 100%;
+    max-width: 80vw;
+    text-align: center;
+}
+.centered-fixed,
+.centered-absolute {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    animation: centralElementAppearance 1s forwards;
+}  

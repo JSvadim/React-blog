@@ -6,5 +6,9 @@ export const blogPageVocabulary = {
     noComments: {
         ru: "Нету комментариев...",
         eng: "No comments..."
+    },
+    error: {
+        ru: "Произошла ошибка...",
+        eng: "Woops, something went wrong..."
     }
 }
